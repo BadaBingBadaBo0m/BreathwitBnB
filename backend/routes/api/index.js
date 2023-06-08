@@ -1,10 +1,10 @@
 const router = require('express').Router();
+const { restoreUser } = require('../../utils/auth.js');
+const { requireAuth } = require('../../utils/auth.js')
 
-// router.get('/test', function(req, res) {
-//   res.json('working')
-// })
+router.use(restoreUser);
 
-router.post('/test', function(req, res) {
+router.post('/test', (req, res) => {
   res.json({ requestBody: req.body });
 });
 
