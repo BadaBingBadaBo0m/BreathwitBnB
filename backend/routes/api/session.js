@@ -41,6 +41,7 @@ router.post('/', async (req, res, next) => {
   });
 });
 
+// Restore session user
 router.get('/', (req, res) => {
   const { user } = req;
 
