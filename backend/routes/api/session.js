@@ -7,6 +7,7 @@ const { User } = require('../../db/models')
 
 const router = express.Router();
 
+// Login
 router.post('/', async (req, res, next) => {
   const { credential, password } = req.body;
 
@@ -18,7 +19,7 @@ router.post('/', async (req, res, next) => {
       }
     }
   });
-  
+
   if (!user || !bcrypt.compareSync(password, user.hashedPassword.toString())) {
     const err = new Error('Login failed');
     err.status = 401;
@@ -38,6 +39,12 @@ router.post('/', async (req, res, next) => {
   return res.json({
     user: safeUser
   });
+});
+
+// Log out
+router.delete('/', async (req, res) => {
+  res.clearCookie('token');
+  return res.json({ message: 'Success' });
 });
 
 module.exports = router;
