@@ -9,19 +9,19 @@ if (process.env.NODE_ENV === 'productions') {
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    options.tableName = 'Bookings';
+    options.tableName = 'Reviews';
     return await queryInterface.bulkInsert(options, [
       {
         spotId: 1,
         userId: 2,
-        startDate: '2021-11-19',
-        endDate: '2021-11-20'
+        review: 'This place was fantastic',
+        stars: 5
       }
     ]);
   },
 
   async down (queryInterface, Sequelize) {
-    options.tableName = 'Bookings';
+    options.tableName = 'Reviews';
     const Op = Sequelize.Op;
     return await queryInterface.bulkDelete(options, {
       spotId: { [Op.in]: [2] }
