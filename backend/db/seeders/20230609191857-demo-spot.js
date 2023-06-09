@@ -45,7 +45,7 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
     options.tableName = 'Spots';
-    const Op = sequelize.Op;
+    const Op = Sequelize.Op;
     return await queryInterface.bulkDelete(options, {
       address: { [Op.in]: ['123 Disney Lane'] }
     })
