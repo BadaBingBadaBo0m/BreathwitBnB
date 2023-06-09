@@ -3,7 +3,7 @@
 /** @type {import('sequelize-cli').Migration} */
 
 let options = {};
-if (process.env.NODE_ENV === 'productions') {
+if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;
 }
 
@@ -23,7 +23,7 @@ module.exports = {
     options.tableName = 'SpotImages';
     const Op = Sequelize.Op;
     return await queryInterface.bulkDelete(options, {
-      spotId: { [Op.in]: [1] }
+      url: { [Op.in]: ['www.youtube.com'] }
     })
   }
 };

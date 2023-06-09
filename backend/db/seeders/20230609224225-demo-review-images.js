@@ -9,22 +9,20 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   async up (queryInterface, Sequelize) {
-    options.tableName = 'Reviews';
+    options.tableName = 'ReviewImages';
     return await queryInterface.bulkInsert(options, [
       {
-        spotId: 1,
-        userId: 2,
-        review: 'This place was fantastic',
-        stars: 5
+        reviewId: 1,
+        url: 'www.youtube.com'
       }
     ]);
   },
 
   async down (queryInterface, Sequelize) {
-    options.tableName = 'Reviews';
+    options.tableName = 'ReviewImages';
     const Op = Sequelize.Op;
     return await queryInterface.bulkDelete(options, {
-      spotId: { [Op.in]: [2] }
-    })
+      url: { [Op.in]: ['www.youtube.com'] }
+    });
   }
 };
