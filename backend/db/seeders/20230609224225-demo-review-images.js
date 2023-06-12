@@ -14,6 +14,14 @@ module.exports = {
       {
         reviewId: 1,
         url: 'www.youtube.com'
+      },
+      {
+        reviewId: 2,
+        url: 'https://cdn.landsearch.com/listings/4szPz/large/king-nc-103305205.jpg'
+      },
+      {
+        reviewId: 3,
+        url: 'https://cdn.landsearch.com/listings/4rQXW/large/sparta-nc-101260046.jpg'
       }
     ]);
   },
@@ -22,7 +30,7 @@ module.exports = {
     options.tableName = 'ReviewImages';
     const Op = Sequelize.Op;
     return await queryInterface.bulkDelete(options, {
-      url: { [Op.in]: ['www.youtube.com'] }
+      url: { [Op.in]: ['www.youtube.com', 'https://cdn.landsearch.com/listings/4szPz/large/king-nc-103305205.jpg', 'https://cdn.landsearch.com/listings/4rQXW/large/sparta-nc-101260046.jpg'] }
     });
   }
 };
