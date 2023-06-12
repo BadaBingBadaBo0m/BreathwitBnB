@@ -28,6 +28,12 @@ module.exports = {
         userId: 1,
         review: 'This utterly massive cabin was a joy for my family',
         stars: 5
+      },
+      {
+        spotId: 2,
+        userId: 2,
+        review: 'A possum got in and ruined our night would not recommend until they have fixed that issue.',
+        stars: 2
       }
     ]);
   },

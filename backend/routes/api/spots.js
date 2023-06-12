@@ -6,7 +6,8 @@ const { Spot, Review } = require('../../db/models');
 router.get('/', async (req, res) => {
   const spots = await Spot.findAll({
     include: {
-      model: Review
+      model: Review,
+      attributes: [ 'stars' ]
     }
   });
   res.json(spots);
