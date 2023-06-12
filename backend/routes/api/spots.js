@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { Spot, Review, SpotImage, ReviewImage } = require('../../db/models');
+const { Spot, Review, SpotImage, ReviewImage, User } = require('../../db/models');
 
 const avgRatingAndPreviewImg = async (spots) => {
   for (spot of spots) {
@@ -53,9 +53,15 @@ router.get('/current', async (req, res, next) => {
 
 router.get('/:spotId', async (req, res) => {
   const spot = await Spot.findByPk(req.params.spotId, {
-    include: {
-      model: SpotImage
-    }
+    include: [
+      {
+        model: SpotImage
+      },
+      {
+        model: User,
+        as: 'Owner'
+      }
+    ]
   });
 
   if (!spot) {
