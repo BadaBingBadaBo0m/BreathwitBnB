@@ -4,14 +4,7 @@ const router = express.Router();
 const { Spot, Review, SpotImage } = require('../../db/models');
 
 router.get('/', async (req, res) => {
-  const spots = await Spot.findAll({
-    // include: {
-    //   model: Review,
-    //   where: {
-    //     preview: true
-    //   }
-    // }
-  });
+  const spots = await Spot.findAll();
 
   for (spot of spots) {
     const reviews = await Review.findAll({
@@ -23,21 +16,22 @@ router.get('/', async (req, res) => {
     const stars = [];
     let count = 0;
     for (review of reviews) {
-      console.log(review.stars);
       count += review.stars;
       stars.push(review.stars);
     }
     spot.dataValues.avgRating = count / stars.length;
 
-    // const spotImage = await SpotImage.findAll({
-    //   where: {
-    //     spotId: spot.id,
-    //     preview: true
-    //   }
-    // });
-    // console.log(spotImage)
+    const spotImages = await SpotImage.findAll({
+      where: {
+        spotId: spot.id,
+        preview: true
+      }
+    });
+    
+    for (spotImage of spotImages) {
+      spot.dataValues.previewImage = spotImage.url;
+    }
   }
-
 
   res.json(spots);
 })
