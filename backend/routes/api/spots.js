@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const { Spot, Review, SpotImage } = require('../../db/models');
+const { Spot, Review, SpotImage, ReviewImage } = require('../../db/models');
 
 const avgRatingAndPreviewImg = async (spots) => {
   for (spot of spots) {
@@ -51,8 +51,33 @@ router.get('/current', async (req, res, next) => {
   res.json({ Spots: await avgRatingAndPreviewImg(spots) });
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:spotId', async (req, res) => {
+  const spot = await Spot.findByPk(req.params.spotId);
 
+  const reviews = await Review.findAll({
+    where: {
+      spotId: spot.id
+    },
+    include: {
+      model: ReviewImage
+    }
+  });
+  
+  const stars = [];
+  let revImg = {};
+  let count = 0;
+  let numReviews = 0
+  for (review of reviews) {
+    numReviews++;
+    count += review.stars;
+    stars.push(review.stars);
+    revImg.ReviewImage = review.ReviewImages;
+  }
+  spot.dataValues.avgRating = count / stars.length;
+  spot.dataValues.numReviews = numReviews;
+  spot.dataValues.ReviewImages = revImg.ReviewImage;
+
+  res.json(spot);
 });
 
 router.get('/', async (req, res) => {
