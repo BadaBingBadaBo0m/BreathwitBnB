@@ -37,7 +37,7 @@ const avgRatingAndPreviewImg = async (spots) => {
   return spots
 }
 
-const ValidateSpots = [
+const validateSpots = [
   check('address')
     .exists({ checkFalsy: true })
     .notEmpty()
@@ -57,7 +57,7 @@ const ValidateSpots = [
   check('lat')
     .exists({ checkFalsy: true })
     .isDecimal()
-    .withMessage('"Latitude is not valid'),
+    .withMessage('Latitude is not valid'),
   check('lng')
     .exists({ checkFalsy: true })
     .isDecimal()
@@ -76,7 +76,8 @@ const ValidateSpots = [
     .exists({ checkFalsy: true })
     .withMessage('Price is required')
     .isInt()
-    .withMessage('Price must be a valid number')
+    .withMessage('Price must be a valid number'),
+  handleValidationErrors
 ];
 
 router.get('/current', restoreUser, async (req, res, next) => {
@@ -147,7 +148,7 @@ router.get('/', async (req, res) => {
   res.json({ Spots: await avgRatingAndPreviewImg(spots) });
 });
 
-router.post('/', restoreUser, ValidateSpots, async (req, res, next) => {
+router.post('/', validateSpots, restoreUser, async (req, res) => {
   const { user } = req;
   
   if (!user) {
@@ -159,14 +160,9 @@ router.post('/', restoreUser, ValidateSpots, async (req, res, next) => {
   }
 
   const { address, city, state, country, lat, lng, name, description, price } = req.body;
-
-  // const err = {}
-  // if (!address) {
-  //   err.address = 'Street address is required'
-  // }
   
   const spot = await Spot.create({
-    ownerId: req.user.id,
+    ownerId: user.id,
     address,
     city,
     state,
