@@ -17,6 +17,11 @@ module.exports = {
         preview: true
       },
       {
+        spotId: 1,
+        url: 'www.previewTesting.com',
+        preview: false
+      },
+      {
         spotId: 2,
         url: 'https://cdn.landsearch.com/listings/4szPz/large/king-nc-103305196.jpg',
         preview: true
@@ -33,7 +38,7 @@ module.exports = {
     options.tableName = 'SpotImages';
     const Op = Sequelize.Op;
     return await queryInterface.bulkDelete(options, {
-      url: { [Op.in]: ['www.youtube.com'] }
+      spotId: { [Op.in]: [1, 2, 3] }
     })
   }
 };
