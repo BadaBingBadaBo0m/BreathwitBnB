@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const { check } = require('express-validator');
+const { handleValidationErrors } = require('../../utils/validation');
+const { restoreUser } = require('../../utils/auth');
 
 const { Spot, Review, SpotImage, ReviewImage, User } = require('../../db/models');
 
@@ -34,12 +37,57 @@ const avgRatingAndPreviewImg = async (spots) => {
   return spots
 }
 
-router.get('/current', async (req, res, next) => {
-  if (!req.user) {
-    const err = new Error('Must be logged in to view');
+const ValidateSpots = [
+  check('address')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Street address is required'),
+  check('city')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('City is required'),
+  check('state')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('State is required'),
+  check('country')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Country is required'),
+  check('lat')
+    .exists({ checkFalsy: true })
+    .isDecimal()
+    .withMessage('"Latitude is not valid'),
+  check('lng')
+    .exists({ checkFalsy: true })
+    .isDecimal()
+    .withMessage('Longitude is not valid'),
+  check('name')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Name is required')
+    .isLength({ max: 50 })
+    .withMessage('Name must be less than 50 characters'),
+  check('description')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Description is required'),
+  check('price')
+    .exists({ checkFalsy: true })
+    .withMessage('Price is required')
+    .isInt()
+    .withMessage('Price must be a valid number')
+];
+
+router.get('/current', restoreUser, async (req, res, next) => {
+  const { user } = req;
+  
+  if (!user) {
+    const err = new Error();
     err.status = 401;
-    err.title = 'Login failed';
-    return next(err);
+    err.message = 'Authentication required';
+    res.status(401)
+    return res.json(err)
   }
 
   const spots = await Spot.findAll({
@@ -97,6 +145,40 @@ router.get('/', async (req, res) => {
   const spots = await Spot.findAll();
 
   res.json({ Spots: await avgRatingAndPreviewImg(spots) });
+});
+
+router.post('/', restoreUser, ValidateSpots, async (req, res, next) => {
+  const { user } = req;
+  
+  if (!user) {
+    const err = new Error();
+    err.status = 401;
+    err.message = 'Authentication required';
+    res.status(401)
+    return res.json(err)
+  }
+
+  const { address, city, state, country, lat, lng, name, description, price } = req.body;
+
+  // const err = {}
+  // if (!address) {
+  //   err.address = 'Street address is required'
+  // }
+  
+  const spot = await Spot.create({
+    ownerId: req.user.id,
+    address,
+    city,
+    state,
+    country,
+    lat,
+    lng,
+    name,
+    description,
+    price
+  });
+
+  res.json(spot);
 });
 
 module.exports = router;
