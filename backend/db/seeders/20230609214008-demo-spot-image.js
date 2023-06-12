@@ -15,6 +15,16 @@ module.exports = {
         spotId: 1,
         url: 'www.youtube.com',
         preview: true
+      },
+      {
+        spotId: 2,
+        url: 'https://cdn.landsearch.com/listings/4szPz/large/king-nc-103305196.jpg',
+        preview: true
+      },
+      {
+        spotId: 3,
+        url: 'https://cdn.landsearch.com/listings/4rQXW/large/sparta-nc-101260044.jpg',
+        preview: true
       }
     ]);
   },

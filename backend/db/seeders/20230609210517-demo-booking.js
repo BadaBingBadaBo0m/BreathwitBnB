@@ -16,6 +16,12 @@ module.exports = {
         userId: 2,
         startDate: '2021-11-19',
         endDate: '2021-11-20'
+      },
+      {
+        spotId: 3,
+        userId: 1,
+        startDate: '2023-8-10',
+        endDate: '2023-8-15'
       }
     ]);
   },
