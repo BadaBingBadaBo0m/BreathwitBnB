@@ -52,7 +52,17 @@ router.get('/current', async (req, res, next) => {
 });
 
 router.get('/:spotId', async (req, res) => {
-  const spot = await Spot.findByPk(req.params.spotId);
+  const spot = await Spot.findByPk(req.params.spotId, {
+    include: {
+      model: SpotImage
+    }
+  });
+
+  if (!spot) {
+    res.json({
+      message: "Spot couldn't be found"
+    })
+  }
 
   const reviews = await Review.findAll({
     where: {
@@ -62,20 +72,17 @@ router.get('/:spotId', async (req, res) => {
       model: ReviewImage
     }
   });
-  
+
   const stars = [];
-  let revImg = {};
   let count = 0;
-  let numReviews = 0
+  let numReviews = 0;
   for (review of reviews) {
     numReviews++;
     count += review.stars;
     stars.push(review.stars);
-    revImg.ReviewImage = review.ReviewImages;
   }
   spot.dataValues.avgRating = count / stars.length;
   spot.dataValues.numReviews = numReviews;
-  spot.dataValues.ReviewImages = revImg.ReviewImage;
 
   res.json(spot);
 });
