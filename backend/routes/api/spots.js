@@ -286,6 +286,20 @@ router.post('/:spotId/images', validateSpotImage, restoreUser, async (req, res) 
   res.json(await SpotImage.findByPk(spotImage.id));
 });
 
+router.get('/:spotId/reviews', restoreUser, async (req, res) => {
+  const reviews = await Review.findAll({
+    where: {
+      spotId: req.params.spotId
+    },
+    include: {
+      model: ReviewImage,
+      attributes: ['id', 'url']
+    }
+  });
+
+  res.json(reviews);
+});
+
 router.post('/', validateSpots, restoreUser, async (req, res) => {
   const user = validateUser(req, res);
   

@@ -20,7 +20,7 @@ const validateUser = (req, res) => {
   return user;
 };
 
-router.get('/current', async (req, res) => {
+router.get('/current', restoreUser, async (req, res) => {
   const user = validateUser(req, res);
   const reviews = await Review.findAll({
     where: {
