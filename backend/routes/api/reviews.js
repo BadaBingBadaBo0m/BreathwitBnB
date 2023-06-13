@@ -28,7 +28,6 @@ router.get('/current', restoreUser, async (req, res) => {
     },
     include: [{
       model: User,
-      foreignKey: 'userId'
     }, {
       model: ReviewImage
     }]
