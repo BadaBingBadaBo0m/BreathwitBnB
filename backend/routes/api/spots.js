@@ -34,8 +34,8 @@ const avgRatingAndPreviewImg = async (spots) => {
     }
   }
   
-  return spots
-}
+  return spots;
+};
 
 const validateUser = (req, res) => {
   const { user } = req;
@@ -49,7 +49,7 @@ const validateUser = (req, res) => {
   }
 
   return user;
-}
+};
 
 const validateSpots = [
   check('address')
@@ -229,12 +229,34 @@ router.put('/:spotId', validateSpots, restoreUser, async (req, res) => {
   }
   
   await updatedSpot.save();
-  res.json(updatedSpot)
-})
+  res.json(updatedSpot);
+});
+
+router.delete('/:spotId', restoreUser, async (req, res) => {
+  const user = validateUser(req, res);
+  const spot = await Spot.findByPk(req.params.spotId);
+  
+  if (!spot) {
+    const err = new Error();
+    err.message = "Spot couldn't be found";
+    res.status(404);
+    return res.json(err);
+  }
+
+  if (spot.ownerId !== user.id) {
+    const err = new Error();
+    err.status = 401;
+    err.message = 'Authentication required';
+    res.status(401);
+    return res.json(err);
+  }
+
+  await spot.destroy();
+  res.json({ message: 'Successfully deleted' })
+});
 
 router.post('/:spotId/images', validateSpotImage, restoreUser, async (req, res) => {
   const user = validateUser(req, res);
-
   const spot = await Spot.findByPk(req.params.spotId);
 
   if (!spot) {
@@ -262,7 +284,7 @@ router.post('/:spotId/images', validateSpotImage, restoreUser, async (req, res) 
 
   res.status(201);
   res.json(await SpotImage.findByPk(spotImage.id));
-})
+});
 
 router.post('/', validateSpots, restoreUser, async (req, res) => {
   const user = validateUser(req, res);
