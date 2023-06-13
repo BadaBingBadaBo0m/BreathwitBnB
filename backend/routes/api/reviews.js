@@ -29,18 +29,39 @@ router.get('/current', restoreUser, async (req, res) => {
     },
     include: [{
       model: User,
+      attributes: ['id', 'firstName', 'lastName']
     }, {
-      model: ReviewImage
+      model: ReviewImage,
+      attributes: ['id', 'url']
     }]
   });
 
   for (let review of reviews) {
-    const spot = await Spot.findByPk(review.dataValues.spotId);
+    const spot = await Spot.findByPk(review.dataValues.spotId, {
+      attributes: {
+        exclude: ['createdAt', 'updatedAt', 'spotId']
+      }
+    });
+
+    const spotImages = await SpotImage.findAll({
+      where: {
+        spotId: spot.id,
+        preview: true
+      }
+    });
+
+    for (spotImage of spotImages) {
+      spot.dataValues.previewImage = spotImage.url;
+    }
     
     review.dataValues.Spot = spot;
   };
 
-  res.json(reviews);
+  res.json({ Reviews: reviews });
 });
+
+router.post('/:reviewId/images', restoreUser, async (req, res) => {
+  res.json('working')
+})
 
 module.exports = router;

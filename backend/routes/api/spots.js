@@ -291,10 +291,13 @@ router.get('/:spotId/reviews', restoreUser, async (req, res) => {
     where: {
       spotId: req.params.spotId
     },
-    include: {
+    include: [{
+      model: User,
+      attributes: ['id', 'firstName', 'lastName']
+    }, {
       model: ReviewImage,
       attributes: ['id', 'url']
-    }
+    }]
   });
 
   if (!reviews.length) {
@@ -304,7 +307,7 @@ router.get('/:spotId/reviews', restoreUser, async (req, res) => {
     return res.json(err);
   }
 
-  res.json(reviews);
+  res.json({ Reviews: reviews });
 });
 
 router.post('/', validateSpots, restoreUser, async (req, res) => {
