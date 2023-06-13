@@ -297,6 +297,13 @@ router.get('/:spotId/reviews', restoreUser, async (req, res) => {
     }
   });
 
+  if (!reviews.length) {
+    const err = new Error();
+    err.message = "Spot couldn't be found";
+    res.status(404);
+    return res.json(err);
+  }
+
   res.json(reviews);
 });
 
