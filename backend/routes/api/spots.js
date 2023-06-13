@@ -93,6 +93,7 @@ const validateSpots = [
     .withMessage('Price must be a valid number'),
     handleValidationErrors
   ];
+
   
   router.get('/current', restoreUser, async (req, res, next) => {
     const { user } = req;
@@ -168,7 +169,25 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/:spotId/images', restoreUser, async (req, res) => {
-  validateUser(req, res);
+  const user = validateUser(req, res);
+
+  const spot = await Spot.findByPk(req.params.spotId);
+
+  if (spot.ownerId !== user.id) {
+    const err = new Error();
+    err.status = 401;
+    err.message = 'Authentication required';
+    res.status(401)
+    return res.json(err)
+  }
+
+  const { spotId, url, preview } = req.body;
+
+  const spotImage = await SpotImage.create({
+    spotId,
+    url,
+    preview
+  })
 
   res.json('working')
 })
