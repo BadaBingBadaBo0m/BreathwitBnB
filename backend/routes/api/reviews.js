@@ -22,7 +22,7 @@ const validateUser = (req, res) => {
 
 router.get('/current', restoreUser, async (req, res) => {
   const user = validateUser(req, res);
-  console.log('user', user.id)
+
   const reviews = await Review.findAll({
     where: {
       userId: user.id
@@ -59,9 +59,5 @@ router.get('/current', restoreUser, async (req, res) => {
 
   res.json({ Reviews: reviews });
 });
-
-router.post('/:reviewId/images', restoreUser, async (req, res) => {
-  res.json('working')
-})
 
 module.exports = router;
