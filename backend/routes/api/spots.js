@@ -37,6 +37,20 @@ const avgRatingAndPreviewImg = async (spots) => {
   return spots
 }
 
+const validateUser = (req, res) => {
+  const { user } = req;
+  
+  if (!user) {
+    const err = new Error();
+    err.status = 401;
+    err.message = 'Authentication required';
+    res.status(401)
+    return res.json(err)
+  }
+
+  return user;
+}
+
 const validateSpots = [
   check('address')
     .exists({ checkFalsy: true })
@@ -77,26 +91,31 @@ const validateSpots = [
     .withMessage('Price is required')
     .isInt()
     .withMessage('Price must be a valid number'),
-  handleValidationErrors
-];
-
-router.get('/current', restoreUser, async (req, res, next) => {
-  const { user } = req;
+    handleValidationErrors
+  ];
   
-  if (!user) {
-    const err = new Error();
-    err.status = 401;
-    err.message = 'Authentication required';
-    res.status(401)
-    return res.json(err)
-  }
-
-  const spots = await Spot.findAll({
-    where: {
-      ownerId: req.user.id
+  router.get('/current', restoreUser, async (req, res, next) => {
+    const { user } = req;
+    
+    if (!user) {
+      const err = new Error();
+      err.status = 401;
+      err.message = 'Authentication required';
+      res.status(401)
+      return res.json(err)
     }
-  })
+    
+    const spots = await Spot.findAll({
+      where: {
+        ownerId: req.user.id
+    }
+  });
 
+  if (!spots.length) {
+    res.status(404);
+    return res.json({ message: "Spot couldn't be found" });
+  }
+  
   res.json({ Spots: await avgRatingAndPreviewImg(spots) });
 });
 
@@ -112,13 +131,13 @@ router.get('/:spotId', async (req, res) => {
       }
     ]
   });
-
+  
   if (!spot) {
     res.json({
       message: "Spot couldn't be found"
     })
   }
-
+  
   const reviews = await Review.findAll({
     where: {
       spotId: spot.id
@@ -127,7 +146,7 @@ router.get('/:spotId', async (req, res) => {
       model: ReviewImage
     }
   });
-
+  
   const stars = [];
   let count = 0;
   let numReviews = 0;
@@ -138,27 +157,25 @@ router.get('/:spotId', async (req, res) => {
   }
   spot.dataValues.avgRating = count / stars.length;
   spot.dataValues.numReviews = numReviews;
-
+  
   res.json(spot);
 });
 
 router.get('/', async (req, res) => {
   const spots = await Spot.findAll();
-
+  
   res.json({ Spots: await avgRatingAndPreviewImg(spots) });
 });
 
-router.post('/', validateSpots, restoreUser, async (req, res) => {
-  const { user } = req;
-  
-  if (!user) {
-    const err = new Error();
-    err.status = 401;
-    err.message = 'Authentication required';
-    res.status(401);
-    return res.json(err);
-  }
+router.post('/:spotId/images', restoreUser, async (req, res) => {
+  validateUser(req, res);
 
+  res.json('working')
+})
+
+router.post('/', validateSpots, restoreUser, async (req, res) => {
+  const user = validateUser(req, res);
+  
   const { address, city, state, country, lat, lng, name, description, price } = req.body;
   
   const spot = await Spot.create({
