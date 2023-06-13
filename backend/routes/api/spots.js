@@ -252,7 +252,7 @@ router.delete('/:spotId', restoreUser, async (req, res) => {
   }
 
   await spot.destroy();
-  res.json({ message: 'Successfully deleted' })
+  res.json({ message: 'Successfully deleted' });
 });
 
 router.post('/:spotId/images', validateSpotImage, restoreUser, async (req, res) => {
