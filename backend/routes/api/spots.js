@@ -181,6 +181,57 @@ router.get('/', async (req, res) => {
   res.json({ Spots: await avgRatingAndPreviewImg(spots) });
 });
 
+router.put('/:spotId', validateSpots, restoreUser, async (req, res) => {
+  const user = validateUser(req, res);
+
+  const updatedSpot = await Spot.findByPk(req.params.spotId);
+
+  if (!updatedSpot) {
+    const err = new Error();
+    err.message = "Spot couldn't be found";
+    res.status(404);
+    return res.json(err);
+  }
+
+  if (updatedSpot.ownerId !== user.id) {
+    const err = new Error();
+    err.status = 401;
+    err.message = 'Authentication required';
+    res.status(401);
+    return res.json(err);
+  }
+
+  const { address, city, state, country, lat, lng, name, description, price } = req.body;
+
+  if (address) {
+    updatedSpot.address = address;
+  }
+  if (city) {
+    updatedSpot.city = city;
+  }
+  if (state) {
+    updatedSpot.country = country;
+  }
+  if (lat) {
+    updatedSpot.lat = lat;
+  }
+  if (lng) {
+    updatedSpot.lng = lng;
+  }
+  if (name) {
+    updatedSpot.name = name;
+  }
+  if (description) {
+    updatedSpot.description = description;
+  }
+  if (price) {
+    updatedSpot.price = price;
+  }
+  
+  await updatedSpot.save();
+  res.json(updatedSpot)
+})
+
 router.post('/:spotId/images', validateSpotImage, restoreUser, async (req, res) => {
   const user = validateUser(req, res);
 
@@ -189,8 +240,8 @@ router.post('/:spotId/images', validateSpotImage, restoreUser, async (req, res) 
   if (!spot) {
     const err = new Error();
     err.message = "Spot couldn't be found";
-    res.status(404)
-    return res.json(err)
+    res.status(404);
+    return res.json(err);
   }
 
   if (spot.ownerId !== user.id) {
