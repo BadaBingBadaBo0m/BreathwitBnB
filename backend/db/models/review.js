@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
       })
 
       Review.belongsTo(models.User), {
-        foreignKey: 'userId',
+        foreignKey: 'userId'
       }
     }
   }
