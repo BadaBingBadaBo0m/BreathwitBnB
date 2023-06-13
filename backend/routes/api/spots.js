@@ -91,9 +91,22 @@ const validateSpots = [
     .withMessage('Price is required')
     .isInt()
     .withMessage('Price must be a valid number'),
-    handleValidationErrors
+  handleValidationErrors
   ];
 
+  const validateSpotImage = [
+    check('url')
+      .exists({ checkFalsy: true })
+      .isURL()
+      .withMessage('Must be a valid URL')
+      .notEmpty()
+      .withMessage('URL is required'),
+    check('preview')
+      .exists()
+      .isBoolean()
+      .withMessage('Preview must be true or false'),
+    handleValidationErrors
+  ];
   
   router.get('/current', restoreUser, async (req, res, next) => {
     const { user } = req;
@@ -168,10 +181,17 @@ router.get('/', async (req, res) => {
   res.json({ Spots: await avgRatingAndPreviewImg(spots) });
 });
 
-router.post('/:spotId/images', restoreUser, async (req, res) => {
+router.post('/:spotId/images', validateSpotImage, restoreUser, async (req, res) => {
   const user = validateUser(req, res);
 
   const spot = await Spot.findByPk(req.params.spotId);
+
+  if (!spot) {
+    const err = new Error();
+    err.message = "Spot couldn't be found";
+    res.status(404)
+    return res.json(err)
+  }
 
   if (spot.ownerId !== user.id) {
     const err = new Error();
@@ -181,15 +201,16 @@ router.post('/:spotId/images', restoreUser, async (req, res) => {
     return res.json(err)
   }
 
-  const { spotId, url, preview } = req.body;
+  const { url, preview } = req.body;
 
   const spotImage = await SpotImage.create({
-    spotId,
+    spotId: req.params.spotId,
     url,
     preview
   })
 
-  res.json('working')
+  res.status(201);
+  res.json(await SpotImage.findByPk(spotImage.id));
 })
 
 router.post('/', validateSpots, restoreUser, async (req, res) => {
