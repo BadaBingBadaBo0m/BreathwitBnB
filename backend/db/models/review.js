@@ -18,6 +18,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'reviewId',
         onDelete: 'CASCADE'
       })
+
+      Review.belongsTo(models.User), {
+        foreignKey: 'userId',
+      }
     }
   }
   Review.init({

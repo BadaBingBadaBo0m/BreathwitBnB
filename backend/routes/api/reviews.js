@@ -22,13 +22,24 @@ const validateUser = (req, res) => {
 
 router.get('/current', async (req, res) => {
   const user = validateUser(req, res);
-  const review = await Review.findAll({
+  const reviews = await Review.findAll({
     where: {
       userId: user.id
-    }
+    },
+    include: [{
+      model: User
+    }, {
+      model: ReviewImage
+    }]
   });
 
-  res.json(review)
-})
+  for (review of reviews) {
+    const spot = await Spot.findByPk(review.dataValues.spotId);
+    
+    review.dataValues.Spot = spot;
+  };
+
+  res.json(reviews);
+});
 
 module.exports = router;
