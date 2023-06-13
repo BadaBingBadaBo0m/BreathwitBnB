@@ -27,8 +27,8 @@ router.get('/current', restoreUser, async (req, res) => {
       userId: user.id
     },
     include: [{
-      model: User,
-    }, {
+      // model: User,
+    // }, {
       model: ReviewImage
     }]
   });
