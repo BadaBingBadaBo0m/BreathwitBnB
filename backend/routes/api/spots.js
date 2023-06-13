@@ -155,8 +155,8 @@ router.post('/', validateSpots, restoreUser, async (req, res) => {
     const err = new Error();
     err.status = 401;
     err.message = 'Authentication required';
-    res.status(401)
-    return res.json(err)
+    res.status(401);
+    return res.json(err);
   }
 
   const { address, city, state, country, lat, lng, name, description, price } = req.body;
@@ -174,6 +174,7 @@ router.post('/', validateSpots, restoreUser, async (req, res) => {
     price
   });
 
+  res.status(201);
   res.json(spot);
 });
 
