@@ -106,14 +106,12 @@ router.post('/:reviewId/images', validateRevImg, restoreUser, async (req, res) =
     return res.json(err);
   }
   
-  
   const { url } = req.body;
   
   const revImg = await ReviewImage.create({
     reviewId: req.params.reviewId,
     url
   });
-
   
   res.json(await ReviewImage.findByPk(revImg.id, {
     attributes: ['id', 'url']
