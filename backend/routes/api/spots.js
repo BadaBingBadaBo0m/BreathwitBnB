@@ -4,7 +4,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { restoreUser } = require('../../utils/auth');
 
-const { Spot, Review, SpotImage, ReviewImage, User } = require('../../db/models');
+const { Spot, Review, SpotImage, ReviewImage, User, Booking } = require('../../db/models');
 
 const avgRatingAndPreviewImg = async (spots) => {
   for (spot of spots) {
@@ -194,6 +194,18 @@ router.get('/', async (req, res) => {
   
   res.json({ Spots: await avgRatingAndPreviewImg(spots) });
 });
+
+router.get('/:spotId/bookings', restoreUser, async (req, res) => {
+  const user = validateUser(req, res);
+
+  const bookings = Booking.findAll({
+    where: {
+      spotId: req.params.spotId
+    }
+  });
+
+  res.json(bookings);
+})
 
 router.put('/:spotId', validateSpots, restoreUser, async (req, res) => {
   const user = validateUser(req, res);

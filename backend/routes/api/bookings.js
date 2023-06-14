@@ -26,7 +26,6 @@ router.get('/current', restoreUser, async (req, res) => {
   const booking = await Booking.findAll({
     where: [
       { userId: user.id },
-      { spotId: 1 }
     ],
     include: {
       model: Spot,
@@ -34,7 +33,7 @@ router.get('/current', restoreUser, async (req, res) => {
         exclude: ['createdAt', 'updatedAt']
       }
     }
-  })
+  });
 
   res.json({ Bookings: booking });
 })
