@@ -20,6 +20,16 @@ const validateUser = (req, res) => {
   return user;
 };
 
+const validateRevImg = [
+  check('url')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('URL is required')
+    .isURL()
+    .withMessage('Must be a valid URL'),
+  handleValidationErrors
+];
+
 router.get('/current', restoreUser, async (req, res) => {
   const user = validateUser(req, res);
 
@@ -50,7 +60,7 @@ router.get('/current', restoreUser, async (req, res) => {
       }
     });
 
-    for (spotImage of spotImages) {
+    for (let spotImage of spotImages) {
       spot.dataValues.previewImage = spotImage.url;
     }
     
@@ -59,5 +69,48 @@ router.get('/current', restoreUser, async (req, res) => {
 
   res.json({ Reviews: reviews });
 });
+
+router.post('/:reviewId/images', validateRevImg, restoreUser, async (req, res) => {
+  const user = validateUser(req, res);
+
+  const review = await Review.findByPk(req.params.reviewId, {
+    where: {
+      userId: user.id
+    }
+  });
+
+  const reviewImages = await ReviewImage.findAll({
+    where: {
+      reviewId: req.params.reviewId
+    }
+  });
+
+  if (reviewImages.length >= 10) {
+    const err = new Error();
+    err.message = "Maximum number of images for this resource was reached";
+    res.status(403);
+    return res.json(err);
+  }
+
+  if (review.dataValues.userId !== user.id) {
+    const err = new Error();
+    err.message = "Review couldn't be found";
+    res.status(404);
+    return res.json(err);
+  }
+  
+  
+  const { url } = req.body;
+  
+  const revImg = await ReviewImage.create({
+    reviewId: req.params.reviewId,
+    url
+  });
+
+  
+  res.json(await ReviewImage.findByPk(revImg.id, {
+    attributes: ['id', 'url']
+  }));
+})
 
 module.exports = router;
