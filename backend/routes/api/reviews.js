@@ -85,6 +85,13 @@ router.post('/:reviewId/images', validateRevImg, restoreUser, async (req, res) =
     }
   });
 
+  if (!review) {
+    const err = new Error();
+    err.message = "Review couldn't be found";
+    res.status(404);
+    return res.json(err);
+  }
+
   if (reviewImages.length >= 10) {
     const err = new Error();
     err.message = "Maximum number of images for this resource was reached";
