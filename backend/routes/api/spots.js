@@ -207,6 +207,20 @@ router.get('/:spotId/bookings', restoreUser, async (req, res) => {
     return res.json(err);
   }
 
+  if (spot.ownerId === user.id) {
+    const bookings = await Booking.findAll({
+      where: {
+        spotId: req.params.spotId
+      },
+      include: {
+        model: User,
+        attributes: ['id', 'firstName', 'lastName']
+      }
+    });
+
+    return res.json(bookings)
+  }
+
   const bookings = await Booking.findAll({
     where: {
       spotId: req.params.spotId
