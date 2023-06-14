@@ -30,6 +30,20 @@ const validateRevImg = [
   handleValidationErrors
 ];
 
+const validateUpdateReview = [
+  check('review')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Review text is required'),
+  check('stars')
+    .isInt({
+      min: 1,
+      max: 5
+    })
+    .withMessage('Stars must be an integer from 1 to 5'),
+  handleValidationErrors
+]
+
 router.get('/current', restoreUser, async (req, res) => {
   const user = validateUser(req, res);
 
@@ -116,6 +130,39 @@ router.post('/:reviewId/images', validateRevImg, restoreUser, async (req, res) =
   res.json(await ReviewImage.findByPk(revImg.id, {
     attributes: ['id', 'url']
   }));
+})
+
+router.put('/:reviewId', validateUpdateReview, restoreUser, async (req, res) => {
+  const user = validateUser(req, res);
+
+  const newReview = await Review.findByPk(req.params.reviewId);
+
+  if (!newReview) {
+    const err = new Error();
+    err.message = "Review couldn't be found";
+    res.status(404);
+    return res.json(err);
+  }
+
+  if (newReview.dataValues.userId !== user.id) {
+    const err = new Error();
+    err.status = 401;
+    err.message = 'Authentication required';
+    res.status(401);
+    return res.json(err);
+  }
+
+  const { review, stars } = req.body;
+
+  if (review) {
+    newReview.review = review;
+  }
+  if (stars) {
+    newReview.stars = stars;
+  }
+
+  await newReview.save();
+  res.json(newReview)
 })
 
 module.exports = router;
