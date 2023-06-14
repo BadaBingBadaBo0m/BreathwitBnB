@@ -121,7 +121,7 @@ const validateSpots = [
       })
       .withMessage('Stars must be an integer from 1 to 5'),
     handleValidationErrors
-  ]
+  ];
   
   router.get('/current', restoreUser, async (req, res, next) => {
     const { user } = req;
@@ -233,6 +233,7 @@ router.get('/:spotId/bookings', restoreUser, async (req, res) => {
 })
 
 router.post('/:spotId/bookings', restoreUser, async (req, res) => {
+  const user = validateUser(req, res);
   let newStartDate = new Date(req.body.startDate);
   let newEndDate = new Date(req.body.endDate);
   const spot = await Spot.findByPk(req.params.spotId);
@@ -301,8 +302,28 @@ router.post('/:spotId/bookings', restoreUser, async (req, res) => {
     }
   }
 
+  const { startDate, endDate } = req.body
+  
+  if (!endDate && !startDate) {
+    return res.json({message: 'Start date and end date is required'})
+  }
 
-  res.json('test');
+  if (!startDate) {
+    return res.json({message: 'Start date is required'})
+  }
+
+  if (!endDate) {
+    return res.json({message: 'End date is required'})
+  }
+
+  const newBooking = await Booking.create({
+    spotId: req.params.spotId,
+    userId: user.id,
+    startDate,
+    endDate
+  });
+
+  res.json(newBooking);
 })
 
 router.put('/:spotId', validateSpots, restoreUser, async (req, res) => {
