@@ -162,7 +162,31 @@ router.put('/:reviewId', validateUpdateReview, restoreUser, async (req, res) => 
   }
 
   await newReview.save();
-  res.json(newReview)
+  res.json(newReview);
+})
+
+router.delete('/:reviewId', restoreUser, async (req, res) => {
+  const user = validateUser(req, res);
+
+  const review = await Review.findByPk(req.params.reviewId);
+
+  if (!review) {
+    const err = new Error();
+    err.message = "Review could not be found";
+    res.status(404);
+    return res.json(err);
+  }
+
+  if (review.dataValues.userId !== user.id) {
+    const err = new Error();
+    err.status = 401;
+    err.message = 'Authentication required';
+    res.status(401);
+    return res.json(err);
+  }
+
+  await review.destroy();
+  res.json({ message: 'Successfully deleted' });
 })
 
 module.exports = router;
