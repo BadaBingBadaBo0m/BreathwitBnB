@@ -198,13 +198,23 @@ router.get('/', async (req, res) => {
 router.get('/:spotId/bookings', restoreUser, async (req, res) => {
   const user = validateUser(req, res);
 
-  const bookings = Booking.findAll({
+  const spot = await Spot.findByPk(req.params.spotId)
+  
+  if (!spot) {
+    const err = new Error();
+    err.message = "Spot couldn't be found";
+    res.status(404);
+    return res.json(err);
+  }
+
+  const bookings = await Booking.findAll({
     where: {
       spotId: req.params.spotId
-    }
+    },
+    attributes: ['spotId', 'startDate', 'endDate']
   });
 
-  res.json(bookings);
+  res.json({ Bookings: bookings });
 })
 
 router.put('/:spotId', validateSpots, restoreUser, async (req, res) => {
