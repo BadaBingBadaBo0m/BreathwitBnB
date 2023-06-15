@@ -412,6 +412,33 @@ router.post('/:spotId/bookings', restoreUser, async (req, res) => {
     res.status(403);
     return res.json(err);
   }
+
+  if (newStartDate == 'Invalid Date' && newEndDate == 'Invalid Date') {
+    const err = new Error();
+    err.message = "Bad Request";
+    err.errors = {
+      startDate: "Start date must be a valid date",
+      endDate: "End date must be a valid date"
+    }
+    res.status(403);
+    return res.json(err);
+  }
+
+  if (newStartDate == 'Invalid Date') {
+    const err = new Error();
+    err.message = "Bad Request";
+    err.errors = { startDate: "Start date must be a valid date" }
+    res.status(403);
+    return res.json(err);
+  }
+
+  if (newEndDate == 'Invalid Date') {
+    const err = new Error();
+    err.message = "Bad Request";
+    err.errors = { endDate: "End date must be a valid date" }
+    res.status(403);
+    return res.json(err);
+  }
   
   // END DATE SHOULD ALWAYS BE GREATER THAN START DATE 
   if (newStartDate >= newEndDate) {
