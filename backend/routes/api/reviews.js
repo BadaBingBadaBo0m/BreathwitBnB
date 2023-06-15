@@ -115,8 +115,8 @@ router.post('/:reviewId/images', validateRevImg, restoreUser, async (req, res) =
 
   if (review.dataValues.userId !== user.id) {
     const err = new Error();
-    err.message = "Review couldn't be found";
-    res.status(404);
+    err.message = "Forbidden";
+    res.status(403);
     return res.json(err);
   }
   
