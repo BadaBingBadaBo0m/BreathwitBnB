@@ -176,45 +176,45 @@ const validateSpots = [
     check('minLat')
       .optional()
       .isDecimal()
+      .withMessage('Minimum latitude is invalid')
       .custom(value => {
         if (value < -90 || value > 90) {
           console.log(value)
           throw new Error('Minimum latitude is invalid');
         }
         return true;
-      })
-      .withMessage('Minimum latitude is invalid'),
+      }),
     check('maxLat')
       .optional()
       .isDecimal()
+      .withMessage('Maximum latitude is invalid')
       .custom(value => {
         if (value < -90 || value > 90) {
           console.log(value)
           throw new Error('Maximum latitude is invalid');
         }
         return true;
-      })
-      .withMessage('Maximum latitude is invalid'),
+      }),
     check('minLng')
       .optional()
       .isDecimal()
+      .withMessage('Minimum longitude is invalid')
       .custom(value => {
         if (value < -180 || value > 180) {
           throw new Error('Minimum longitude is invalid');
         }
         return true;
-      })
-      .withMessage('Minimum longitude is invalid'),
+      }),
     check('maxLng')
       .optional()
       .isDecimal()
+      .withMessage('Maximum longitude is invalid')
       .custom(value => {
         if (value < -180 || value > 180) {
           throw new Error('Maximum longitude is invalid');
         }
         return true;
-      })
-      .withMessage('Maximum longitude is invalid'),
+      }),
     check('page')
       .optional()
       .isInt({ min: 0 })
