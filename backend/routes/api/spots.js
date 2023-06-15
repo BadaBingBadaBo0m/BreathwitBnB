@@ -96,10 +96,23 @@ const validateSpots = [
   check('lat')
     .exists({ checkFalsy: true })
     .isDecimal()
+    .custom(value => {
+      if (value < -90 || value > 90) {
+        console.log(value)
+        throw new Error('Latitude is not valid');
+      }
+      return true;
+    })
     .withMessage('Latitude is not valid'),
   check('lng')
     .exists({ checkFalsy: true })
     .isDecimal()
+    .custom(value => {
+      if (value < -180 || value > 180) {
+        throw new Error('Longitude is not valid');
+      }
+      return true;
+    })
     .withMessage('Longitude is not valid'),
   check('name')
     .exists({ checkFalsy: true })
@@ -162,6 +175,7 @@ const validateSpots = [
       .withMessage('Maximum price must be greater than or equal to 0'),
     check('minLat')
       .optional()
+      .isDecimal()
       .custom(value => {
         if (value < -90 || value > 90) {
           console.log(value)
@@ -172,6 +186,7 @@ const validateSpots = [
       .withMessage('Minimum latitude is invalid'),
     check('maxLat')
       .optional()
+      .isDecimal()
       .custom(value => {
         if (value < -90 || value > 90) {
           console.log(value)
@@ -182,6 +197,7 @@ const validateSpots = [
       .withMessage('Maximum latitude is invalid'),
     check('minLng')
       .optional()
+      .isDecimal()
       .custom(value => {
         if (value < -180 || value > 180) {
           throw new Error('Minimum longitude is invalid');
@@ -191,6 +207,7 @@ const validateSpots = [
       .withMessage('Minimum longitude is invalid'),
     check('maxLng')
       .optional()
+      .isDecimal()
       .custom(value => {
         if (value < -180 || value > 180) {
           throw new Error('Maximum longitude is invalid');
