@@ -68,10 +68,6 @@ router.put('/:bookingId', restoreUser, async (req, res) => {
   let newStartDate = new Date(req.body.startDate);
   let newEndDate = new Date(req.body.endDate);
 
-  console.log(newStartDate)
-  console.log(newEndDate)
-  console.log(newStartDate == 'Invalid Date')
-
   if (newStartDate == 'Invalid Date' && newEndDate == 'Invalid Date') {
     const err = new Error();
     err.message = "Bad Request";
