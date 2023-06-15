@@ -52,6 +52,24 @@ const validateUser = (req, res) => {
   return user;
 };
 
+const createPagination = (req, res, next) => {
+  let { page, size } = req.query;
+  if (!size) size = 5;
+  if (!page) page = 1;
+
+  let pagination = {};
+
+  if (page >= 1 && size >=1) {
+    pagination.limit = size,
+    pagination.offset = (page - 1) * size
+    pagination.page = page;
+    pagination.size = size
+  }
+
+  return pagination
+}
+
+
 const validateSpots = [
   check('address')
     .exists({ checkFalsy: true })
@@ -191,9 +209,16 @@ router.get('/:spotId', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-  const spots = await Spot.findAll();
-  
-  res.json({ Spots: await avgRatingAndPreviewImg(spots) });
+  let pagination = createPagination(req, res)
+  const spots = await Spot.findAll({
+    ...pagination
+  });
+
+  res.json({
+    Spots: await avgRatingAndPreviewImg(spots),
+    page: pagination.page,
+    size: pagination.size
+  });
 });
 
 router.get('/:spotId/bookings', restoreUser, async (req, res) => {
