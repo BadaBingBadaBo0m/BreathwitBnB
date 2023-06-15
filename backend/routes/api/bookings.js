@@ -45,7 +45,6 @@ router.put('/:bookingId', restoreUser, async (req, res) => {
 
   if (!booking) {
     const err = new Error();
-    err.status = 401;
     err.message = "Booking couldn't be found";
     res.status(404)
     return res.json(err)
@@ -53,9 +52,8 @@ router.put('/:bookingId', restoreUser, async (req, res) => {
 
   if (booking.dataValues.userId !== user.id) {
     const err = new Error();
-    err.status = 401;
-    err.message = 'Authentication required';
-    res.status(401)
+    err.message = 'Forbidden';
+    res.status(403)
     return res.json(err)
   }
 
@@ -149,7 +147,6 @@ router.delete('/:bookingId', restoreUser, async (req, res) => {
 
   if (!user) {
     const err = new Error();
-    err.status = 403;
     err.message = 'Authentication required';
     res.status(401)
     return res.json(err)
@@ -166,7 +163,6 @@ router.delete('/:bookingId', restoreUser, async (req, res) => {
 
   if (booking.userId !== user.id) {
     const err = new Error();
-    err.status = 403;
     err.message = "Forbidden";
     res.status(403)
     return res.json(err)
@@ -179,6 +175,14 @@ router.delete('/:bookingId', restoreUser, async (req, res) => {
   if ((currentDate <= endDate && currentDate >= startDate) && (currentDate >= startDate && currentDate <= endDate)) {
     const err = new Error();
     err.message = "Bookings that have been started can't be deleted";
+    res.status(403);
+    return res.json(err);
+  }
+
+  if (booking.dataValues.endDate < new Date()) {
+    const err = new Error();
+    err.message = "Bad Request";
+    err.errors = { endDate: "Past bookings can't be deleted" }
     res.status(403);
     return res.json(err);
   }
