@@ -146,6 +146,46 @@ const validateSpots = [
       .withMessage('Stars must be an integer from 1 to 5'),
     handleValidationErrors
   ];
+
+  const checkQuery = [
+    check('minPrice')
+      .optional()
+      .isInt({
+        min: 0
+      })
+      .withMessage('Minimum price must be greater than or equal to 0'),
+    check('maxPrice')
+      .optional()
+      .isInt({
+        min: 0
+      })
+      .withMessage('Maximum price must be greater than or equal to 0'),
+    check('minLat')
+      .optional()
+      .isDecimal()
+      .withMessage('Minimum latitude is invalid'),
+    check('maxLat')
+      .optional()
+      .isDecimal()
+      .withMessage('Maximum latitude is invalid'),
+    check('minLng')
+      .optional()
+      .isDecimal()
+      .withMessage('Minimum longitude is invalid'),
+    check('maxLng')
+      .optional()
+      .isDecimal()
+      .withMessage('Maximum longitude is invalid'),
+    check('page')
+      .optional()
+      .isInt({ min: 0 })
+      .withMessage('Page must be greater than or equal to 1'),
+    check('size')
+      .optional()
+      .isInt({ min: 0 })
+      .withMessage('Size must be greater than or equal to 1'),
+    handleValidationErrors
+  ]
   
   router.get('/current', restoreUser, async (req, res, next) => {
     const { user } = req;
@@ -214,10 +254,32 @@ router.get('/:spotId', async (req, res) => {
   res.json(spot);
 });
 
-router.get('/', async (req, res) => {
-  let pagination = createPagination(req, res)
+router.get('/', checkQuery, async (req, res) => {
+  let pagination = createPagination(req, res);
+  const error = {};
+  const where = {};
+  
+  const { minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
+
+  if (maxPrice) {
+    where.price = { [Op.lte]: maxPrice };
+  }
+
+  if (minPrice) {
+    
+  }
+
+  if (Object.keys(error).length) {
+    const err = new Error();
+    err.message = 'Bad Request';
+    err.errors = error
+    res.status(400)
+    return res.json(err)
+  }
+  
   const spots = await Spot.findAll({
-    ...pagination
+    ...pagination,
+    where
   });
 
   res.json({
