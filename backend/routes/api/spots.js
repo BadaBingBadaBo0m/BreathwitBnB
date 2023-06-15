@@ -264,9 +264,37 @@ router.get('/', checkQuery, async (req, res) => {
   if (maxPrice) {
     where.price = { [Op.lte]: maxPrice };
   }
-
+  
   if (minPrice) {
-    
+    where.price = { [Op.gte]: minPrice }
+  }
+
+  if (minPrice && maxPrice) {
+    where.price = { [Op.between]: [minPrice, maxPrice] }
+  }
+
+  if (maxLat) {
+    where.lat = { [Op.lte]: maxLat }
+  }
+
+  if (minLat) {
+    where.lat = { [Op.gte]: minLat }
+  }
+
+  if (minLat && maxLat) {
+    where.lat = { [Op.between]: [minLat, maxLat] }
+  }
+
+  if (maxLng) {
+    where.lng = { [Op.lte]: maxLng }
+  }
+
+  if (minLng) {
+    where.lng = { [Op.gte]: minLng }
+  }
+
+  if (minLng && maxLng) {
+    where.lng = { [Op.between]: [minLng, maxLng] }
   }
 
   if (Object.keys(error).length) {
