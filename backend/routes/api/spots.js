@@ -340,6 +340,10 @@ router.get('/:spotId/bookings', restoreUser, async (req, res) => {
       }
     });
 
+    if (!bookings.length) {
+      res.json({ Bookings: [] })
+    }
+
     return res.json(bookings)
   }
 
