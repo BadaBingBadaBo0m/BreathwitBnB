@@ -82,7 +82,7 @@ router.put('/:bookingId', restoreUser, async (req, res) => {
   if (newStartDate < new Date()) {
     const err = new Error();
     err.message = "Bad Request";
-    err.errors = { endDate: "Cannot make a booking in the past" }
+    err.errors = { endDate: "Past bookings can't be modified" }
     res.status(403);
     return res.json(err);
   }
@@ -142,6 +142,50 @@ router.put('/:bookingId', restoreUser, async (req, res) => {
 
   booking.save();
   res.json(booking);
+})
+
+router.delete('/:bookingId', restoreUser, async (req, res) => {
+  const user = validateUser(req, res);
+
+  if (!user) {
+    const err = new Error();
+    err.status = 403;
+    err.message = 'Authentication required';
+    res.status(401)
+    return res.json(err)
+  }
+
+  const booking = await Booking.findByPk(req.params.bookingId)
+  
+  if (!booking) {
+    const err = new Error();
+    err.message = "Booking couldn't be found";
+    res.status(404)
+    return res.json(err)
+  }
+
+  if (booking.userId !== user.id) {
+    const err = new Error();
+    err.status = 403;
+    err.message = "Forbidden";
+    res.status(403)
+    return res.json(err)
+  }
+
+  const startDate = new Date(booking.startDate);
+  const endDate = new Date(booking.endDate);
+  const currentDate = new Date();
+  
+  if ((currentDate <= endDate && currentDate >= startDate) && (currentDate >= startDate && currentDate <= endDate)) {
+    const err = new Error();
+    err.message = "Bookings that have been started can't be deleted";
+    res.status(403);
+    return res.json(err);
+  }
+
+  await booking.destroy();
+
+  res.json({ message: 'Successfully deleted' })
 })
 
 module.exports = router;

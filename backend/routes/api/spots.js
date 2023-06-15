@@ -251,13 +251,13 @@ router.post('/:spotId/bookings', restoreUser, async (req, res) => {
     return res.json(err);
   }
 
-  if (newStartDate < new Date()) {
-    const err = new Error();
-    err.message = "Bad Request";
-    err.errors = { endDate: "Cannot make a booking in the past" }
-    res.status(403);
-    return res.json(err);
-  }
+  // if (newStartDate < new Date()) {
+  //   const err = new Error();
+  //   err.message = "Bad Request";
+  //   err.errors = { endDate: "Cannot make a booking in the past" }
+  //   res.status(403);
+  //   return res.json(err);
+  // }
   
   const allBookings = await Booking.findAll()
   
