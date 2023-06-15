@@ -54,8 +54,14 @@ const validateUser = (req, res) => {
 
 const createPagination = (req, res, next) => {
   let { page, size } = req.query;
-  if (!size) size = 5;
   if (!page) page = 1;
+  if (!size) size = 20;
+
+  if (page > 10) page = 10;
+  if (size > 20) size = 20;
+  if (page < 1) page = 1;
+  if (size < 1) size = 1;
+
 
   let pagination = {};
 
