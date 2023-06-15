@@ -361,6 +361,13 @@ router.post('/:spotId/bookings', restoreUser, async (req, res) => {
 
   if (!spot) {
     return res.json({ message: "Spot couldn't be found" })
+  } 
+
+  if (spot.ownerId === user.id) {
+    const err = new Error();
+    err.message = 'Forbidden';
+    res.status(403);
+    return res.json(err);
   }
   
   // END DATE SHOULD ALWAYS BE GREATER THAN START DATE 

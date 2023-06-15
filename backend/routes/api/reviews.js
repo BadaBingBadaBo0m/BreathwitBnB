@@ -178,9 +178,8 @@ router.delete('/:reviewId', restoreUser, async (req, res) => {
 
   if (review.dataValues.userId !== user.id) {
     const err = new Error();
-    err.status = 401;
-    err.message = 'Authentication required';
-    res.status(401);
+    err.message = 'Forbidden';
+    res.status(403);
     return res.json(err);
   }
 
