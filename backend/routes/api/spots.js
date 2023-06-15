@@ -162,19 +162,41 @@ const validateSpots = [
       .withMessage('Maximum price must be greater than or equal to 0'),
     check('minLat')
       .optional()
-      .isDecimal()
+      .custom(value => {
+        if (value < -90 || value > 90) {
+          console.log(value)
+          throw new Error('Minimum latitude is invalid');
+        }
+        return true;
+      })
       .withMessage('Minimum latitude is invalid'),
     check('maxLat')
       .optional()
-      .isDecimal()
+      .custom(value => {
+        if (value < -90 || value > 90) {
+          console.log(value)
+          throw new Error('Maximum latitude is invalid');
+        }
+        return true;
+      })
       .withMessage('Maximum latitude is invalid'),
     check('minLng')
       .optional()
-      .isDecimal()
+      .custom(value => {
+        if (value < -180 || value > 180) {
+          throw new Error('Minimum longitude is invalid');
+        }
+        return true;
+      })
       .withMessage('Minimum longitude is invalid'),
     check('maxLng')
       .optional()
-      .isDecimal()
+      .custom(value => {
+        if (value < -180 || value > 180) {
+          throw new Error('Maximum longitude is invalid');
+        }
+        return true;
+      })
       .withMessage('Maximum longitude is invalid'),
     check('page')
       .optional()
@@ -286,11 +308,11 @@ router.get('/', checkQuery, async (req, res) => {
   }
 
   if (maxLng) {
-    where.lng = { [Op.lte]: maxLng }
+    where.lng = { [Op.gte]: maxLng }
   }
 
   if (minLng) {
-    where.lng = { [Op.gte]: minLng }
+    where.lng = { [Op.lte]: minLng }
   }
 
   if (minLng && maxLng) {
