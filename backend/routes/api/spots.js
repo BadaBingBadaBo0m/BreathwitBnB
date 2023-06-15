@@ -534,9 +534,8 @@ router.post('/:spotId/images', validateSpotImage, restoreUser, async (req, res) 
 
   if (spot.ownerId !== user.id) {
     const err = new Error();
-    err.status = 401;
-    err.message = 'Authentication required';
-    res.status(401)
+    err.message = 'Forbidden';
+    res.status(403)
     return res.json(err)
   }
 
