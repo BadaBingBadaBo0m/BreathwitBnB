@@ -126,9 +126,8 @@ const validateSpots = [
     .withMessage('Description is required'),
   check('price')
     .exists({ checkFalsy: true })
-    .withMessage('Price is required')
     .isInt()
-    .withMessage('Price must be a valid number'),
+    .withMessage('Price per day is required'),
   handleValidationErrors
   ];
 
