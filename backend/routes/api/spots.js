@@ -265,9 +265,10 @@ router.get('/:spotId', async (req, res) => {
   });
   
   if (!spot) {
-    res.json({
-      message: "Spot couldn't be found"
-    })
+    const err = new Error();
+    err.message = "Spot couldn't be found";
+    res.status(404)
+    return res.json(err)
   }
   
   const reviews = await Review.findAll({
