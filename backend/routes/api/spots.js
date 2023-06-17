@@ -127,7 +127,7 @@ const validateSpots = [
   check('price')
     .isInt({ min: 0 })
     .withMessage('price cannot be less than 0')
-    .exists({ checkFalsy: true })
+    .exists({ checkFalsy: false })
     .withMessage('Price per day is required'),
   handleValidationErrors
   ];
