@@ -32,10 +32,12 @@ const validateRevImg = [
 
 const validateUpdateReview = [
   check('review')
+    .optional()
     .exists({ checkFalsy: true })
     .notEmpty()
     .withMessage('Review text is required'),
   check('stars')
+    .optional()
     .isInt({
       min: 1,
       max: 5
