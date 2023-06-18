@@ -3,6 +3,8 @@ const router = express.Router();
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { restoreUser } = require('../../utils/auth');
+const Sequelize = require('sequelize');
+const { Op } = Sequelize;
 
 const { Spot, Review, SpotImage, ReviewImage, User, Booking } = require('../../db/models');
 
@@ -65,8 +67,17 @@ router.put('/:bookingId', restoreUser, async (req, res) => {
     return res.json(err);
   }
 
-  let newStartDate = new Date(req.body.startDate);
-  let newEndDate = new Date(req.body.endDate);
+  let newStartDate = booking.startDate;
+  let newEndDate = booking.endDate;
+
+  if (req.body.startDate) {
+    newStartDate = new Date(req.body.startDate);
+  }
+
+  if (req.body.endDate) {
+    newEndDate = new Date(req.body.endDate);
+  }
+
 
   if (newStartDate == 'Invalid Date' && newEndDate == 'Invalid Date') {
     const err = new Error();
@@ -112,7 +123,13 @@ router.put('/:bookingId', restoreUser, async (req, res) => {
     return res.json(err);
   }
   
-  const allBookings = await Booking.findAll()
+  const allBookings = await Booking.findAll({
+    where: {
+      id: {
+        [Op.notIn]: [req.params.bookingId]
+      }
+    }
+  })
   
   for (let booking of allBookings) {
     let bookingStartDate = new Date(booking.startDate)
