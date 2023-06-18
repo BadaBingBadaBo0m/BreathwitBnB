@@ -132,6 +132,71 @@ const validateSpots = [
   handleValidationErrors
   ];
 
+  const validateUpdateSpots = [
+  check('address')
+    .optional()
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Street address is required'),
+  check('city')
+    .optional()
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('City is required'),
+  check('state')
+    .optional()
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('State is required'),
+  check('country')
+    .optional()
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Country is required'),
+  check('lat')
+    .optional()
+    .exists({ checkFalsy: true })
+    .isDecimal()
+    .custom(value => {
+      if (value < -90 || value > 90) {
+        console.log(value)
+        throw new Error('Latitude is not valid');
+      }
+      return true;
+    })
+    .withMessage('Latitude is not valid'),
+  check('lng')
+    .optional()
+    .exists({ checkFalsy: true })
+    .isDecimal()
+    .custom(value => {
+      if (value < -180 || value > 180) {
+        throw new Error('Longitude is not valid');
+      }
+      return true;
+    })
+    .withMessage('Longitude is not valid'),
+  check('name')
+    .optional()
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Name is required')
+    .isLength({ max: 50 })
+    .withMessage('Name must be less than 50 characters'),
+  check('description')
+    .optional()
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Description is required'),
+  check('price')
+    .optional()
+    .isInt({ min: 0 })
+    .withMessage('price cannot be less than 0')
+    .exists({ checkFalsy: false })
+    .withMessage('Price per day is required'),
+  handleValidationErrors
+  ];
+
   const validateSpotImage = [
     check('url')
       .exists({ checkFalsy: true })
@@ -525,7 +590,7 @@ router.post('/:spotId/bookings', restoreUser, async (req, res) => {
   res.json(newBooking);
 })
 
-router.put('/:spotId', validateSpots, restoreUser, async (req, res) => {
+router.put('/:spotId', validateUpdateSpots, restoreUser, async (req, res) => {
   const user = validateUser(req, res);
 
   const updatedSpot = await Spot.findByPk(req.params.spotId);
