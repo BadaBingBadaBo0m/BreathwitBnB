@@ -687,7 +687,6 @@ router.post('/:spotId/images', validateSpotImage, restoreUser, async (req, res) 
     preview
   })
 
-  res.status(201);
   res.json(await SpotImage.findByPk(spotImage.id));
 });
 
