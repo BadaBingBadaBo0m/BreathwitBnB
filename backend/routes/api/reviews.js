@@ -24,9 +24,7 @@ const validateRevImg = [
   check('url')
     .exists({ checkFalsy: true })
     .notEmpty()
-    .withMessage('URL is required')
-    .isURL()
-    .withMessage('Must be a valid URL'),
+    .withMessage('URL is required'),
   handleValidationErrors
 ];
 

@@ -200,7 +200,6 @@ const validateSpots = [
   const validateSpotImage = [
     check('url')
       .exists({ checkFalsy: true })
-      .isURL()
       .withMessage('Must be a valid URL')
       .notEmpty()
       .withMessage('URL is required'),
