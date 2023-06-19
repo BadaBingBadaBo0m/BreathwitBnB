@@ -523,7 +523,9 @@ router.post('/:spotId/bookings', restoreUser, async (req, res) => {
   //   return res.json(err);
   // }
   
-  const allBookings = await Booking.findAll()
+  const allBookings = await Booking.findAll({
+    where: { spotId: req.params.spotId }
+  })
   
   for (let booking of allBookings) {
     let bookingStartDate = new Date(booking.startDate)
