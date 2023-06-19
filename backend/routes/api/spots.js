@@ -513,7 +513,7 @@ router.post('/:spotId/bookings', restoreUser, async (req, res) => {
     const err = new Error();
     err.message = "Bad Request";
     err.errors = { endDate: "endDate cannot be on or before startDate" }
-    res.status(403);
+    res.status(400);
     return res.json(err);
   }
 
