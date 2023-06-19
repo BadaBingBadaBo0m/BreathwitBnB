@@ -125,9 +125,8 @@ const validateSpots = [
     .notEmpty()
     .withMessage('Description is required'),
   check('price')
-    .isInt({ min: 0 })
-    .withMessage('price cannot be less than 0')
     .exists({ checkFalsy: false })
+    .isInt({ min: 0 })
     .withMessage('Price per day is required'),
   handleValidationErrors
   ];
@@ -190,9 +189,8 @@ const validateSpots = [
     .withMessage('Description is required'),
   check('price')
     .optional()
-    .isInt({ min: 0 })
-    .withMessage('price cannot be less than 0')
     .exists({ checkFalsy: false })
+    .isInt({ min: 0 })
     .withMessage('Price per day is required'),
   handleValidationErrors
   ];
