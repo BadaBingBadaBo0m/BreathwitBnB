@@ -468,7 +468,10 @@ router.post('/:spotId/bookings', restoreUser, async (req, res) => {
   const spot = await Spot.findByPk(req.params.spotId);
 
   if (!spot) {
-    return res.json({ message: "Spot couldn't be found" })
+    const err = new Error();
+    err.message = "Spot couldn't be found";
+    res.status(404);
+    return res.json(err);
   } 
 
   if (spot.ownerId === user.id) {
