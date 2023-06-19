@@ -225,8 +225,7 @@ router.delete('/:bookingId', restoreUser, async (req, res) => {
 
   if (booking.dataValues.endDate < new Date()) {
     const err = new Error();
-    err.message = "Bad Request";
-    err.errors = { endDate: "Past bookings can't be deleted" }
+    err.message = "Past bookings can't be deleted";
     res.status(403);
     return res.json(err);
   }
