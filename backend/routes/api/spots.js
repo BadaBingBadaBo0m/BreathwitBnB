@@ -694,6 +694,15 @@ router.post('/:spotId/images', validateSpotImage, restoreUser, async (req, res) 
 });
 
 router.get('/:spotId/reviews', restoreUser, async (req, res) => {
+  const spot = await Spot.findByPk(req.params.spotId);
+
+  if (!spot) {
+    const err = new Error();
+    err.message = "Spot couldn't be found";
+    res.status(404);
+    return res.json(err);
+  }
+
   const reviews = await Review.findAll({
     where: {
       spotId: req.params.spotId
@@ -706,13 +715,6 @@ router.get('/:spotId/reviews', restoreUser, async (req, res) => {
       attributes: ['id', 'url']
     }]
   });
-
-  if (!reviews.length) {
-    const err = new Error();
-    err.message = "Spot couldn't be found";
-    res.status(404);
-    return res.json(err);
-  }
 
   res.json({ Reviews: reviews });
 });
