@@ -37,7 +37,7 @@ function Navigation({ isLoaded }) {
       <h2 id='BBnB'>BBnB</h2>
       <ul id='navLinkContainer'>
         <li className='loginSignupModalBtn'>
-          <NavLink exact to="/"><i class="fa-solid fa-house"></i></NavLink>
+          <NavLink exact to="/"><i className="fa-solid fa-house"></i></NavLink>
         </li>
         {isLoaded && (
           <li className='loginSignupModalBtn'>

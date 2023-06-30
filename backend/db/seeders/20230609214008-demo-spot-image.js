@@ -8,12 +8,12 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     options.tableName = 'SpotImages';
     return await queryInterface.bulkInsert(options, [
       {
         spotId: 1,
-        url: 'www.youtube.com',
+        url: 'https://www.lenconnect.com/gcdn/authoring/2012/12/06/NDAT/ghows-MI-f3c8796b-c029-4e48-abed-1cb60d98d49d-461a4e27.jpeg?width=576&height=384&fit=crop&format=pjpg&auto=webp',
         preview: true
       },
       {
@@ -34,7 +34,7 @@ module.exports = {
     ]);
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     options.tableName = 'SpotImages';
     const Op = Sequelize.Op;
     return await queryInterface.bulkDelete(options, {
