@@ -33,16 +33,19 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
-      </li>
-      {isLoaded && (
-        <li>
-          <ProfileButton user={sessionUser} />
+    <nav>
+      <h2 id='BBnB'>BBnB</h2>
+      <ul id='navLinkContainer'>
+        <li className='loginSignupModalBtn'>
+          <NavLink exact to="/"><i class="fa-solid fa-house"></i></NavLink>
         </li>
-      )}
-    </ul>
+        {isLoaded && (
+          <li className='loginSignupModalBtn'>
+            <ProfileButton user={sessionUser} />
+          </li>
+        )}
+      </ul>
+    </nav>
   );
 }
 
