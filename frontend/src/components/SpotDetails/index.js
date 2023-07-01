@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SpotDetailsImages from "./SpotDetailsImages";
 import PriceReserveReviews from "./PriceReserveReviews";
+import Reviews from "./Reviews";
 import './spotDetails.css'
 
 const SpotDetails = () => {
@@ -27,18 +28,15 @@ const SpotDetails = () => {
         <h1>{spot.name}</h1>
         <h3>{spot.city}, {spot.state}, {spot.country}</h3>
       </div>
-
       <SpotDetailsImages spot={spot} />
-
       <div id="descriptionContainer">
         <div id="headerDescContainer">
           <h2>Hosted by {spot.Owner.firstName} {spot.Owner.lastName}</h2>
           <p>{spot.description}</p>
         </div>
-
-        <PriceReserveReviews spot={spot} spotId={spotId} />
-
+        <PriceReserveReviews spot={spot} />
       </div>
+      <Reviews spot={spot} spotId={spotId} />
     </div>
   )
 };

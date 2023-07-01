@@ -7,7 +7,7 @@ const getReviews = (reviews) => {
   }
 }
 
-export const getReviewById = ({ spotId }) => async (dispatch) => {
+export const getReviewBySpotId = ({ spotId }) => async (dispatch) => {
   const res = await fetch(`/api/spots/${spotId}/reviews`);
 
   if (res.ok) {
