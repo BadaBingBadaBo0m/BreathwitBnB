@@ -9,7 +9,6 @@ function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
-  console.log('user', user)
 
   const openMenu = () => {
     if (showMenu) return;
@@ -38,7 +37,7 @@ function ProfileButton({ user }) {
     closeMenu();
   };
 
-  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
+  const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden") + (!user ? " userLoggedOut" : "");
 
   return (
     <>
@@ -50,10 +49,10 @@ function ProfileButton({ user }) {
         {user ? (
           <>
             <li className='loggedInProfileDropdownLI' >Hello, {user.username}</li>
-            <li className='loggedInProfileDropdownLI' >{user.firstName} {user.lastName}</li>
+            {/* <li className='loggedInProfileDropdownLI' >{user.firstName} {user.lastName}</li> */}
             <li className='loggedInProfileDropdownLI' >{user.email}</li>
             <li>
-              <button onClick={logout}>Log Out</button>
+              <button id='logoutBtn' onClick={logout}>Log Out</button>
             </li>
           </>
         ) : (
