@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/BadaBingBadaBo0m/BreathwitBnB/issues"
   },
-  "homepage": "https://github.com/BadaBingBadaBo0m/BreathwitBnB#readme"
+  "homepage": "https://github.com/BadaBingBadaBo0m/BreathwitBnB#readme",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  }
 }
