@@ -9,6 +9,7 @@ import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
+
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
@@ -36,11 +37,16 @@ function Navigation({ isLoaded }) {
       <div>
         <NavLink id='BBnB' exact to="/">BBnB</NavLink>
       </div>
-      {isLoaded && (
-        <div className='loginSignupModalBtn'>
-          <ProfileButton user={sessionUser} />
-        </div>
-      )}
+      <div id="navBtnContainer">
+        {sessionUser && (
+          <NavLink id="createSpotLink" to='/newSpot'>Create a new spot</NavLink>
+        )}
+        {isLoaded && (
+          <div className='loginSignupModalBtn'>
+            <ProfileButton user={sessionUser} />
+          </div>
+        )}
+      </div>
     </nav>
   );
 }
