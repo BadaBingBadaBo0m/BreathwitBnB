@@ -1,3 +1,5 @@
+import './spotDetailsImages.css'
+
 const SpotDetailsImages = ({ spot }) => {
   const previewImage = spot.SpotImages.find((image) => image.preview === true);
   const spotImages = spot.SpotImages.filter(image => image.preview === false)
