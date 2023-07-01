@@ -3,6 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ function LoginFormModal() {
   const [errors, setErrors] = useState({});
   const [isDisabled, setIsDisabled] = useState(true)
   const { closeModal } = useModal();
+  const history = useHistory();
 
   useEffect(() => {
     if (credential.length >= 4 && password.length >= 6) {
@@ -28,7 +30,7 @@ function LoginFormModal() {
   }, [credential, password]);
 
   const loginDemo = async () => {
-    return dispatch(sessionActions.login({ credential: "Demo-lition", password: "password" }))
+    await dispatch(sessionActions.login({ credential: "Demo-lition", password: "password" }))
       .then(closeModal)
       .catch(async (res) => {
         const data = await res.json();
@@ -36,12 +38,14 @@ function LoginFormModal() {
           setErrors(data.errors);
         }
       });
+    history.push('/')
+    return
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
-    return dispatch(sessionActions.login({ credential, password }))
+    await dispatch(sessionActions.login({ credential, password }))
       .then(closeModal)
       .catch(async (res) => {
         const data = await res.json();
@@ -49,6 +53,8 @@ function LoginFormModal() {
           setErrors(data.errors);
         }
       });
+    history.push('/')
+    return
   };
 
   return (
