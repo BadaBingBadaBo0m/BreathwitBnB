@@ -40,7 +40,7 @@ const LandingPage = () => {
             <div id='spotInfoContainer'>
               <div id='locationRatingContainer'>
                 <h2 onClick={() => handleClick(spot.id)}>{spot.city}, {spot.state}</h2>
-                <p><i className="fa-solid fa-star"></i>{spot.avgRating}</p>
+                <p><i className="fa-solid fa-star"></i>{spot.avgRating || "New"}</p>
               </div>
               <p id='spotPrice'>${spot.price} night</p>
             </div>
