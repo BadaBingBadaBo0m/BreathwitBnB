@@ -1,3 +1,8 @@
+#reviewListContainer {
+  list-style-type: none;
+  padding: 0;
+}
+
 #reviewsHeaderContainer {
   display: flex;
   align-items: center;
@@ -5,5 +10,20 @@
 
 #reviewsHeaderContainer>p {
   font-size: 1.4rem;
-  padding: 0 .5rem;
+  padding: 0;
+  padding-right: .5rem;
+}
+
+#reviewOwner {
+  margin: 0;
+  padding-bottom: .3rem;
+}
+
+#reviewDate {
+  margin: 0;
+  color: rgb(180, 180, 180);
+}
+
+#review {
+  margin-bottom: 3rem;
 }

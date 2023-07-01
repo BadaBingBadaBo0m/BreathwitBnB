@@ -45,16 +45,15 @@ function LoginFormModal() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
-    await dispatch(sessionActions.login({ credential, password }))
+    return await dispatch(sessionActions.login({ credential, password }))
       .then(closeModal)
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) {
           setErrors(data.errors);
         }
-      });
-    history.push('/')
-    return
+      })
+      .then(history.push('/'))
   };
 
   return (
