@@ -2,3 +2,21 @@
   width: 1000px;
   margin: auto;
 }
+
+#descriptionContainer {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid rgb(196, 191, 191);
+}
+
+#reserveContainer {
+  margin: 1rem;
+  background-color: gray;
+  height: 6rem;
+  width: 18rem;
+}
+
+#headerDescContainer {
+  width: 40rem;
+  height: 13rem;
+}

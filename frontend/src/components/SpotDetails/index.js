@@ -3,6 +3,7 @@ import { getSpotById } from "../../store/spots";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import SpotDetailsImages from "./SpotDetailsImages";
+import PriceReserveReviews from "./PriceReserveReviews";
 import './spotDetails.css'
 
 const SpotDetails = () => {
@@ -31,13 +32,13 @@ const SpotDetails = () => {
       <SpotDetailsImages spot={spot} />
 
       <div id="descriptionContainer">
-        <div id="header&DescContainer">
+        <div id="headerDescContainer">
           <h2>Hosted by {spot.Owner.firstName} {spot.Owner.lastName}</h2>
           <p>{spot.description}</p>
         </div>
-        <div id="reserveContainer">
 
-        </div>
+        <PriceReserveReviews spot={spot} />
+
       </div>
     </div>
   )
