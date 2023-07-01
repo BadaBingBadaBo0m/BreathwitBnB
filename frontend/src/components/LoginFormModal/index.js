@@ -27,6 +27,17 @@ function LoginFormModal() {
 
   }, [credential, password]);
 
+  const loginDemo = async () => {
+    return dispatch(sessionActions.login({ credential: "Demo-lition", password: "password" }))
+      .then(closeModal)
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
+      });
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors({});
@@ -52,7 +63,7 @@ function LoginFormModal() {
           <input
             type="text"
             value={credential}
-            onChange={(e) => setCredential(e.target.value)}
+            onChange={(e) => { setCredential(e.target.value) }}
             required
             className='loginInput'
           />
@@ -68,11 +79,15 @@ function LoginFormModal() {
           />
         </label>
         <button
-          // id='loginSubmit'
           type="submit"
           disabled={isDisabled}
           className={isDisabled ? "loginSubmit disabled" : "loginSubmit"}
         >Log In</button>
+
+        <p
+          className='demoUserLogin'
+          onClick={loginDemo}
+        >Demo User</p>
       </form>
     </div>
   );
