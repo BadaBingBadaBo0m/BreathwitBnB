@@ -1,0 +1,16 @@
+const SpotDetailsImages = ({ spot }) => {
+  const previewImage = spot.SpotImages.find((image) => image.preview === true);
+  const spotImages = spot.SpotImages.filter(image => image.preview === false)
+  let imageCount = 1;
+
+  return (
+    <div id="imageContainer">
+      <img key={previewImage.id} className="image1" id="previewImage" src={previewImage.url}></img>
+      {spotImages.map(image => (
+        <img key={image.id} className={`image${++imageCount} gridImage`} src={image.url}></img>
+      ))}
+    </div>
+  );
+};
+
+export default SpotDetailsImages;
