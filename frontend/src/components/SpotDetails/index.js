@@ -10,7 +10,6 @@ const SpotDetails = () => {
   const dispatch = useDispatch();
   const spotId = useParams();
   const spot = useSelector((state) => state.spots.singleSpot);
-  console.log(spot)
 
   useEffect(() => {
     const getSpot = async () => {
@@ -37,7 +36,7 @@ const SpotDetails = () => {
           <p>{spot.description}</p>
         </div>
 
-        <PriceReserveReviews spot={spot} />
+        <PriceReserveReviews spot={spot} spotId={spotId} />
 
       </div>
     </div>

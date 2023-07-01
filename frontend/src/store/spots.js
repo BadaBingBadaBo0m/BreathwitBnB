@@ -40,7 +40,6 @@ export const getSpotById = ({ spotId }) => async (dispatch) => {
   console.log('GetSpotById failed');
 }
 
-
 const initialState = {};
 
 const spotsReducer = (state = initialState, action) => {
@@ -48,15 +47,15 @@ const spotsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_SPOTS:
       newState = { allSpots: {} };
-      action.spots.forEach((spot) => newState.allSpots[spot.id] = spot)
+      action.spots.forEach((spot) => newState.allSpots[spot.id] = spot);
       return newState;
     case GET_SPOT:
-      newState = { ...state }
-      newState.singleSpot = action.spot
+      newState = { ...state };
+      newState.singleSpot = action.spot;
       return newState;
     default:
       return state;
-  }
-}
+  };
+};
 
 export default spotsReducer;
