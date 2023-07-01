@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { getAllSpots } from "../../store/spots";
+import { NavLink } from 'react-router-dom';
+import './LandingPage.css'
 
 
 const LandingPage = () => {
@@ -21,16 +23,19 @@ const LandingPage = () => {
   const spotList = Object.values(spotObj)
 
   return (
-    <div className='spotsContainer'>
-      {spotList.map((spot) => {
-        return (
-          <div key={spot.id} className='spot'>
-            <img src={spot.previewImage}></img>
-            <h2>{spot.name}</h2>
-
-          </div>
-        )
-      })}
+    <div id='spotsContainer'>
+      <ul id='spotList'>
+        {spotList.map(spot => (
+          <li key={spot.id} className='spot'>
+            <img className='spotImage' src={spot.previewImage}></img>
+            <div>
+              <h2>{spot.name}</h2>
+              <p><i className="fa-solid fa-star"></i> {spot.avgRating}</p>
+              <p>${spot.price} night</p>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
