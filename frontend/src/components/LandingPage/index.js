@@ -17,15 +17,15 @@ const LandingPage = () => {
     }
 
     getSpots();
-  }, [dispatch])
+  }, [dispatch]);
 
   const handleClick = (spotId) => {
-    history.push(`/spots/${spotId}`)
+    history.push(`/spots/${spotId}`);
   }
 
   if (!spotObj) return null;
 
-  const spotList = Object.values(spotObj)
+  const spotList = Object.values(spotObj);
 
   return (
     <div id='spotsContainer'>
@@ -48,7 +48,7 @@ const LandingPage = () => {
         ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
 export default LandingPage;
