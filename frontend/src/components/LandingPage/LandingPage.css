@@ -23,3 +23,27 @@
   border-radius: 20px;
   border: 2px solid rgb(196, 191, 191);
 }
+
+.spotImage:hover {
+  cursor: pointer;
+}
+
+#locationRatingContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#locationRatingContainer>h2:hover {
+  cursor: pointer;
+}
+
+#spotInfoContainer {
+  margin: 10px;
+  margin-top: 0;
+}
+
+#spotPrice {
+  margin: 0;
+  font-size: 1.2rem;
+}
