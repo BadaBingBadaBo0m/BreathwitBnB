@@ -75,8 +75,28 @@
 }
 
 #createSpotTitleInput,
-#createSpotPriceInput {
+#createSpotPriceInput,
+.createFormSpotImage {
   width: 100%;
   box-sizing: border-box;
   margin-bottom: 1rem;
+}
+
+#submitButtonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+#createSpotSubmit {
+  margin-top: 1rem;
+  width: 100px;
+  height: 1.6rem;
+  color: white;
+  background-color: red;
+  border: 2px solid black;
+  box-shadow: 3px 4px 5px gray;
+}
+
+#createSpotSubmit:hover {
+  cursor: pointer;
 }

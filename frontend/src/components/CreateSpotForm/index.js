@@ -12,6 +12,7 @@ const CreateSpotForm = () => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
 
+
   return (
     <div id="formContainer">
       <form id='createSpotForm'>
@@ -101,6 +102,38 @@ const CreateSpotForm = () => {
           />
         </div>
 
+        <div id='createSpotImages' className='bottomBorder'>
+          <h2 className='createSpotFormH2'>Liven up your spot with photos</h2>
+          <p className='createSpotFormP'>Submit a link to at least one photo to publish your spot</p>
+          <input
+            className='createFormSpotImage'
+            placeholder='Preview Image URL'
+          />
+          <input
+            className='createFormSpotImage'
+            placeholder='Image URL'
+          />
+          <input
+            className='createFormSpotImage'
+            placeholder='Image URL'
+          />
+          <input
+            className='createFormSpotImage'
+            placeholder='Image URL'
+          />
+          <input
+            className='createFormSpotImage'
+            placeholder='Image URL'
+          />
+        </div>
+
+        <div id='submitButtonContainer'>
+          <button
+            type='submit'
+            id='createSpotSubmit'
+          >Create Spot
+          </button>
+        </div>
       </form>
     </div>
   )
