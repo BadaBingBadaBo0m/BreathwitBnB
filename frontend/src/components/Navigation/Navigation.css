@@ -35,6 +35,10 @@ nav {
   background-color: white;
 }
 
+#profileButton:hover {
+  cursor: pointer;
+}
+
 #profileButton>i {
   padding: 5px;
 }
