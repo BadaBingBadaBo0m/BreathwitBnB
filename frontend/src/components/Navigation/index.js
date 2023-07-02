@@ -39,7 +39,7 @@ function Navigation({ isLoaded }) {
       </div>
       <div id="navBtnContainer">
         {sessionUser && (
-          <NavLink id="createSpotLink" to='/newSpot'>Create a new spot</NavLink>
+          <NavLink id="createSpotLink" to='/spots/new'>Create a new spot</NavLink>
         )}
         {isLoaded && (
           <div className='loginSignupModalBtn'>

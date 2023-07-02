@@ -1,0 +1,48 @@
+#formContainer {
+  width: 400px;
+  margin: auto;
+}
+
+#createSpotForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: fit-content;
+  align-items: center;
+}
+
+#locationContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-bottom: 2px solid rgb(196, 191, 191);
+}
+
+#cityStateContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.createSpotLabel {
+  display: flex;
+  flex-direction: column;
+  margin: 3px 0;
+}
+
+.createSpotLabel>input,
+.createSpotLabel>select {
+  margin: 3px 0;
+}
+
+.createSpotLabel.city {
+  width: 67%;
+}
+
+.createSpotLabel.state {
+  width: 28%;
+}
+
+#cityStateComma {
+  font-size: 1.5rem;
+  margin-top: 1.3rem;
+}
