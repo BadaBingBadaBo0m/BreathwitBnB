@@ -7,7 +7,9 @@ const CreateSpotForm = () => {
   const stateList = validStates.states;
   const countryList = validCountries.countries;
   const [state, setState] = useState("");
+  const [address, setAddress] = useState("");
   const [country, setCountry] = useState("");
+  const [title, setTitle] = useState("");
 
   return (
     <div id="formContainer">
@@ -18,7 +20,7 @@ const CreateSpotForm = () => {
           <p>Guests will only get your exact address once they booked a reservation</p>
         </div>
 
-        <div id='locationContainer'>
+        <div id='locationContainer' className='bottomBorder'>
           <label className="createSpotLabel country">
             Country
             <select
@@ -35,6 +37,8 @@ const CreateSpotForm = () => {
             <input
               type='text'
               placeholder='Address'
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
             />
           </label>
           <div id='cityStateContainer'>
@@ -61,15 +65,26 @@ const CreateSpotForm = () => {
         </div>
 
         <div id='createSpotInfoContainer'>
-          <div id='spotDescription'>
-            <h2>Describe your place to guests</h2>
-            <p>
+          <div id='createSpotDescription' className='bottomBorder'>
+            <h2 className='createSpotFormH2'>Describe your place to guests</h2>
+            <p className='createSpotFormP'>
               Mention the best features of your space, any special amenities like fast wifi or parking,
               and what you love about the neighborhood.
             </p>
             <textarea
               id='descriptionInput'
               placeholder='Please write at least 30 characters'
+            />
+          </div>
+
+          <div id='CreateSpotTitleContainer' className='bottomBorder'>
+            <h2 className='createSpotFormH2'>Create a title for your spot</h2>
+            <p className='createSpotFormP'>Catch guests' attention with a spot title that highlights what makes your place special</p>
+            <input
+              id='createSpotTitleInput'
+              placeholder='Name of your spot'
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
         </div>
