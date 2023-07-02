@@ -6,12 +6,14 @@ import './CreateSpotForm.css'
 const CreateSpotForm = () => {
   const stateList = validStates.states;
   const countryList = validCountries.countries;
-  const [state, setState] = useState("");
   const [address, setAddress] = useState("");
   const [country, setCountry] = useState("");
+  const [state, setState] = useState("");
+  const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
-
+  const [previewImage, setPreviewImage] = useState({});
+  const [spotImages, setSpotImages] = useState([]);
 
   return (
     <div id="formContainer">
@@ -76,6 +78,8 @@ const CreateSpotForm = () => {
             <textarea
               id='descriptionInput'
               placeholder='Please write at least 30 characters'
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
             />
           </div>
 
@@ -94,12 +98,15 @@ const CreateSpotForm = () => {
         <div id='createSpotPricing' className='bottomBorder'>
           <h2 className='createSpotFormH2'>Set a base price for your spot</h2>
           <p className='createSpotFormP'>Competitive pricing can help your listing stand out and rank higher in search results</p>
-          <input
-            id='createSpotPriceInput'
-            placeholder='Price per night (USD)'
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-          />
+          <div id='dollarSignInput'>
+            <i class="fa-solid fa-dollar-sign"></i>
+            <input
+              id='createSpotPriceInput'
+              placeholder='Price per night (USD)'
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+            />
+          </div>
         </div>
 
         <div id='createSpotImages' className='bottomBorder'>
@@ -108,22 +115,32 @@ const CreateSpotForm = () => {
           <input
             className='createFormSpotImage'
             placeholder='Preview Image URL'
+            value={previewImage}
+            onChange={(e) => setPreviewImage(e.target.value)}
           />
           <input
             className='createFormSpotImage'
             placeholder='Image URL'
+            value={spotImages}
+            onChange={(e) => setSpotImages(e.target.value)}
           />
           <input
             className='createFormSpotImage'
             placeholder='Image URL'
+            value={spotImages}
+            onChange={(e) => setSpotImages(e.target.value)}
           />
           <input
             className='createFormSpotImage'
             placeholder='Image URL'
+            value={spotImages}
+            onChange={(e) => setSpotImages(e.target.value)}
           />
           <input
             className='createFormSpotImage'
             placeholder='Image URL'
+            value={spotImages}
+            onChange={(e) => setSpotImages(e.target.value)}
           />
         </div>
 

@@ -75,9 +75,23 @@
 }
 
 #createSpotTitleInput,
-#createSpotPriceInput,
 .createFormSpotImage {
   width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+#dollarSignInput {
+  display: flex;
+  justify-content: space-between;
+}
+
+#dollarSignInput>i {
+  padding-top: 3px;
+}
+
+#createSpotPriceInput {
+  width: 96%;
   box-sizing: border-box;
   margin-bottom: 1rem;
 }
