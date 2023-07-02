@@ -12,8 +12,18 @@ const CreateSpotForm = () => {
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
-  const [previewImage, setPreviewImage] = useState({});
+  const [previewImage, setPreviewImage] = useState("");
   const [spotImages, setSpotImages] = useState([]);
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const errorObj = {};
+    if (!country.length) {
+      errorObj.country = "Country is required"
+    }
+
+    setErrors(errorObj)
+  }, [address, country, state, description, title, price, previewImage, spotImages])
 
   return (
     <div id="formContainer">
@@ -32,7 +42,7 @@ const CreateSpotForm = () => {
               onChange={(e) => setCountry(e.target.value)}
             >
               {countryList.map(country => (
-                <option value={country}>{country}</option>
+                <option key={country} value={country}>{country}</option>
               ))}
             </select>
           </label>
@@ -61,7 +71,7 @@ const CreateSpotForm = () => {
                 onChange={(e) => setState(e.target.value)}
               >
                 {stateList.map(state => (
-                  <option value={state}>{state}</option>
+                  <option key={state} value={state}>{state}</option>
                 ))}
               </select>
             </label>
@@ -99,7 +109,7 @@ const CreateSpotForm = () => {
           <h2 className='createSpotFormH2'>Set a base price for your spot</h2>
           <p className='createSpotFormP'>Competitive pricing can help your listing stand out and rank higher in search results</p>
           <div id='dollarSignInput'>
-            <i class="fa-solid fa-dollar-sign"></i>
+            <i className="fa-solid fa-dollar-sign"></i>
             <input
               id='createSpotPriceInput'
               placeholder='Price per night (USD)'
