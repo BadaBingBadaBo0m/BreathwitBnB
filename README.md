@@ -513,7 +513,7 @@ Creates and returns a new spot.
     }
     ```
 
-### Add an Image to a Spot based on the Spot's id
+### Add Images to a Spot based on the Spot's id
 
 Create and return a new image for a spot specified by id.
 
@@ -533,10 +533,16 @@ Create and return a new image for a spot specified by id.
   * Body:
 
     ```json
-    {
-      "url": "image url",
-      "preview": true
-    }
+    [
+      {
+        "url": "image url",
+        "preview": true
+      },
+      {
+        "url": "image url",
+        "preview": true
+      }
+    ]
     ```
 
 * Successful Response
