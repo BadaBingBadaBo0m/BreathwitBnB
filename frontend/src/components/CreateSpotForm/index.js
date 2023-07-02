@@ -27,39 +27,40 @@ const CreateSpotForm = () => {
     setSpotImages(images)
   }, [previewImage, spotImage2, spotImage3, spotImage4, spotImage5])
 
+  const checkUrls = (imageArr, errorObj) => {
+    let imageId = 0;
+    const errorImgs = {}
+    imageArr.forEach(image => {
+      imageId++;
+      if (image !== '') {
+        const splitImg = image.split('.')
+        if (splitImg[1] !== 'jpg' || splitImg[1] !== 'png' || splitImg[1] !== 'jpeg') {
+          errorImgs[imageId] = 'Image URL must end in .png, .jpg or .jpeg';
+          errorObj.spotImages = errorImgs;
+        }
+      }
+    })
+  }
+
   const checkErrors = () => {
     const errorObj = {};
-    if (!country) {
-      errorObj.country = "Country is required"
-    }
+    if (!country) errorObj.country = "Country is required";
 
-    if (!address) {
-      errorObj.address = "Address is required"
-    }
+    if (!address) errorObj.address = "Address is required";
 
-    if (!city) {
-      errorObj.city = "City is required"
-    }
+    if (!city) errorObj.city = "City is required";
 
-    if (!state) {
-      errorObj.state = "State is required"
-    }
+    if (!state) errorObj.state = "State is required";
 
-    if (description.length < 30) {
-      errorObj.description = 'Description needs a minimum of 30 characters'
-    }
+    if (description.length < 30) errorObj.description = 'Description needs a minimum of 30 characters';
 
-    if (!title) {
-      errorObj.title = "Name is required"
-    }
+    if (!title) errorObj.title = "Name is required";
 
-    if (price < 1 || !price) {
-      errorObj.price = 'Price is required'
-    }
+    if (price < 1 || !price) errorObj.price = 'Price is required';
 
-    if (!previewImage) {
-      errorObj.previewImage = "Preview image is required"
-    }
+    if (!spotImages[0]) errorObj.previewImage = "Preview image is required";
+
+    checkUrls(spotImages, errorObj)
 
     return setErrors(errorObj)
   }
@@ -70,9 +71,7 @@ const CreateSpotForm = () => {
     checkErrors();
 
     if (Object.keys(errors).length) {
-      console.log('there were errors')
     } else {
-      console.log('no Errors')
     }
 
   }
