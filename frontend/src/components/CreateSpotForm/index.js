@@ -10,6 +10,7 @@ const CreateSpotForm = () => {
   const [address, setAddress] = useState("");
   const [country, setCountry] = useState("");
   const [title, setTitle] = useState("");
+  const [price, setPrice] = useState("");
 
   return (
     <div id="formContainer">
@@ -89,7 +90,16 @@ const CreateSpotForm = () => {
           </div>
         </div>
 
-
+        <div id='createSpotPricing' className='bottomBorder'>
+          <h2 className='createSpotFormH2'>Set a base price for your spot</h2>
+          <p className='createSpotFormP'>Competitive pricing can help your listing stand out and rank higher in search results</p>
+          <input
+            id='createSpotPriceInput'
+            placeholder='Price per night (USD)'
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
+        </div>
 
       </form>
     </div>
