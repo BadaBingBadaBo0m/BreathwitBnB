@@ -515,7 +515,7 @@ Creates and returns a new spot.
 
 ### Add Images to a Spot based on the Spot's id
 
-Create and return a new image for a spot specified by id.
+Create and return new images for a spot specified by id.
 
 * Require Authentication: true
 * Require proper authorization: Spot must belong to the current user
@@ -535,10 +535,12 @@ Create and return a new image for a spot specified by id.
     ```json
     [
       {
+        "id": 1,
         "url": "image url",
         "preview": true
       },
       {
+        "id": 1,
         "url": "image url",
         "preview": true
       }
@@ -552,11 +554,18 @@ Create and return a new image for a spot specified by id.
   * Body:
 
     ```json
-    {
-      "id": 1,
-      "url": "image url",
-      "preview": true
-    }
+    [
+      {
+        "id": 1,
+        "url": "image url",
+        "preview": true
+      },
+      {
+        "id": 1,
+        "url": "image url",
+        "preview": true
+      }
+    ]
     ```
 
 * Error response: Couldn't find a Spot with the specified id
