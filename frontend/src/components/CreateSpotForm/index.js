@@ -34,6 +34,7 @@ const CreateSpotForm = () => {
             Street Address
             <input
               type='text'
+              placeholder='Address'
             />
           </label>
           <div id='cityStateContainer'>
@@ -41,6 +42,7 @@ const CreateSpotForm = () => {
               City
               <input
                 type='text'
+                placeholder='City'
               />
             </label >
             <p id='cityStateComma'>,</p>
@@ -58,8 +60,18 @@ const CreateSpotForm = () => {
           </div>
         </div>
 
-        <div id='spotInfoContainer'>
-
+        <div id='createSpotInfoContainer'>
+          <div id='spotDescription'>
+            <h2>Describe your place to guests</h2>
+            <p>
+              Mention the best features of your space, any special amenities like fast wifi or parking,
+              and what you love about the neighborhood.
+            </p>
+            <textarea
+              id='descriptionInput'
+              placeholder='Please write at least 30 characters'
+            />
+          </div>
         </div>
 
 

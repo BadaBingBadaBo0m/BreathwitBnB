@@ -1,5 +1,5 @@
 #formContainer {
-  width: 400px;
+  width: 450px;
   margin: auto;
 }
 
@@ -8,7 +8,14 @@
   flex-direction: column;
   justify-content: space-evenly;
   height: fit-content;
-  align-items: center;
+}
+
+#formHeaderContainer>h2 {
+  margin-bottom: 0;
+}
+
+#formHeaderContainer>p {
+  margin: .4rem 0;
 }
 
 #locationContainer {
@@ -45,4 +52,25 @@
 #cityStateComma {
   font-size: 1.5rem;
   margin-top: 1.3rem;
+}
+
+#createSpotInfoContainer {
+  border-bottom: 2px solid rgb(196, 191, 191);
+}
+
+#spotDescription>h2 {
+  margin-bottom: 0;
+}
+
+#spotDescription>p {
+  margin-top: .3rem;
+}
+
+#descriptionInput {
+  width: 100%;
+  height: 8rem;
+  border: 1px solid black;
+  resize: none;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
 }
