@@ -61,13 +61,28 @@ nav {
   right: 3.7rem;
 }
 
-.profile-dropdown>li:hover {
-  cursor: pointer;
+.loggedInProfileDropdownLI {
+  padding-bottom: .5rem;
+  color: black;
 }
 
-.loggedInProfileDropdownLI {
-  margin-bottom: .5rem;
-  color: black;
+.userEmail {
+  border-bottom: 1px solid rgb(196, 191, 191);
+}
+
+.spotLink {
+  border-bottom: 1px solid rgb(196, 191, 191);
+  padding: .2rem 0;
+}
+
+#editSpotLink {
+  color: red;
+  text-decoration: none;
+  margin: 1rem 0;
+}
+
+.editSpotLink:hover {
+  cursor: pointer;
 }
 
 #logoutBtn {
@@ -76,6 +91,7 @@ nav {
   padding: 5px;
   border-radius: 10px;
   width: 5rem;
+  margin: .3rem 0;
 }
 
 #logoutBtn:hover {

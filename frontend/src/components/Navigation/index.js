@@ -19,7 +19,7 @@ function Navigation({ isLoaded }) {
     );
   } else {
     sessionLinks = (
-      <li>
+      <li className='userDropdownLoggedOutLinks'>
         <OpenModalButton
           buttonText="Log In"
           modalComponent={<LoginFormModal />}

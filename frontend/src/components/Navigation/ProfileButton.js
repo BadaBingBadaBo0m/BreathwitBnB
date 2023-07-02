@@ -4,6 +4,7 @@ import * as sessionActions from '../../store/session';
 import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -50,7 +51,10 @@ function ProfileButton({ user }) {
           <>
             <li className='loggedInProfileDropdownLI' >Hello, {user.username}</li>
             {/* <li className='loggedInProfileDropdownLI' >{user.firstName} {user.lastName}</li> */}
-            <li className='loggedInProfileDropdownLI' >{user.email}</li>
+            <li className='loggedInProfileDropdownLI userEmail' >{user.email}</li>
+            <li className='spotLink'>
+              <NavLink id="editSpotLink" to='/mySpots'>Manage spots</NavLink>
+            </li>
             <li>
               <button id='logoutBtn' onClick={logout}>Log Out</button>
             </li>
