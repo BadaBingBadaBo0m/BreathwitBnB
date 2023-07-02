@@ -34,8 +34,8 @@ const CreateSpotForm = () => {
       imageId++;
       if (image !== '') {
         const splitImg = image.split('.')
-        if (splitImg[1] !== 'jpg' || splitImg[1] !== 'png' || splitImg[1] !== 'jpeg') {
-          errorImgs[imageId] = 'Image URL must end in .png, .jpg or .jpeg';
+        if (!(splitImg[splitImg.length - 1] === 'jpg' || splitImg[splitImg.length - 1] === 'png' || splitImg[splitImg.length - 1] === 'jpeg')) {
+          errorImgs[imageId] = 'invalidImage';
           errorObj.spotImages = errorImgs;
         }
       }
@@ -61,6 +61,8 @@ const CreateSpotForm = () => {
     if (!spotImages[0]) errorObj.previewImage = "Preview image is required";
 
     checkUrls(spotImages, errorObj)
+
+    console.log(errorObj)
 
     return setErrors(errorObj)
   }
