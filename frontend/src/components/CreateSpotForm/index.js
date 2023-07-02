@@ -14,10 +14,21 @@ const CreateSpotForm = () => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [previewImage, setPreviewImage] = useState("");
-  const [spotImages, setSpotImages] = useState([]);
+  const [spotImage2, setSpotImage2] = useState("")
+  const [spotImage3, setSpotImage3] = useState("")
+  const [spotImage4, setSpotImage4] = useState("")
+  const [spotImage5, setSpotImage5] = useState("")
+  const [spotImages, setSpotImages] = useState({});
   const [errors, setErrors] = useState({});
 
-  useEffect(() => {
+  const handleImageInput = (e) => {
+    // const inputVal = e.target.value;
+    // console.log(inputVal)
+
+    // setSpotImages((previewImage) => ({ ...previewImage }))
+  }
+
+  const checkErrors = () => {
     const errorObj = {};
     if (!country) {
       errorObj.country = "Country is required"
@@ -51,12 +62,19 @@ const CreateSpotForm = () => {
       errorObj.previewImage = "Preview image is required"
     }
 
-    setErrors(errorObj)
-  }, [address, country, city, state, description, title, price, previewImage, spotImages])
+    return setErrors(errorObj)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('submit')
+    checkErrors();
+
+  }
 
   return (
     <div id="formContainer">
-      <form id='createSpotForm'>
+      <form id='createSpotForm' onSubmit={handleSubmit}>
         <div id='formHeaderContainer'>
           <h1>Create a new Spot</h1>
           <h2>Where's your place located?</h2>
@@ -170,32 +188,32 @@ const CreateSpotForm = () => {
             <input
               className='createFormSpotImage'
               placeholder='Image URL'
-              value={spotImages}
-              onChange={(e) => setSpotImages(e.target.value)}
+              value={spotImage2}
+              onChange={(e) => setSpotImage2(e.target.value)}
             />
           </div>
           <div className='createSpotImageContainer'>
             <input
               className='createFormSpotImage'
               placeholder='Image URL'
-              value={spotImages}
-              onChange={(e) => setSpotImages(e.target.value)}
+              value={spotImage3}
+              onChange={(e) => setSpotImage3(e.target.value)}
             />
           </div>
           <div className='createSpotImageContainer'>
             <input
               className='createFormSpotImage'
               placeholder='Image URL'
-              value={spotImages}
-              onChange={(e) => setSpotImages(e.target.value)}
+              value={spotImage4}
+              onChange={(e) => setSpotImage4(e.target.value)}
             />
           </div>
           <div className='createSpotImageContainer'>
             <input
               className='createFormSpotImage'
               placeholder='Image URL'
-              value={spotImages}
-              onChange={(e) => setSpotImages(e.target.value)}
+              value={spotImage5}
+              onChange={(e) => setSpotImage5(e.target.value)}
             />
           </div>
         </div>
