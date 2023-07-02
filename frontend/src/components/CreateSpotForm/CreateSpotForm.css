@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: space-evenly;
   height: fit-content;
+  margin-bottom: 3rem;
 }
 
 #formHeaderContainer>h2 {
@@ -35,17 +36,34 @@
   margin: 3px 0;
 }
 
+.createSpotLabel>div {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.locationErrors {
+  margin: 0;
+  color: red;
+  padding-left: .5rem;
+}
+
+.infoErrors {
+  margin: 1px 0;
+  color: red;
+}
+
 .createSpotLabel>input,
 .createSpotLabel>select {
   margin: 3px 0;
 }
 
 .createSpotLabel.city {
-  width: 67%;
+  width: 63%;
 }
 
 .createSpotLabel.state {
-  width: 28%;
+  width: 32%;
 }
 
 #cityStateComma {
@@ -71,14 +89,20 @@
   border: 1px solid black;
   resize: none;
   box-sizing: border-box;
-  margin-bottom: 1rem;
 }
 
-#createSpotTitleInput,
-.createFormSpotImage {
+#createSpotDescription {
+  height: 15rem;
+}
+
+#createSpotTitleContainer {
+  height: 8.3rem;
+}
+
+#createSpotTitleInput {
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 1rem;
+  margin-bottom: .3rem;
 }
 
 #dollarSignInput {
@@ -90,10 +114,23 @@
   padding-top: 3px;
 }
 
+#createSpotPricing {
+  height: 9.5rem;
+}
+
 #createSpotPriceInput {
   width: 96%;
   box-sizing: border-box;
-  margin-bottom: 1rem;
+  margin-bottom: .3rem;
+}
+
+.createFormSpotImage {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.createSpotImageContainer {
+  height: 2.7rem;
 }
 
 #submitButtonContainer {

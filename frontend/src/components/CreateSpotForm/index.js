@@ -6,9 +6,10 @@ import './CreateSpotForm.css'
 const CreateSpotForm = () => {
   const stateList = validStates.states;
   const countryList = validCountries.countries;
+  const [country, setCountry] = useState("United States of America");
   const [address, setAddress] = useState("");
-  const [country, setCountry] = useState("");
-  const [state, setState] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("Alabama");
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
@@ -18,12 +19,40 @@ const CreateSpotForm = () => {
 
   useEffect(() => {
     const errorObj = {};
-    if (!country.length) {
+    if (!country) {
       errorObj.country = "Country is required"
     }
 
+    if (!address) {
+      errorObj.address = "Address is required"
+    }
+
+    if (!city) {
+      errorObj.city = "City is required"
+    }
+
+    if (!state) {
+      errorObj.state = "State is required"
+    }
+
+    if (description.length < 30) {
+      errorObj.description = 'Description needs a minimum of 30 characters'
+    }
+
+    if (!title) {
+      errorObj.title = "Name is required"
+    }
+
+    if (price < 1 || !price) {
+      errorObj.price = 'Price is required'
+    }
+
+    if (!previewImage) {
+      errorObj.previewImage = "Preview image is required"
+    }
+
     setErrors(errorObj)
-  }, [address, country, state, description, title, price, previewImage, spotImages])
+  }, [address, country, city, state, description, title, price, previewImage, spotImages])
 
   return (
     <div id="formContainer">
@@ -36,7 +65,7 @@ const CreateSpotForm = () => {
 
         <div id='locationContainer' className='bottomBorder'>
           <label className="createSpotLabel country">
-            Country
+            <div>Country {errors.country && <p className='locationErrors'>{errors.country}</p>}</div>
             <select
               value={country}
               onChange={(e) => setCountry(e.target.value)}
@@ -47,7 +76,7 @@ const CreateSpotForm = () => {
             </select>
           </label>
           <label className="createSpotLabel streetAdd">
-            Street Address
+            <div>Street Address {errors.address && <p className='locationErrors'>{errors.address}</p>}</div>
             <input
               type='text'
               placeholder='Address'
@@ -57,15 +86,17 @@ const CreateSpotForm = () => {
           </label>
           <div id='cityStateContainer'>
             <label className="createSpotLabel city">
-              City
+              <div>City {errors.city && <p className='locationErrors'>{errors.city}</p>}</div>
               <input
                 type='text'
                 placeholder='City'
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
               />
             </label >
             <p id='cityStateComma'>,</p>
             <label className="createSpotLabel state">
-              State
+              <div>State {errors.state && <p className='locationErrors'>{errors.state}</p>}</div>
               <select
                 value={state}
                 onChange={(e) => setState(e.target.value)}
@@ -91,9 +122,10 @@ const CreateSpotForm = () => {
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             />
+            {errors.description && <p className='infoErrors'>{errors.description}</p>}
           </div>
 
-          <div id='CreateSpotTitleContainer' className='bottomBorder'>
+          <div id='createSpotTitleContainer' className='bottomBorder'>
             <h2 className='createSpotFormH2'>Create a title for your spot</h2>
             <p className='createSpotFormP'>Catch guests' attention with a spot title that highlights what makes your place special</p>
             <input
@@ -102,6 +134,7 @@ const CreateSpotForm = () => {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
+            {errors.title && <p className='infoErrors'>{errors.title}</p>}
           </div>
         </div>
 
@@ -111,47 +144,60 @@ const CreateSpotForm = () => {
           <div id='dollarSignInput'>
             <i className="fa-solid fa-dollar-sign"></i>
             <input
+              type='number'
               id='createSpotPriceInput'
               placeholder='Price per night (USD)'
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             />
           </div>
+          {errors.price && <p className='infoErrors'>{errors.price}</p>}
         </div>
 
         <div id='createSpotImages' className='bottomBorder'>
           <h2 className='createSpotFormH2'>Liven up your spot with photos</h2>
           <p className='createSpotFormP'>Submit a link to at least one photo to publish your spot</p>
-          <input
-            className='createFormSpotImage'
-            placeholder='Preview Image URL'
-            value={previewImage}
-            onChange={(e) => setPreviewImage(e.target.value)}
-          />
-          <input
-            className='createFormSpotImage'
-            placeholder='Image URL'
-            value={spotImages}
-            onChange={(e) => setSpotImages(e.target.value)}
-          />
-          <input
-            className='createFormSpotImage'
-            placeholder='Image URL'
-            value={spotImages}
-            onChange={(e) => setSpotImages(e.target.value)}
-          />
-          <input
-            className='createFormSpotImage'
-            placeholder='Image URL'
-            value={spotImages}
-            onChange={(e) => setSpotImages(e.target.value)}
-          />
-          <input
-            className='createFormSpotImage'
-            placeholder='Image URL'
-            value={spotImages}
-            onChange={(e) => setSpotImages(e.target.value)}
-          />
+          <div className='createSpotImageContainer'>
+            <input
+              className='createFormSpotImage'
+              placeholder='Preview Image URL'
+              value={previewImage}
+              onChange={(e) => setPreviewImage(e.target.value)}
+            />
+            {errors.previewImage && <p className='infoErrors'>{errors.previewImage}</p>}
+          </div>
+          <div className='createSpotImageContainer'>
+            <input
+              className='createFormSpotImage'
+              placeholder='Image URL'
+              value={spotImages}
+              onChange={(e) => setSpotImages(e.target.value)}
+            />
+          </div>
+          <div className='createSpotImageContainer'>
+            <input
+              className='createFormSpotImage'
+              placeholder='Image URL'
+              value={spotImages}
+              onChange={(e) => setSpotImages(e.target.value)}
+            />
+          </div>
+          <div className='createSpotImageContainer'>
+            <input
+              className='createFormSpotImage'
+              placeholder='Image URL'
+              value={spotImages}
+              onChange={(e) => setSpotImages(e.target.value)}
+            />
+          </div>
+          <div className='createSpotImageContainer'>
+            <input
+              className='createFormSpotImage'
+              placeholder='Image URL'
+              value={spotImages}
+              onChange={(e) => setSpotImages(e.target.value)}
+            />
+          </div>
         </div>
 
         <div id='submitButtonContainer'>
