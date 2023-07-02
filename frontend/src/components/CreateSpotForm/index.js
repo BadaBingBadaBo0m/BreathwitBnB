@@ -14,19 +14,18 @@ const CreateSpotForm = () => {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [previewImage, setPreviewImage] = useState("");
-  const [spotImage2, setSpotImage2] = useState("")
-  const [spotImage3, setSpotImage3] = useState("")
-  const [spotImage4, setSpotImage4] = useState("")
-  const [spotImage5, setSpotImage5] = useState("")
-  const [spotImages, setSpotImages] = useState({});
+  const [spotImage2, setSpotImage2] = useState("");
+  const [spotImage3, setSpotImage3] = useState("");
+  const [spotImage4, setSpotImage4] = useState("");
+  const [spotImage5, setSpotImage5] = useState("");
+  const [spotImages, setSpotImages] = useState([]);
   const [errors, setErrors] = useState({});
 
-  const handleImageInput = (e) => {
-    // const inputVal = e.target.value;
-    // console.log(inputVal)
+  useEffect(() => {
+    const images = [previewImage, spotImage2, spotImage3, spotImage4, spotImage5]
 
-    // setSpotImages((previewImage) => ({ ...previewImage }))
-  }
+    setSpotImages(images)
+  }, [previewImage, spotImage2, spotImage3, spotImage4, spotImage5])
 
   const checkErrors = () => {
     const errorObj = {};
@@ -69,6 +68,12 @@ const CreateSpotForm = () => {
     e.preventDefault();
     console.log('submit')
     checkErrors();
+
+    if (Object.keys(errors).length) {
+      console.log('there were errors')
+    } else {
+      console.log('no Errors')
+    }
 
   }
 
