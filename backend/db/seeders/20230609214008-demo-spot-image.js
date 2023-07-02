@@ -18,7 +18,22 @@ module.exports = {
       },
       {
         spotId: 1,
-        url: 'www.previewTesting.com',
+        url: 'https://www.decorilla.com/online-decorating/wp-content/uploads/2023/05/correcto.jpg',
+        preview: false
+      },
+      {
+        spotId: 1,
+        url: 'https://crownworkspace.com/us/wp-content/uploads/sites/13/2020/10/cws-double-images-1024x560-2.png',
+        preview: false
+      },
+      {
+        spotId: 1,
+        url: 'https://media.istockphoto.com/id/1203922775/photo/interior-of-modern-office-building-during-the-day.jpg?s=612x612&w=0&k=20&c=cjgwZTearqRcSvrsMFmStadkSKignEkTsYwIDNQzZPA=',
+        preview: false
+      },
+      {
+        spotId: 1,
+        url: 'https://cdn.autonomous.ai/static/upload/images/common/upload/20220401/4-Office-Space-and-Office-Interior-Design-Ideas-for-2022_235a9f38141.jpg',
         preview: false
       },
       {
