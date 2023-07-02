@@ -5,6 +5,13 @@ const SpotDetailsImages = ({ spot }) => {
   const spotImages = spot.SpotImages.filter(image => image.preview === false)
   let imageCount = 1;
 
+  if (!previewImage) {
+    return (
+      <div id='imageContainer'>
+      </div>
+    )
+  }
+
   return (
     <div id="imageContainer">
       <img key={previewImage.id} className="image1" id="previewImage" src={previewImage.url}></img>

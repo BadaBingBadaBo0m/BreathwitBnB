@@ -70,16 +70,10 @@ const CreateSpotForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('submit')
     checkErrors();
 
-    // console.log(errors)
-    // console.log(Object.values(errors) != null)
-
-    // if (Object.values(errors)) {
-    //   return console.log('valid submit')
-    // 
-
+    if (!(Object.keys(errors).length)) {
+    }
   }
 
   return (

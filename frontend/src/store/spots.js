@@ -1,5 +1,6 @@
 const GET_ALL_SPOTS = 'spots/getAllSpots';
 const GET_SPOT = 'spots/getSpot'
+const CREATE_SPOT = 'spots/createSpot';
 
 const loadSpots = (spots) => {
   return {
@@ -12,6 +13,14 @@ const getSpot = (spot) => {
   return {
     type: GET_SPOT,
     spot
+  }
+}
+
+const createNewSpot = ({ spot, images }) => {
+  return {
+    type: CREATE_SPOT,
+    spot,
+    images
   }
 }
 
@@ -38,6 +47,10 @@ export const getSpotById = ({ spotId }) => async (dispatch) => {
   }
 
   console.log('GetSpotById failed');
+}
+
+export const createSpot = ({ spot, images }) => async (dispatch) => {
+
 }
 
 const initialState = {};
