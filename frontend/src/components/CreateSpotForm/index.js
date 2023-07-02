@@ -29,17 +29,22 @@ const CreateSpotForm = () => {
 
   const checkUrls = (imageArr, errorObj) => {
     let count = 0;
-    const errorImgs = {};
-    errorObj.spotImages = {};
+    let errorImgs;
     imageArr.forEach(image => {
       count++;
+      const imageId = `imageLink${count}`
       if (image !== '') {
         const splitImg = image.split('.')
         if (!(splitImg[splitImg.length - 1] === 'jpg' || splitImg[splitImg.length - 1] === 'png' || splitImg[splitImg.length - 1] === 'jpeg')) {
-          const imageId = `imageLink${count}`
-          errorImgs[imageId] = 'Image URL must end in .png, .jpg or .jpeg';
-          errorObj.spotImages = errorImgs;
+          errorImgs = 'Image URL must end in .png, .jpg or .jpeg';
+          errorObj[imageId] = errorImgs;
+        } else {
+          errorImgs = null;
+          errorObj[imageId] = errorImgs
         }
+      } else {
+        errorImgs = null;
+        errorObj[imageId] = errorImgs
       }
     });
   };
@@ -189,7 +194,7 @@ const CreateSpotForm = () => {
               onChange={(e) => setPreviewImage(e.target.value)}
             />
             {errors.previewImage && <p className='infoErrors'>{errors.previewImage}</p>}
-            {errors.spotImages.imageLink1 && <p className='infoErrors'>{errors.spotImages.imageLink1}</p>}
+            {errors.imageLink1 && <p className='infoErrors'>{errors.imageLink1}</p>}
           </div>
           <div className='createSpotImageContainer'>
             <input
@@ -198,7 +203,7 @@ const CreateSpotForm = () => {
               value={spotImage2}
               onChange={(e) => setSpotImage2(e.target.value)}
             />
-            {errors.spotImages.imageLink2 && <p className='infoErrors'>{errors.spotImages.imageLink2}</p>}
+            {errors.imageLink2 && <p className='infoErrors'>{errors.imageLink2}</p>}
           </div>
           <div className='createSpotImageContainer'>
             <input
@@ -207,7 +212,7 @@ const CreateSpotForm = () => {
               value={spotImage3}
               onChange={(e) => setSpotImage3(e.target.value)}
             />
-            {errors.spotImages.imageLink3 && <p className='infoErrors'>{errors.spotImages.imageLink3}</p>}
+            {errors.imageLink3 && <p className='infoErrors'>{errors.imageLink3}</p>}
           </div>
           <div className='createSpotImageContainer'>
             <input
@@ -216,7 +221,7 @@ const CreateSpotForm = () => {
               value={spotImage4}
               onChange={(e) => setSpotImage4(e.target.value)}
             />
-            {errors.spotImages.imageLink4 && <p className='infoErrors'>{errors.spotImages.imageLink4}</p>}
+            {errors.imageLink4 && <p className='infoErrors'>{errors.imageLink4}</p>}
           </div>
           <div className='createSpotImageContainer'>
             <input
@@ -225,7 +230,7 @@ const CreateSpotForm = () => {
               value={spotImage5}
               onChange={(e) => setSpotImage5(e.target.value)}
             />
-            {errors.spotImages.imageLink5 && <p className='infoErrors'>{errors.spotImages.imageLink5}</p>}
+            {errors.imageLink5 && <p className='infoErrors'>{errors.imageLink5}</p>}
           </div>
         </div>
 
