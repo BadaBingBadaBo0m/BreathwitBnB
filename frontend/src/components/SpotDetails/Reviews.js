@@ -1,6 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getReviewBySpotId } from "../../store/reviews";
+import OpenModalButton from "../OpenModalButton";
+import CreateReviewForm from "../CreateReviewForm";
 import './Reviews.css';
 
 const Reviews = ({ spot, spotId }) => {
@@ -39,7 +41,9 @@ const Reviews = ({ spot, spotId }) => {
         {spot.numReviews > 0 && <p>{spot.numReviews} {spot.numReviews === 1 ? "review" : "reviews"}</p>}
       </div>
 
-      {<button id="createReviewButton">Post your review</button>}
+      <div id="createReviewContainer">
+        {user !== null && user.id !== spot.ownerId && <OpenModalButton buttonText={'Post your review'} modalComponent={<CreateReviewForm />} />}
+      </div>
 
       <ul id="reviewListContainer">
         {reviewList.map(review => (
