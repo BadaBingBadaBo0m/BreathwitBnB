@@ -28,12 +28,16 @@
   margin-bottom: 3rem;
 }
 
-#createReviewButton {
+#createReviewButtonContainer>button {
   height: 2rem;
   color: white;
   background-color: red;
   border: 2px solid black;
   box-shadow: 3px 4px 5px gray;
+}
+
+#createReviewButtonContainer>button:hover {
+  cursor: pointer;
 }
 
 #createReviewButton:hover {

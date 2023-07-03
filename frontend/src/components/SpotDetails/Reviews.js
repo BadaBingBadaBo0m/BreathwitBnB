@@ -40,11 +40,9 @@ const Reviews = ({ spot, spotId }) => {
         {spot.numReviews > 0 && <p>&#x2022;</p>}
         {spot.numReviews > 0 && <p>{spot.numReviews} {spot.numReviews === 1 ? "review" : "reviews"}</p>}
       </div>
-
-      <div id="createReviewContainer">
+      <div id="createReviewButtonContainer">
         {user !== null && user.id !== spot.ownerId && <OpenModalButton buttonText={'Post your review'} modalComponent={<CreateReviewForm />} />}
       </div>
-
       <ul id="reviewListContainer">
         {reviewList.map(review => (
           <li key={review.id} id="review">
