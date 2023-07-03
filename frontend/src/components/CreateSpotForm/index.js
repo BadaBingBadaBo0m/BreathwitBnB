@@ -22,13 +22,13 @@ const CreateSpotForm = () => {
   const [spotImage3, setSpotImage3] = useState("");
   const [spotImage4, setSpotImage4] = useState("");
   const [spotImage5, setSpotImage5] = useState("");
-  const [spotImages, setSpotImages] = useState([]);
+  const [spotImagesState, setSpotImagesState] = useState([]);
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
     const images = [previewImage, spotImage2, spotImage3, spotImage4, spotImage5]
 
-    setSpotImages(images)
+    setSpotImagesState(images)
   }, [previewImage, spotImage2, spotImage3, spotImage4, spotImage5])
 
   const checkUrls = (imageArr, errorObj) => {
@@ -64,17 +64,36 @@ const CreateSpotForm = () => {
 
     if (price < 1 || !price) errorObj.price = 'Price is required';
 
-    if (!spotImages[0]) errorObj.previewImage = "Preview image is required";
+    if (!spotImagesState[0]) errorObj.previewImage = "Preview image is required";
 
-    checkUrls(spotImages, errorObj)
+    checkUrls(spotImagesState, errorObj)
 
     setErrors(errorObj)
     return errorObj
   }
 
+  const formatImages = (images) => {
+    const imgObj = {};
+    let validImages = [];
+    let count = 0;
+    images.forEach((image) => {
+      count++
+      if (image !== '') {
+        const imgObj = {};
+        imgObj.url = image;
+        if (count === 1) imgObj.preview = true;
+        else imgObj.preview = false;
+        validImages.push(imgObj);
+      }
+    });
+
+    return validImages
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const updatedErrors = checkErrors();
+    const spotImages = formatImages(spotImagesState)
 
     if (Object.keys(updatedErrors).length === 0) {
       const newSpot = {
@@ -92,7 +111,6 @@ const CreateSpotForm = () => {
         spotImages
       };
 
-      console.log('Dispatched')
       return await dispatch(createSpot(newSpot));
     }
 
@@ -101,7 +119,7 @@ const CreateSpotForm = () => {
 
   useEffect(() => {
 
-  }, [address, city, state, country, title, description, price, spotImages])
+  }, [address, city, state, country, title, description, price, spotImagesState])
 
   return (
     <div id="formContainer">

@@ -18,11 +18,10 @@ const getSpot = (spot) => {
   }
 }
 
-const createNewSpot = ({ spot, images }) => {
+const createNewSpot = (spot) => {
   return {
     type: CREATE_SPOT,
-    spot,
-    images
+    spot
   }
 }
 
@@ -60,14 +59,18 @@ export const createSpot = (newSpot) => async (dispatch) => {
     body: JSON.stringify(spot)
   });
 
-  const addImagesToSpot = await fetch(`/api/spots/${spot.id}/images`, {
+  const spotData = await createdSpot.json();
+
+  const addImagesToSpot = await csrfFetch(`/api/spots/${spotData.id}/images`, {
     method: 'POST',
     header: { 'Content-Type': 'application/json' },
     body: JSON.stringify(spotImages)
   });
 
+  const spotImageData = await addImagesToSpot.json();
+
   if (createdSpot.ok && addImagesToSpot.ok) {
-    dispatch(createNewSpot(createdSpot, addImagesToSpot));
+    dispatch(createNewSpot(spotData));
   }
 }
 
@@ -84,6 +87,10 @@ const spotsReducer = (state = initialState, action) => {
       newState = { ...state };
       newState.singleSpot = action.spot;
       return newState;
+    case CREATE_SPOT:
+      newState = { ...state };
+      newState.allSpots[action.spot.id] = action.spot;
+      return newState
     default:
       return state;
   };

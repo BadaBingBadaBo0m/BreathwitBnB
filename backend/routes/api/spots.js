@@ -211,7 +211,8 @@ const validateSpotImage = [
 const validateCreateImages = [
   check('images')
     .exists({ checkFalsy: true })
-    .notEmpty(),
+    .notEmpty()
+    .withMessage('Images are required'),
   handleValidationErrors
 ]
 
@@ -415,14 +416,14 @@ router.get('/', checkQuery, async (req, res) => {
   }
 
   const spots = await Spot.findAll({
-    ...pagination,
+    // ...pagination,
     where
   });
 
   res.json({
     Spots: await avgRatingAndPreviewImg(spots),
-    page: pagination.page,
-    size: pagination.size
+    // page: pagination.page,
+    // size: pagination.size
   });
 });
 
@@ -670,8 +671,8 @@ router.delete('/:spotId', restoreUser, async (req, res) => {
   await spot.destroy();
   res.json({ message: 'Successfully deleted' });
 });
-
-router.post('/:spotId/images', validateCreateImages, restoreUser, async (req, res) => {
+// , validateCreateImages
+router.post('/:spotId/images', restoreUser, async (req, res) => {
   const user = validateUser(req, res);
   const spot = await Spot.findByPk(req.params.spotId);
 
@@ -688,10 +689,9 @@ router.post('/:spotId/images', validateCreateImages, restoreUser, async (req, re
     res.status(403);
     return res.json(err);
   }
-  const { images } = req.body;
+  const images = req.body;
 
   images.forEach(image => image.spotId = spot.id);
-
   const spotImages = await SpotImage.bulkCreate(images);
 
   res.json(spotImages);
