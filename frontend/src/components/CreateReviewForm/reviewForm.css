@@ -1,5 +1,26 @@
 #createReviewForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
   background-color: white;
+  height: 15rem;
+  width: 20rem;
+  border-radius: 15px;
+}
+
+#createReviewForm>h2 {
+  color: red;
+  margin: 0;
+  margin-top: 1rem;
+}
+
+#reviewText {
+  height: 5rem;
+  width: 17rem;
+  resize: none;
+  border: 1px solid black;
 }
 
 #starsContainer .filled {
@@ -8,4 +29,19 @@
 
 #starsContainer .empty {
   color: rgb(185, 118, 118);
+}
+
+#starsContainer {
+  display: flex;
+  width: fit-content;
+}
+
+#reviewSubmit {
+  width: 80%;
+  height: 2rem;
+  color: white;
+  background-color: red;
+  border: 2px solid black;
+  box-shadow: 3px 4px 5px gray;
+  margin-bottom: 1rem;
 }

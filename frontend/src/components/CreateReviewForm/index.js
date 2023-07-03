@@ -10,11 +10,6 @@ const CreateReviewForm = () => {
   const [activeRating, setActiveRating] = useState(0);
   const [rating, setRating] = useState(0);
 
-  // useEffect(() => {
-  //   console.log(activeRating)
-  //   console.log(rating)
-  // }, [activeRating, rating])
-
   const onChange = (val) => {
     setRating(val)
   }
@@ -40,6 +35,7 @@ const CreateReviewForm = () => {
           placeholder='Leave your review here...'
           value={description}
           onChange={(e) => setDescription(e.target.value)}
+          id='reviewText'
         />
 
         <div id='starsContainer'>
@@ -85,7 +81,7 @@ const CreateReviewForm = () => {
           </div>
         </div>
 
-        <button type='submit'>Submit your review</button>
+        <button id='reviewSubmit' type='submit'>Submit your review</button>
 
       </form>
     </div>
