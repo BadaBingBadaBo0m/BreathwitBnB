@@ -48,6 +48,24 @@ const CreateSpotForm = () => {
     });
   };
 
+  const formatImages = (images) => {
+    const imgObj = {};
+    let validImages = [];
+    let count = 0;
+    images.forEach((image) => {
+      count++
+      if (image !== '') {
+        const imgObj = {};
+        imgObj.url = image;
+        if (count === 1) imgObj.preview = true;
+        else imgObj.preview = false;
+        validImages.push(imgObj);
+      }
+    });
+
+    return validImages
+  }
+
   const checkErrors = () => {
     const errorObj = {};
 
@@ -73,56 +91,50 @@ const CreateSpotForm = () => {
     return errorObj
   }
 
-  const formatImages = (images) => {
-    const imgObj = {};
-    let validImages = [];
-    let count = 0;
-    images.forEach((image) => {
-      count++
-      if (image !== '') {
-        const imgObj = {};
-        imgObj.url = image;
-        if (count === 1) imgObj.preview = true;
-        else imgObj.preview = false;
-        validImages.push(imgObj);
-      }
-    });
-
-    return validImages
-  }
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const updatedErrors = checkErrors();
     const spotImages = formatImages(spotImagesState)
 
-    if (Object.keys(updatedErrors).length === 0) {
-      const newSpot = {
-        spot: {
-          address,
-          city,
-          state,
-          country,
-          name: title,
-          description,
-          price,
-          lat: "10",
-          lng: "10"
-        },
-        spotImages
-      };
+    const newSpot = {
+      spot: {
+        address,
+        city,
+        state,
+        country,
+        name: title,
+        description,
+        price,
+        lat: "10",
+        lng: "10"
+      },
+      spotImages
+    };
+    // const validations = {};
 
-      const pushedSpot = await dispatch(createSpot(newSpot));
+    const updatedErrors = checkErrors();
 
-      history.push(`/spots/${pushedSpot.id}`)
+    if (!Object.keys(updatedErrors).length) {
+      const createdSpot = await dispatch(createSpot(newSpot));
+      // .catch(
+      //   async (res) => {
+      //     const data = await res.json();
+      //     if (data && data.errors) {
+      //       if (res.status === 403) {
+      //         return 'Invalid data';
+      //       }
+      //       if (data.errors.address) validations.address = data.errors.address;
+      //       if (data.errors.city) validations.city = data.errors.city;
+      //       if (data.errors.description) validations.description = data.errors.description;
+      //       if (data.errors.name) validations.title = data.errors.name;
+      //       if (data.errors.price) validations.price = data.errors.price
+      //       setErrors(validations);
+      //     }
+      //   }
+      // );
+
+      if (createdSpot) history.push(`/spots/${createdSpot.id}`)
     }
-
-
   }
-
-  useEffect(() => {
-
-  }, [address, city, state, country, title, description, price, spotImagesState])
 
   return (
     <div id="formContainer">
