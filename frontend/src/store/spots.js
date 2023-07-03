@@ -1,3 +1,5 @@
+import { csrfFetch } from "./csrf";
+
 const GET_ALL_SPOTS = 'spots/getAllSpots';
 const GET_SPOT = 'spots/getSpot'
 const CREATE_SPOT = 'spots/createSpot';
@@ -49,8 +51,24 @@ export const getSpotById = ({ spotId }) => async (dispatch) => {
   console.log('GetSpotById failed');
 }
 
-export const createSpot = ({ spot, images }) => async (dispatch) => {
+export const createSpot = (newSpot) => async (dispatch) => {
+  const { spot, spotImages } = newSpot;
 
+  const createdSpot = await csrfFetch('/api/spots', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(spot)
+  });
+
+  const addImagesToSpot = await fetch(`/api/spots/${spot.id}/images`, {
+    method: 'POST',
+    header: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(spotImages)
+  });
+
+  if (createdSpot.ok && addImagesToSpot.ok) {
+    dispatch(createNewSpot(createdSpot, addImagesToSpot));
+  }
 }
 
 const initialState = {};

@@ -2,10 +2,14 @@ import { useEffect, useState } from 'react';
 import validStates from '../../data/validStates.json';
 import validCountries from '../../data/validCounties.json';
 import './CreateSpotForm.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { createSpot } from '../../store/spots';
 
 const CreateSpotForm = () => {
   const stateList = validStates.states;
   const countryList = validCountries.countries;
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.session.user)
   const [country, setCountry] = useState("United States of America");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -45,6 +49,7 @@ const CreateSpotForm = () => {
 
   const checkErrors = () => {
     const errorObj = {};
+
     if (!country) errorObj.country = "Country is required";
 
     if (!address) errorObj.address = "Address is required";
@@ -63,18 +68,40 @@ const CreateSpotForm = () => {
 
     checkUrls(spotImages, errorObj)
 
-    console.log(errorObj)
-
-    return setErrors(errorObj)
+    setErrors(errorObj)
+    return errorObj
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    checkErrors();
+    const updatedErrors = checkErrors();
 
-    if (!(Object.keys(errors).length)) {
+    if (Object.keys(updatedErrors).length === 0) {
+      const newSpot = {
+        spot: {
+          address,
+          city,
+          state,
+          country,
+          name: title,
+          description,
+          price,
+          lat: "10",
+          lng: "10"
+        },
+        spotImages
+      };
+
+      console.log('Dispatched')
+      return await dispatch(createSpot(newSpot));
     }
+
+
   }
+
+  useEffect(() => {
+
+  }, [address, city, state, country, title, description, price, spotImages])
 
   return (
     <div id="formContainer">
