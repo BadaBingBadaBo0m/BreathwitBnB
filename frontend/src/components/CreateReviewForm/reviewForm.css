@@ -36,7 +36,11 @@
   width: fit-content;
 }
 
-#reviewSubmit {
+#starsContainer>div:hover {
+  cursor: pointer;
+}
+
+.reviewSubmit {
   width: 80%;
   height: 2rem;
   color: white;
@@ -44,4 +48,12 @@
   border: 2px solid black;
   box-shadow: 3px 4px 5px gray;
   margin-bottom: 1rem;
+}
+
+.disabled {
+  background-color: gray;
+}
+
+.reviewSubmit:hover {
+  cursor: pointer;
 }

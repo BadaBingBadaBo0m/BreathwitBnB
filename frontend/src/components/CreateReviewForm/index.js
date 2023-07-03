@@ -1,29 +1,55 @@
 import { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
+import { useHistory } from 'react-router-dom';
+import { createReview } from '../../store/reviews';
 import './reviewForm.css';
 
 const CreateReviewForm = () => {
   const spot = useSelector((state) => state.spots.singleSpot);
+  const dispatch = useDispatch();
+  const history = useHistory();
   const { closeModal } = useModal();
   const [description, setDescription] = useState('');
   const [activeRating, setActiveRating] = useState(0);
   const [rating, setRating] = useState(0);
+  const [errors, setErrors] = useState({});
+  // const [isDisabled, setIsDisabled] = useState(true);
 
   const onChange = (val) => {
     setRating(val)
   }
 
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
-    console.log({
-      description,
-      rating
-    })
+    const newReview = {
+      review: {
+        review: description,
+        stars: rating
+      },
+      spotId: spot.id
+    }
 
-    // closeModal()
+    const createdReview = await dispatch(createReview(newReview))
+      .catch(
+        async (res) => {
+          const data = await res.json();
+          if (data && data.errors) {
+            if (res.status === 400 && data.errors) {
+              setErrors(data.errors)
+              return
+            }
+          }
+          if (res.status === 500 && data.message) {
+            setErrors(data.message)
+            return
+          }
+        }
+      )
+
+    console.log('errors', errors)
   }
 
   return (
@@ -81,7 +107,12 @@ const CreateReviewForm = () => {
           </div>
         </div>
 
-        <button id='reviewSubmit' type='submit'>Submit your review</button>
+        <button
+          // disabled={isDisabled}
+          // className={isDisabled ? 'reviewSubmit disabled' : 'reviewSubmit'}
+          className='reviewSubmit'
+          type='submit'
+        >Submit your review</button>
 
       </form>
     </div>
