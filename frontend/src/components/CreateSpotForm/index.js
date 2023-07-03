@@ -4,12 +4,13 @@ import validCountries from '../../data/validCounties.json';
 import './CreateSpotForm.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { createSpot } from '../../store/spots';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const CreateSpotForm = () => {
   const stateList = validStates.states;
   const countryList = validCountries.countries;
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user)
+  const history = useHistory();
   const [country, setCountry] = useState("United States of America");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -111,7 +112,9 @@ const CreateSpotForm = () => {
         spotImages
       };
 
-      return await dispatch(createSpot(newSpot));
+      const pushedSpot = await dispatch(createSpot(newSpot));
+
+      history.push(`/spots/${pushedSpot.id}`)
     }
 
 

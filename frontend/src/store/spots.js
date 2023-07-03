@@ -59,22 +59,25 @@ export const createSpot = (newSpot) => async (dispatch) => {
     body: JSON.stringify(spot)
   });
 
-  const spotData = await createdSpot.json();
 
-  const addImagesToSpot = await csrfFetch(`/api/spots/${spotData.id}/images`, {
-    method: 'POST',
-    header: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(spotImages)
-  });
-
-  const spotImageData = await addImagesToSpot.json();
-
-  if (createdSpot.ok && addImagesToSpot.ok) {
+  if (createdSpot.ok) {
+    const spotData = await createdSpot.json();
     dispatch(createNewSpot(spotData));
+
+    const addImagesToSpot = await csrfFetch(`/api/spots/${spotData.id}/images`, {
+      method: 'POST',
+      header: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(spotImages)
+    });
+
+    const spotImageData = await addImagesToSpot.json();
+
+    return spotData;
   }
+
 }
 
-const initialState = {};
+const initialState = { allSpots: {}, singleSpot: {} };
 
 const spotsReducer = (state = initialState, action) => {
   let newState;

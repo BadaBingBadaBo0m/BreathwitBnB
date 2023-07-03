@@ -20,7 +20,8 @@ const SpotDetails = () => {
     getSpot()
   }, [dispatch])
 
-  if (!spot) return null;
+  if (!spot) return null
+  if (Object.keys(spot).length <= 0) return null;
 
   return (
     <div id="spotDetailsContainer">
