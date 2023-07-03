@@ -6,6 +6,7 @@ import './Reviews.css';
 const Reviews = ({ spot, spotId }) => {
   const dispatch = useDispatch();
   const reviewObj = useSelector((state) => state.reviews.spot)
+  const user = useSelector((state) => state.session.user)
 
   useEffect(() => {
     const getReviewList = async () => {
@@ -37,6 +38,8 @@ const Reviews = ({ spot, spotId }) => {
         {spot.numReviews > 0 && <p>&#x2022;</p>}
         {spot.numReviews > 0 && <p>{spot.numReviews} {spot.numReviews === 1 ? "review" : "reviews"}</p>}
       </div>
+
+      {<button id="createReviewButton">Post your review</button>}
 
       <ul id="reviewListContainer">
         {reviewList.map(review => (
