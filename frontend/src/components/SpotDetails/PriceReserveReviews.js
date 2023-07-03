@@ -15,8 +15,8 @@ const PriceReserveReviews = ({ spot }) => {
         </div>
         <div id="ratingReviews">
           <p><i className="fa-solid fa-star"></i> {spot.avgRating || "New"}</p>
-          <p>&#x2022;</p>
-          <p>{spot.numReviews} {spot.numReviews === 1 ? "review" : "reviews"}</p>
+          {spot.numReviews > 0 && <p>&#x2022;</p>}
+          {spot.numReviews > 0 && <p>{spot.numReviews} {spot.numReviews === 1 ? "review" : "reviews"}</p>}
         </div>
       </div>
       <button onClick={handleClick} id="reserveButton">Reserve</button>
