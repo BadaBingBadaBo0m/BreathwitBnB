@@ -1,3 +1,11 @@
 #createReviewForm {
   background-color: white;
 }
+
+#starsContainer .filled {
+  color: red;
+}
+
+#starsContainer .empty {
+  color: rgb(185, 118, 118);
+}

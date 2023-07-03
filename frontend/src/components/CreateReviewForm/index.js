@@ -1,61 +1,91 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
+import { useModal } from '../../context/Modal';
 import './reviewForm.css';
 
 const CreateReviewForm = () => {
-  let rating
-  const [activeRating, setActiveRating] = useState();
+  const spot = useSelector((state) => state.spots.singleSpot);
+  const { closeModal } = useModal();
+  const [description, setDescription] = useState('');
+  const [activeRating, setActiveRating] = useState(0);
+  const [rating, setRating] = useState(0);
+
+  // useEffect(() => {
+  //   console.log(activeRating)
+  //   console.log(rating)
+  // }, [activeRating, rating])
+
+  const onChange = (val) => {
+    setRating(val)
+  }
+
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    console.log({
+      description,
+      rating
+    })
+
+    // closeModal()
+  }
 
   return (
     <div>
-      <form id="createReviewForm">
+      <form id="createReviewForm" onSubmit={(onSubmit)}>
         <h2>How was your stay?</h2>
 
-        <textarea placeholder='Leave your review here...' />
+        <textarea
+          placeholder='Leave your review here...'
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
 
         <div id='starsContainer'>
           <div
             className={activeRating >= 1 ? 'filled' : 'empty'}
-          // onMouseEnter={() => !disabled && setActiveRating(1)}
-          // onMouseLeave={() => setActiveRating(rating)}
-          // onClick={() => onChange(1)}
+            onMouseEnter={() => setActiveRating(1)}
+            onMouseLeave={() => setActiveRating(rating)}
+            onClick={() => onChange(1)}
           >
-            <i class="fa-solid fa-star"></i>
+            {<i className="fa-solid fa-star"></i>}
           </div>
           <div
             className={activeRating >= 2 ? 'filled' : 'empty'}
-          // onMouseEnter={() => !disabled && setActiveRating(2)}
-          // onMouseLeave={() => setActiveRating(rating)}
-          // onClick={() => onChange(2)}
+            onMouseEnter={() => setActiveRating(2)}
+            onMouseLeave={() => setActiveRating(rating)}
+            onClick={() => onChange(2)}
           >
-            <i class="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
           </div>
           <div
             className={activeRating >= 3 ? 'filled' : 'empty'}
-          // onMouseEnter={() => !disabled && setActiveRating(3)}
-          // onMouseLeave={() => setActiveRating(rating)}
-          // onClick={() => onChange(3)}
+            onMouseEnter={() => setActiveRating(3)}
+            onMouseLeave={() => setActiveRating(rating)}
+            onClick={() => onChange(3)}
           >
-            <i class="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
           </div>
           <div
             className={activeRating >= 4 ? 'filled' : 'empty'}
-          // onMouseEnter={() => !disabled && setActiveRating(4)}
-          // onMouseLeave={() => setActiveRating(rating)}
-          // onClick={() => onChange(4)}
+            onMouseEnter={() => setActiveRating(4)}
+            onMouseLeave={() => setActiveRating(rating)}
+            onClick={() => onChange(4)}
           >
-            <i class="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
           </div>
           <div
             className={activeRating >= 5 ? 'filled' : 'empty'}
-          // onMouseEnter={() => !disabled && setActiveRating(5)}
-          // onMouseLeave={() => setActiveRating(rating)}
-          // onClick={() => onChange(5)}
+            onMouseEnter={() => setActiveRating(5)}
+            onMouseLeave={() => setActiveRating(rating)}
+            onClick={() => onChange(5)}
           >
-            <i class="fa-solid fa-star"></i>
+            <i className="fa-solid fa-star"></i>
           </div>
         </div>
 
-        <button>Submit your review</button>
+        <button type='submit'>Submit your review</button>
 
       </form>
     </div>
