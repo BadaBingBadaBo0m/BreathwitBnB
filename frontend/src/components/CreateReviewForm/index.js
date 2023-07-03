@@ -7,13 +7,15 @@ import './reviewForm.css';
 
 const CreateReviewForm = () => {
   const spot = useSelector((state) => state.spots.singleSpot);
+  const User = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
   const history = useHistory();
   const { closeModal } = useModal();
   const [description, setDescription] = useState('');
   const [activeRating, setActiveRating] = useState(0);
   const [rating, setRating] = useState(0);
-  const [errors, setErrors] = useState({});
+  const [formErrors, setFormErrors] = useState([]);
+  const [serverErrors, setServerErrors] = useState("");
   // const [isDisabled, setIsDisabled] = useState(true);
 
   const onChange = (val) => {
@@ -23,13 +25,16 @@ const CreateReviewForm = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    setFormErrors([]);
+    setServerErrors("")
 
     const newReview = {
       review: {
         review: description,
         stars: rating
       },
-      spotId: spot.id
+      spotId: spot.id,
+      User
     }
 
     const createdReview = await dispatch(createReview(newReview))
@@ -38,25 +43,33 @@ const CreateReviewForm = () => {
           const data = await res.json();
           if (data && data.errors) {
             if (res.status === 400 && data.errors) {
-              setErrors(data.errors)
+              const errorList = Object.values(data.errors)
+              setFormErrors(errorList)
               return
             }
           }
           if (res.status === 500 && data.message) {
-            setErrors(data.message)
+            setServerErrors(data.message)
             return
           }
         }
       )
 
-    console.log('errors', errors)
+    if (createdReview) {
+      closeModal()
+    }
   }
 
   return (
     <div>
       <form id="createReviewForm" onSubmit={(onSubmit)}>
         <h2>How was your stay?</h2>
-
+        {formErrors.length > 0 &&
+          <div
+            id='reviewErrorContainer'>
+            {formErrors.map(error => (<p key={error} className='reviewError'>{error}</p>))}
+          </div>}
+        {serverErrors.length > 0 && <div id='reviewErrorContainer'><p className='reviewError'>{serverErrors}</p></div>}
         <textarea
           placeholder='Leave your review here...'
           value={description}

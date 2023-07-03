@@ -10,10 +10,11 @@ const getReviews = (reviews) => {
   };
 };
 
-const createNewReview = (review) => {
+const createNewReview = (review, spotId, User) => {
   return {
     type: CREATE_REVIEW,
-    review
+    review,
+    User
   };
 };
 
@@ -30,21 +31,21 @@ export const getReviewBySpotId = ({ spotId }) => async (dispatch) => {
   console.log('GetReviewById failed')
 }
 
-export const createReview = ({ review, spotId }) => async (dispatch) => {
+export const createReview = ({ review, spotId, User }) => async (dispatch) => {
   const res = await csrfFetch(`/api/spots/${spotId}/reviews`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(review)
   });
 
+  const data = await res.json();
+
   if (res.ok) {
-    const data = await res.json();
-
-    dispatch(createNewReview(data));
-    return data;
+    dispatch(createNewReview(data, spotId, User));
+    return data
+  } else {
+    return res
   }
-
-  return res
 }
 
 const initialState = {};
@@ -57,8 +58,9 @@ const reviewsReducer = (state = initialState, action) => {
       action.reviews.Reviews.forEach((review) => newState.spot[review.id] = review)
       return newState;
     case CREATE_REVIEW:
-      newState = { ...state, };
-      newState.spot[action.spotId] = action;
+      newState = { ...state, spot: {} };
+      newState.spot[action.review.id] = action.review;
+      newState.spot[action.review.id].User = action.User
       return newState;
     default:
       return state;
