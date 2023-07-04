@@ -14,11 +14,11 @@ const SpotDetails = () => {
 
   useEffect(() => {
     const getSpot = async () => {
-      dispatch(getSpotById(spotId))
+      dispatch(getSpotById(spotId));
     }
 
-    getSpot()
-  }, [dispatch])
+    getSpot();
+  }, [dispatch]);
 
   if (!spot) return null
   if (Object.keys(spot).length <= 0) return null;
