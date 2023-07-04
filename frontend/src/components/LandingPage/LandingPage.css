@@ -1,19 +1,23 @@
 #spotsContainer {
   margin: auto;
+  /* max-width: 130rem; */
 }
 
 #spotList {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-auto-flow: row;
+  place-items: center;
+
   list-style-type: none;
   padding: 0;
-  align-self: center;
-  width: 100%;
-  justify-content: center;
+  width: 95%;
+  margin: auto;
 }
 
 .spot {
-  width: fit-content;
+  width: 30rem;
   padding: 1rem;
 }
 
