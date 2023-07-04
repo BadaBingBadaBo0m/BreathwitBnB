@@ -29,9 +29,9 @@ const ManageSpots = () => {
       <NavLink to='/spots/new'> <button id="createNewSpotButton">Create a New Spot</button> </NavLink>
 
       <div id="userSpotListContainer">
-        <ul id="spotList">
+        <ul id="manageSpotList">
           {spotList.map(spot => (
-            <li key={spot.id} className='spot'>
+            <li key={spot.id} className='manageSpotsSpot'>
               <img
                 className='spotImage'
                 src={spot.previewImage}
