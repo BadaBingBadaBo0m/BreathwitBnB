@@ -58,7 +58,7 @@ const reviewsReducer = (state = initialState, action) => {
       action.reviews.Reviews.forEach((review) => newState.spot[review.id] = review)
       return newState;
     case CREATE_REVIEW:
-      newState = { ...state, spot: {} };
+      newState = { ...state, spot: { ...state.spot } };
       newState.spot[action.review.id] = action.review;
       newState.spot[action.review.id].User = action.User
       return newState;

@@ -49,6 +49,7 @@ const Reviews = ({ spot, spotId }) => {
             <h2 id="reviewOwner">{review.User.firstName}</h2>
             <>{getDate(review.id)}</>
             <p>{review.review}</p>
+            {review.ownerId == user.id ? <button>Delete</button> : <>Not the owner</>}
           </li>
         ))}
       </ul>
