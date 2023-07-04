@@ -2,10 +2,12 @@ import { useEffect } from "react";
 import { getUserSpots } from "../../store/user";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import './manageSpots.css';
 
 const ManageSpots = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const spotObj = useSelector((state) => state.user.spots)
   const spotList = Object.values(spotObj);
 
@@ -19,8 +21,8 @@ const ManageSpots = () => {
 
   if (Object.keys(spotObj).length <= 0) return null;
 
-  const handleClick = () => {
-
+  const handleClick = (spotId) => {
+    history.push(`/spots/${spotId}`);
   }
 
   return (

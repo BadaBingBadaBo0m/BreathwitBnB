@@ -39,6 +39,10 @@
   margin: 0;
 }
 
+#manageLocationRatingContainer>h2:hover {
+  cursor: pointer;
+}
+
 
 #createNewSpotButton {
   height: 1.6rem;
