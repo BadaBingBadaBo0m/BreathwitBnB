@@ -44,12 +44,12 @@ const Reviews = ({ spot, spotId }) => {
         {user !== null && user.id !== spot.ownerId && <OpenModalButton buttonText={'Post your review'} modalComponent={<CreateReviewForm />} />}
       </div>
       <ul id="reviewListContainer">
-        {reviewList.map(review => (
+        {reviewList.reverse().map(review => (
           <li key={review.id} id="review">
             <h2 id="reviewOwner">{review.User.firstName}</h2>
             <>{getDate(review.id)}</>
             <p>{review.review}</p>
-            {review.ownerId == user.id ? <button>Delete</button> : <>Not the owner</>}
+            {review.userId == user.id ? <button id="reviewDeleteBtn">Delete</button> : <>Not the owner</>}
           </li>
         ))}
       </ul>
