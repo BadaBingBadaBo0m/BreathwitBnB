@@ -12,7 +12,7 @@ const UpdateSpotForm = () => {
   const countryList = validCountries.countries;
   const dispatch = useDispatch();
   const history = useHistory();
-  const user = useSelector((state) => state.session.user);
+  // const user = useSelector((state) => state.session.user);
   const [country, setCountry] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -20,12 +20,12 @@ const UpdateSpotForm = () => {
   const [description, setDescription] = useState("");
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
-  const [previewImage, setPreviewImage] = useState("");
-  const [spotImage2, setSpotImage2] = useState("");
-  const [spotImage3, setSpotImage3] = useState("");
-  const [spotImage4, setSpotImage4] = useState("");
-  const [spotImage5, setSpotImage5] = useState("");
-  const [spotImagesState, setSpotImagesState] = useState([]);
+  // const [previewImage, setPreviewImage] = useState("");
+  // const [spotImage2, setSpotImage2] = useState("");
+  // const [spotImage3, setSpotImage3] = useState("");
+  // const [spotImage4, setSpotImage4] = useState("");
+  // const [spotImage5, setSpotImage5] = useState("");
+  // const [spotImagesState, setSpotImagesState] = useState([]);
   const [errors, setErrors] = useState({});
   const spotId = useParams();
   const spot = useSelector((state) => state.spots.singleSpot);
@@ -54,9 +54,32 @@ const UpdateSpotForm = () => {
   if (!spot) return null;
   if (Object.keys(spot).length <= 0) return null;
 
+  const checkErrors = () => {
+    const errorObj = {};
 
+    if (!country) errorObj.country = "Country is required";
 
-  const handleSubmit = (e) => {
+    if (!address) errorObj.address = "Address is required";
+
+    if (!city) errorObj.city = "City is required";
+
+    if (!state) errorObj.state = "State is required";
+
+    if (description.length < 30) errorObj.description = 'Description needs a minimum of 30 characters';
+
+    if (!title) errorObj.title = "Name is required";
+
+    if (price < 1 || !price) errorObj.price = 'Price is required';
+
+    // if (!spotImagesState[0]) errorObj.previewImage = "Preview image is required";
+
+    // checkUrls(spotImagesState, errorObj)
+
+    setErrors(errorObj)
+    return errorObj
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newSpot = {
@@ -74,9 +97,13 @@ const UpdateSpotForm = () => {
       spotId: spot.id
     }
 
-    dispatch(updateSpotById(newSpot))
+    const updatedErrors = checkErrors();
 
-    history.push(`/spots/${spot.id}`)
+    if (!Object.keys(updatedErrors).length) {
+      const updatedSpot = await dispatch(updateSpotById(newSpot))
+
+      if (updatedSpot) history.push(`/spots/${spot.id}`)
+    }
   }
 
   return (

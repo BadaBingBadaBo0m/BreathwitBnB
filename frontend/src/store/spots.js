@@ -96,8 +96,11 @@ export const updateSpotById = (newSpot) => async (dispatch) => {
 
   if (updatedSpot.ok) {
     const updatedSpotData = await updatedSpot.json();
-    dispatch(updateSpot(updatedSpotData, spotId))
+    dispatch(updateSpot(updatedSpotData, spotId));
+    return updatedSpotData;
   }
+
+  console.log('Update failed');
 }
 
 const initialState = { allSpots: {}, singleSpot: {} };
