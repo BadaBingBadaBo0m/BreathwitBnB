@@ -38,14 +38,14 @@ const ManageSpots = () => {
                 onClick={() => handleClick(spot.id)}>
               </img>
               <div id='spotInfoContainer'>
-                <div id='locationRatingContainer'>
+                <div id='manageLocationRatingContainer'>
                   <h2 onClick={() => handleClick(spot.id)}>{spot.city}, {spot.state}</h2>
                   <p><i className="fa-solid fa-star"></i>{spot.avgRating || "New"}</p>
                 </div>
-                <p id='spotPrice'>${spot.price} night</p>
+                <p id='manageSpotPrice'>${spot.price} night</p>
+                <button className="spotButtons">Update</button>
+                <button className="spotButtons">Delete</button>
               </div>
-              <button className="spotButtons">Update</button>
-              <button className="spotButtons">Delete</button>
             </li>
           ))}
         </ul>

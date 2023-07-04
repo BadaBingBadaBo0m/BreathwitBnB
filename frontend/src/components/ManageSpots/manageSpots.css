@@ -21,6 +21,24 @@
   padding-top: 1rem;
 }
 
+#manageSpotPrice {
+  margin: 0;
+  font-size: 1.2rem;
+  margin-bottom: .5rem;
+}
+
+#manageLocationRatingContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+}
+
+
+#manageLocationRatingContainer>h2 {
+  margin: 0;
+}
+
 
 #createNewSpotButton {
   height: 1.6rem;

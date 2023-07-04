@@ -35,6 +35,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 3rem;
+}
+
+
+#locationRatingContainer>h2 {
+  margin: 0;
 }
 
 #locationRatingContainer>h2:hover {
