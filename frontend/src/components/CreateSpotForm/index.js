@@ -11,6 +11,7 @@ const CreateSpotForm = () => {
   const countryList = validCountries.countries;
   const dispatch = useDispatch();
   const history = useHistory();
+  const user = useSelector((state) => state.session.user);
   const [country, setCountry] = useState("United States of America");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -25,6 +26,8 @@ const CreateSpotForm = () => {
   const [spotImage5, setSpotImage5] = useState("");
   const [spotImagesState, setSpotImagesState] = useState([]);
   const [errors, setErrors] = useState({});
+
+  if (user === null) history.push('/')
 
   useEffect(() => {
     const images = [previewImage, spotImage2, spotImage3, spotImage4, spotImage5]
