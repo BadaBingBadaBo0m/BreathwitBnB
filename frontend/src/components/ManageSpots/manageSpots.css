@@ -33,3 +33,17 @@
 #createNewSpotButton:hover {
   cursor: pointer;
 }
+
+.spotButtons {
+  height: 1.5rem;
+  color: white;
+  background-color: red;
+  border: 2px solid black;
+  box-shadow: 3px 4px 5px gray;
+  width: 4rem;
+  margin-right: .5rem;
+}
+
+.spotButtons:hover {
+  cursor: pointer;
+}

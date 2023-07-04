@@ -44,6 +44,8 @@ const ManageSpots = () => {
                 </div>
                 <p id='spotPrice'>${spot.price} night</p>
               </div>
+              <button className="spotButtons">Update</button>
+              <button className="spotButtons">Delete</button>
             </li>
           ))}
         </ul>
