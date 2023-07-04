@@ -56,7 +56,7 @@ function ProfileButton({ user }) {
             {/* <li className='loggedInProfileDropdownLI' >{user.firstName} {user.lastName}</li> */}
             <li className='loggedInProfileDropdownLI userEmail' >{user.email}</li>
             <li className='spotLink'>
-              <NavLink id="editSpotLink" to='/mySpots' onClick={closeMenu}>Manage spots</NavLink>
+              <NavLink id="editSpotLink" to='/spots/current' onClick={closeMenu}>Manage spots</NavLink>
             </li>
             <li>
               <button id='logoutBtn' onClick={logout}>Log Out</button>
