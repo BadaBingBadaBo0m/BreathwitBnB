@@ -13,6 +13,7 @@ import configureStore from './store';
 import * as sessionActions from "./store/session";
 import * as spotActions from './store/spots';
 import * as reviewActions from './store/reviews';
+import * as userActions from './store/user';
 
 const store = configureStore();
 
@@ -24,6 +25,7 @@ if (process.env.NODE_ENV !== 'production') {
   window.sessionActions = sessionActions;
   window.spotActions = spotActions;
   window.reviewActions = reviewActions;
+  window.userActions = userActions;
 }
 
 function Root() {
