@@ -45,7 +45,7 @@ const ManageSpots = () => {
                   <p><i className="fa-solid fa-star"></i>{spot.avgRating || "New"}</p>
                 </div>
                 <p id='manageSpotPrice'>${spot.price} night</p>
-                <button className="spotButtons">Update</button>
+                <button className="spotButtons" onClick={() => history.push(`/editSpot/${spot.id}`)}>Update</button>
                 <button className="spotButtons">Delete</button>
               </div>
             </li>

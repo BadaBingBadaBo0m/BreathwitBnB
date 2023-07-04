@@ -64,6 +64,7 @@
   box-shadow: 3px 4px 5px gray;
   width: 4rem;
   margin-right: .5rem;
+  margin-top: .5rem;
 }
 
 .spotButtons:hover {
