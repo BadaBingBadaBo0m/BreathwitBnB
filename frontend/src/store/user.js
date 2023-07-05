@@ -17,6 +17,8 @@ export const getUserSpots = () => async (dispatch) => {
     dispatch(loadUserSpots(data.Spots))
     return res;
   }
+
+  return res;
 }
 
 const initialState = { spots: {} };

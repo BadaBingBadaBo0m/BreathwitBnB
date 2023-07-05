@@ -49,7 +49,7 @@ const ManageSpots = () => {
                 <p id='manageSpotPrice'>${spot.price} night</p>
                 <div id="spotButtons">
                   <button onClick={() => history.push(`/editSpot/${spot.id}`)}>Update</button>
-                  <OpenModalButton buttonText="Delete" modalComponent={<DeleteSpotModal />} />
+                  <OpenModalButton buttonText="Delete" modalComponent={<DeleteSpotModal spotId={spot.id} />} />
                 </div>
               </div>
             </li>

@@ -1,0 +1,40 @@
+#confirmDeleteContainer {
+  background-color: white;
+  height: 15rem;
+  width: 20rem;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 3px solid black;
+}
+
+#deleteModalText {
+  width: 90%;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+.deleteModalButtons {
+  width: 90%;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.deleteModalButtons:hover {
+  cursor: pointer;
+}
+
+.deleteModalButtons.yes {
+  color: white;
+  background-color: red;
+  border: 2px solid black;
+  box-shadow: 3px 4px 5px gray;
+}
+
+.deleteModalButtons.no {
+  color: white;
+  background-color: gray;
+  border: 2px solid black;
+  box-shadow: 3px 4px 5px gray;
+}
