@@ -3,13 +3,15 @@ import { useModal } from "../../context/Modal";
 import './DeleteReviewModal.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteReviewById } from '../../store/reviews';
+import { getReviewBySpotId } from "../../store/reviews";
 
-const DeleteReviewModal = ({ reviewId }) => {
+const DeleteReviewModal = ({ reviewId, spotId }) => {
   const { closeModal } = useModal();
   const dispatch = useDispatch();
 
   const handleDelete = async () => {
     const deleted = await dispatch(deleteReviewById(reviewId)).then(closeModal)
+    await dispatch(getReviewBySpotId(spotId));
   }
 
   return (

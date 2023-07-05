@@ -13,7 +13,7 @@ const Reviews = ({ spot, spotId }) => {
 
   useEffect(() => {
     const getReviewList = async () => {
-      dispatch(getReviewBySpotId(spotId))
+      await dispatch(getReviewBySpotId(spotId))
     }
 
     getReviewList();
@@ -51,7 +51,7 @@ const Reviews = ({ spot, spotId }) => {
             <>{getDate(review.id)}</>
             <p>{review.review}</p>
             {review.userId == user.id ?
-              <OpenModalButton buttonText={'Delete'} modalComponent={<DeleteReviewModal reviewId={review.id} />} />
+              <OpenModalButton buttonText={'Delete'} modalComponent={<DeleteReviewModal reviewId={review.id} spotId={spotId} />} />
               : <></>}
           </li>
         ))}
