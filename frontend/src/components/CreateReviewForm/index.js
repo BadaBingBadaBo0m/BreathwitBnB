@@ -3,9 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { useHistory } from 'react-router-dom';
 import { createReview } from '../../store/reviews';
+import { getReviewBySpotId } from "../../store/reviews";
+import { getSpotById } from "../../store/spots";
 import './reviewForm.css';
 
-const CreateReviewForm = () => {
+const CreateReviewForm = ({ spotId }) => {
   const spot = useSelector((state) => state.spots.singleSpot);
   const User = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
@@ -57,6 +59,7 @@ const CreateReviewForm = () => {
 
     if (createdReview) {
       closeModal()
+      await dispatch(getSpotById(spotId));
     }
   }
 

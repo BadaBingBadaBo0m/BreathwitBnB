@@ -42,7 +42,7 @@ const Reviews = ({ spot, spotId }) => {
         {spot.numReviews > 0 && <p>{spot.numReviews} {spot.numReviews === 1 ? "review" : "reviews"}</p>}
       </div>
       <div id="createReviewButtonContainer">
-        {user !== null && user.id !== spot.ownerId && <OpenModalButton buttonText={'Post your review'} modalComponent={<CreateReviewForm />} />}
+        {user !== null && user.id !== spot.ownerId && <OpenModalButton buttonText={'Post your review'} modalComponent={<CreateReviewForm spotId={spotId} />} />}
       </div>
       <ul id="reviewListContainer">
         {reviewList.reverse().map(review => (
@@ -50,7 +50,7 @@ const Reviews = ({ spot, spotId }) => {
             <h2 id="reviewOwner">{review.User.firstName}</h2>
             <>{getDate(review.id)}</>
             <p>{review.review}</p>
-            {user !== null && review.userId == user.id ?
+            {user !== null && review.userId === user.id ?
               <OpenModalButton buttonText={'Delete'} modalComponent={<DeleteReviewModal reviewId={review.id} spotId={spotId} />} />
               : <></>}
           </li>
