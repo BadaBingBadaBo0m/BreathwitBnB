@@ -81,7 +81,7 @@ export const createSpot = (newSpot) => async (dispatch) => {
 
     const spotImageData = await addImagesToSpot.json();
 
-    return spotData;
+    return { spotData, spotImageData };
   }
 }
 

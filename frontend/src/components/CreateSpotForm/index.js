@@ -135,7 +135,7 @@ const CreateSpotForm = () => {
       //   }
       // );
 
-      if (createdSpot) history.push(`/spots/${createdSpot.id}`)
+      if (createdSpot) history.push(`/spots/${createdSpot.spotData.id}`)
     }
   }
 

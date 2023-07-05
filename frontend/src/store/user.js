@@ -38,6 +38,7 @@ export const deleteSpotById = (spotId) => async (dispatch) => {
   if (res.ok) {
     const data = await res.json();
     dispatch(deleteSpot(spotId));
+    return data;
   }
 
   return res;
