@@ -56,7 +56,6 @@ const userReducer = (state = initialState, action) => {
     case DELETE_SPOT:
       newState = { ...state, spots: { ...state.spots } };
       delete newState.spots[action.spotId];
-      console.log(newState)
       return newState;
     default:
       return state;

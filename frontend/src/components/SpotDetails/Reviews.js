@@ -17,7 +17,7 @@ const Reviews = ({ spot, spotId }) => {
     }
 
     getReviewList();
-  }, [])
+  }, [dispatch])
 
   if (!reviewObj) return null;
 
@@ -51,7 +51,7 @@ const Reviews = ({ spot, spotId }) => {
             <>{getDate(review.id)}</>
             <p>{review.review}</p>
             {review.userId == user.id ?
-              <OpenModalButton buttonText={'Delete'} modalComponent={<DeleteReviewModal />} />
+              <OpenModalButton buttonText={'Delete'} modalComponent={<DeleteReviewModal reviewId={review.id} />} />
               : <></>}
           </li>
         ))}
