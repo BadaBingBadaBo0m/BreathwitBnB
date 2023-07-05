@@ -1,0 +1,53 @@
+#signUpFormContainer {
+  background-color: white;
+  border-radius: 20px;
+}
+
+.signUpInfoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  min-height: 6.5rem;
+}
+
+#signUpForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20rem;
+}
+
+.signUpLabel {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: .2rem;
+}
+
+.signUpInput {
+  border: 1px solid black;
+  height: 1.2rem;
+}
+
+.signUpErrors {
+  color: red;
+  text-align: center;
+  width: 80%;
+  margin: .5rem;
+}
+
+#submitSignUpBtn {
+  width: 80%;
+  height: 2rem;
+  color: white;
+  background-color: red;
+  border: 2px solid black;
+  box-shadow: 3px 4px 5px gray;
+  margin-bottom: 1.5rem;
+}
+
+#submitSignUpBtn:hover {
+  cursor: pointer;
+}
