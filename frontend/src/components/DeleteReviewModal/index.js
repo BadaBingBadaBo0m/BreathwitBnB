@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useModal } from "../../context/Modal";
 import './DeleteReviewModal.css';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { deleteReviewById } from '../../store/reviews';
 import { getReviewBySpotId } from "../../store/reviews";
 import { getSpotById } from "../../store/spots";
@@ -11,7 +11,7 @@ const DeleteReviewModal = ({ reviewId, spotId }) => {
   const dispatch = useDispatch();
 
   const handleDelete = async () => {
-    const deleted = await dispatch(deleteReviewById(reviewId)).then(closeModal)
+    await dispatch(deleteReviewById(reviewId)).then(closeModal)
     await dispatch(getSpotById(spotId));
     await dispatch(getReviewBySpotId(spotId));
   }

@@ -17,7 +17,7 @@ const Reviews = ({ spot, spotId }) => {
     }
 
     getReviewList();
-  }, [dispatch])
+  }, [dispatch, spotId])
 
   if (!reviewObj) return null;
 

@@ -1,9 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
-import { useHistory } from 'react-router-dom';
 import { createReview } from '../../store/reviews';
-import { getReviewBySpotId } from "../../store/reviews";
 import { getSpotById } from "../../store/spots";
 import './reviewForm.css';
 
@@ -11,14 +9,12 @@ const CreateReviewForm = ({ spotId }) => {
   const spot = useSelector((state) => state.spots.singleSpot);
   const User = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
-  const history = useHistory();
   const { closeModal } = useModal();
   const [description, setDescription] = useState('');
   const [activeRating, setActiveRating] = useState(0);
   const [rating, setRating] = useState(0);
   const [formErrors, setFormErrors] = useState([]);
   const [serverErrors, setServerErrors] = useState("");
-  // const [isDisabled, setIsDisabled] = useState(true);
 
   const onChange = (val) => {
     setRating(val)
