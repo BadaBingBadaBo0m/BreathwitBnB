@@ -54,6 +54,7 @@ nav {
   border: 1px solid black;
   margin-top: 5px;
   padding: 10px;
+  padding-bottom: 5px;
   color: red;
   text-align: center;
   width: fit-content;
