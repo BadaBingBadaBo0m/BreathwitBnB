@@ -36,6 +36,18 @@
   box-shadow: 3px 4px 5px gray;
 }
 
+#review>button {
+  color: white;
+  background-color: red;
+  border: 2px solid black;
+  box-shadow: 3px 4px 5px gray;
+  height: 1.5rem;
+}
+
+#review>button:hover {
+  cursor: pointer;
+}
+
 #createReviewButtonContainer>button:hover {
   cursor: pointer;
 }

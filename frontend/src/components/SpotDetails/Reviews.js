@@ -4,6 +4,7 @@ import { getReviewBySpotId } from "../../store/reviews";
 import OpenModalButton from "../OpenModalButton";
 import CreateReviewForm from "../CreateReviewForm";
 import './Reviews.css';
+import DeleteReviewModal from "../DeleteReviewModal";
 
 const Reviews = ({ spot, spotId }) => {
   const dispatch = useDispatch();
@@ -49,7 +50,9 @@ const Reviews = ({ spot, spotId }) => {
             <h2 id="reviewOwner">{review.User.firstName}</h2>
             <>{getDate(review.id)}</>
             <p>{review.review}</p>
-            {review.userId == user.id ? <button id="reviewDeleteBtn">Delete</button> : <>Not the owner</>}
+            {review.userId == user.id ?
+              <OpenModalButton buttonText={'Delete'} modalComponent={<DeleteReviewModal />} />
+              : <></>}
           </li>
         ))}
       </ul>
