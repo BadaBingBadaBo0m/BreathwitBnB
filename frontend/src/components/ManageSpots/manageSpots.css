@@ -3,19 +3,32 @@
   margin: auto;
 }
 
-#manageSpotList {
+#manageSpotListGrid {
   display: grid;
   grid-gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   grid-auto-flow: row;
-  /* place-items: center; */
 
   list-style-type: none;
   padding: 0;
-  /* width: 95%; */
   max-width: 125rem;
   margin: auto;
 }
+
+#manageSpotListFlex {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+
+  list-style-type: none;
+  padding: 0;
+  max-width: 125rem;
+  margin: auto;
+}
+
+/* @media screen and (max-width: ;) {
+  
+} */
 
 .manageSpotsSpot {
   width: 30rem;

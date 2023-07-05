@@ -33,7 +33,7 @@ const ManageSpots = () => {
       <NavLink to='/spots/new'> <button id="createNewSpotButton">Create a New Spot</button> </NavLink>
 
       <div id="userSpotListContainer">
-        <ul id="manageSpotList">
+        <ul id={spotList.length >= 4 ? 'manageSpotListGrid' : "manageSpotListFlex"}>
           {spotList.map(spot => (
             <li title={spot.name} key={spot.id} className='manageSpotsSpot'>
               <img

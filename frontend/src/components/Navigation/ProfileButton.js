@@ -52,7 +52,7 @@ function ProfileButton({ user }) {
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
           <>
-            <li className='loggedInProfileDropdownLI' >Hello, {user.username}</li>
+            <li className='loggedInProfileDropdownLI' >Hello, {user.firstName}</li>
             {/* <li className='loggedInProfileDropdownLI' >{user.firstName} {user.lastName}</li> */}
             <li className='loggedInProfileDropdownLI userEmail' >{user.email}</li>
             <li className='spotLink'>
