@@ -50,7 +50,7 @@ const Reviews = ({ spot, spotId }) => {
             <h2 id="reviewOwner">{review.User.firstName}</h2>
             <>{getDate(review.id)}</>
             <p>{review.review}</p>
-            {review.userId == user.id ?
+            {user !== null && review.userId == user.id ?
               <OpenModalButton buttonText={'Delete'} modalComponent={<DeleteReviewModal reviewId={review.id} spotId={spotId} />} />
               : <></>}
           </li>
