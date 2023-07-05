@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
+import { useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import "./SignupForm.css";
 
 function SignupFormModal() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -34,7 +36,8 @@ function SignupFormModal() {
           if (data && data.errors) {
             setErrors(data.errors);
           }
-        });
+        })
+        .then(history.push('/'));
     }
     return setErrors({
       confirmPassword: "Confirm Password field must be the same as the Password field"
@@ -53,7 +56,7 @@ function SignupFormModal() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="signUpInput"
-            // required
+              required
             />
           </label>
           <label className="signUpLabel">
@@ -63,7 +66,7 @@ function SignupFormModal() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="signUpInput"
-            // required
+              required
             />
           </label>
           {errors.email && <p className="signUpErrors">{errors.email}</p>}
@@ -77,7 +80,7 @@ function SignupFormModal() {
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               className="signUpInput"
-            // required
+              required
             />
           </label>
           <label className="signUpLabel">
@@ -87,7 +90,7 @@ function SignupFormModal() {
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               className="signUpInput"
-            // required
+              required
             />
           </label>
           {errors.firstName && <p className="signUpErrors">{errors.firstName}</p>}
@@ -101,7 +104,7 @@ function SignupFormModal() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="signUpInput"
-            // required
+              required
             />
           </label>
           <label className="signUpLabel">
@@ -111,7 +114,7 @@ function SignupFormModal() {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               className="signUpInput"
-            // required
+              required
             />
           </label>
           {errors.password && <p className="signUpErrors">{errors.password}</p>}
