@@ -31,7 +31,7 @@ const LandingPage = () => {
     <div id='spotsContainer'>
       <ul id='spotList'>
         {spotList.map(spot => (
-          <li key={spot.id} className='spot'>
+          <li title={spot.name} key={spot.id} className='spot'>
             <img
               className='spotImage'
               src={spot.previewImage}
