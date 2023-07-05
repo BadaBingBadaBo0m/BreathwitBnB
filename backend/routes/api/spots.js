@@ -21,7 +21,10 @@ const avgRatingAndPreviewImg = async (spots) => {
       count += review.stars;
       stars.push(review.stars);
     }
-    spot.dataValues.avgRating = count / stars.length;
+    // spot.dataValues.avgRating = count / stars.length;
+
+    const averageRating = count / stars.length;
+    spot.dataValues.avgRating = Math.floor(averageRating * 10) / 10; // Round down to 1 decimal place
 
     const spotImages = await SpotImage.findAll({
       where: {
@@ -358,7 +361,10 @@ router.get('/:spotId', async (req, res) => {
     count += review.stars;
     stars.push(review.stars);
   }
-  spot.dataValues.avgRating = count / stars.length;
+
+  // spot.dataValues.avgRating = count / stars.length;
+  const averageRating = count / stars.length;
+  spot.dataValues.avgRating = Math.floor(averageRating * 10) / 10;
   spot.dataValues.numReviews = numReviews;
 
   res.json(spot);
