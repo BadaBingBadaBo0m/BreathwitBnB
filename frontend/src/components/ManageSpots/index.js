@@ -11,17 +11,27 @@ const ManageSpots = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const spotObj = useSelector((state) => state.user.spots)
-  const spotList = Object.values(spotObj);
+  let spotList = Object.values(spotObj);
 
   useEffect(() => {
-    const getSpots = () => {
-      dispatch(getUserSpots());
+    const getSpots = async () => {
+      await dispatch(getUserSpots())
+        .catch((error) => {
+          if (error.status == 404) {
+            spotList = []
+          };
+        })
     }
 
     getSpots();
   }, [dispatch]);
 
-  if (Object.keys(spotObj).length <= 0) return null;
+  if (Object.keys(spotObj).length <= 0) return (
+    <div id="manageSpotsContainer">
+      <h2>Manage spots</h2>
+      <NavLink to='/spots/new'> <button id="createNewSpotButton">Create a New Spot</button> </NavLink>
+    </div>
+  );
 
   const handleClick = (spotId) => {
     history.push(`/spots/${spotId}`);
