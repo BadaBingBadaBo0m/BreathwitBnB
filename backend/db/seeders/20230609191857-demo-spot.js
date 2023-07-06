@@ -105,9 +105,57 @@ module.exports = {
         country: 'United States of America',
         lat: 36.08309,
         lng: -79.778255,
-        name: 'Latitude Adjustment Luxury Waterfront Home',
+        name: 'Luxury Waterfront Home',
         description: "Welcome to Latitude Adjustment! This home's stunning architecture lends the feel of a mountain getaway with all the perks of the warm weather and sunshine Lake Norman has to offer. Meticulously designed, the luxury bath home provides panoramic views. The open floor plan and abundance of outdoor decking overlooking the lake are perfect for hosting family and friends for your next getaway.",
         price: '1,477'
+      },
+      {
+        ownerId: 2,
+        address: '13330 Ranchero Rd',
+        city: 'Asheville',
+        state: 'North Carolina',
+        country: 'United States of America',
+        lat: 34.383656,
+        lng: -117.371084,
+        name: 'Sanctuary - Earth & Sky Dwellings',
+        description: "Take in the rustic, fairy tale vibe of this custom-made treehouse in the midst of towering white oaks. Recline in a rocking chair and watch the sunset over the mountains, or try your hand at some stargazing from the comfort of the deluxe double bed.",
+        price: 380
+      },
+      {
+        ownerId: 2,
+        address: '3606 Willow Pass Rd',
+        city: 'Concord',
+        state: 'California',
+        country: 'United States of America',
+        lat: 37.986593,
+        lng: -122.009953,
+        name: 'Mountain View Glamping Dome',
+        description: 'Looking for a one-of-a-kind getaway? Well this is the one! Come glamp at our luxurious glamping dome that has all the amenities to make your trip one to remember. The huge bay window allows you to experience beautiful mountain sunrises and sunsets from the comfort of the couch. You can also relax in the outdoor hot tub, firepit, or ENO hammock to truly feel connected to the mountain view. Enjoy being only 20 minutes to downtown Asheville while feeling like you are in your own oasis.',
+        price: 389
+      },
+      {
+        ownerId: 3,
+        address: '21506 Victory Blvd',
+        city: 'Lexington',
+        state: 'North Carolina',
+        country: 'United States of America',
+        lat: 41.597329,
+        lng: -73.113486,
+        name: 'Heaven Hill',
+        description: "There's NOTHING better than a vacation at High Rock Lake! Heaven Hill is a true getaway that will melt away the stress. This waterfront oasis not only offers a private dock in a large quiet cove, fire pit, screened-in porch, and plenty of areas to unwind, it also gives plenty of space for memories and reflection! Located just minutes from Childress Vineyards, Salisbury, and historic Lexington, and roughly 35 minutes from major cities including Charlotte, Winston Salem, and Greensboro/High Point",
+        price: 216
+      },
+      {
+        ownerId: 3,
+        address: '4800 E Huron River Dr',
+        city: 'Ann Arbor',
+        state: 'Michigan',
+        country: 'United States of America',
+        lat: 42.264352,
+        lng: -83.664622,
+        name: 'Modern Cabin w/ Amazing Mountain Views!',
+        description: "Get ready to be blown away by Blue Ridge's best mountain views. The Sky Loft is a modern, luxurious cabin that was created to be a place to relax and have fun.",
+        price: 435
       }
     ]);
   },

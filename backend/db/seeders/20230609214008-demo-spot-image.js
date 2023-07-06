@@ -218,6 +218,110 @@ module.exports = {
         spotId: 8,
         url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-54077857/original/5a9e19ff-9405-4273-b379-880eb60be887.jpeg?im_w=1440',
         preview: false
+      },
+      // SPOT 9
+      {
+        spotId: 9,
+        url: 'https://a0.muscache.com/im/pictures/d7f2828f-3287-4d8c-ba1a-8222e0dfdbdc.jpg?im_w=1440',
+        preview: true
+      },
+      {
+        spotId: 9,
+        url: 'https://a0.muscache.com/im/pictures/b112c5d3-7773-4a53-b592-204c9e6b9b4c.jpg?im_w=1440',
+        preview: false
+      },
+      {
+        spotId: 9,
+        url: 'https://a0.muscache.com/im/pictures/060a89ae-7621-4975-b6ec-b6c27a6ba4b4.jpg?im_w=1200',
+        preview: false
+      },
+      {
+        spotId: 9,
+        url: 'https://a0.muscache.com/im/pictures/b3a76c33-8ebe-4ed7-8fbc-8670b946e4a6.jpg?im_w=1440',
+        preview: false
+      },
+      {
+        spotId: 9,
+        url: 'https://a0.muscache.com/im/pictures/72d8ed5a-d507-43f6-8daf-94a9129396f6.jpg?im_w=1440',
+        preview: false
+      },
+      // SPOT 10
+      {
+        spotId: 10,
+        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-886928101478680382/original/8455637c-8cf9-439a-99c5-017096dc610f.jpeg?im_w=1200',
+        preview: true
+      },
+      {
+        spotId: 10,
+        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-886928101478680382/original/436b2df2-226b-4e2d-a7ec-57375b0f98ce.jpeg?im_w=1440',
+        preview: false
+      },
+      {
+        spotId: 10,
+        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-886928101478680382/original/ed1bf4a7-7188-4023-91ed-8a6e47e40dfe.jpeg?im_w=1440',
+        preview: false
+      },
+      {
+        spotId: 10,
+        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-886928101478680382/original/7b49e25a-5759-40d2-b52e-bd38be63db60.jpeg?im_w=1440',
+        preview: false
+      },
+      {
+        spotId: 10,
+        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-886928101478680382/original/e4c30502-dc76-4fc0-9a57-2caa3f834dce.jpeg?im_w=1440',
+        preview: false
+      },
+      // SPOT 11
+      {
+        spotId: 11,
+        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-48095114/original/db08478d-ea4a-4e95-81ba-58e485f5f087.jpeg?im_w=1440',
+        preview: true
+      },
+      {
+        spotId: 11,
+        url: 'https://a0.muscache.com/im/pictures/miso/Hosting-48095114/original/abe36681-4413-4a9c-92f8-5ccf1c17675d.jpeg?im_w=1440',
+        preview: false
+      },
+      {
+        spotId: 11,
+        url: 'https://a0.muscache.com/im/pictures/210f8abe-a988-4f15-afb0-da3cf70dac76.jpg?im_w=1440',
+        preview: false
+      },
+      {
+        spotId: 11,
+        url: 'https://a0.muscache.com/im/pictures/45556197-2ede-4acf-85ad-2b4e043b55fd.jpg?im_w=1440',
+        preview: false
+      },
+      {
+        spotId: 11,
+        url: 'https://a0.muscache.com/im/pictures/6462e7e5-436e-452b-94a7-bcd772ac1e5f.jpg?im_w=1440',
+        preview: false
+      },
+      // SPOT 12
+      {
+        spotId: 12,
+        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-664701546220958580/original/a9b473de-3bbe-470a-879d-2339aa487878.jpeg?im_w=1200',
+        preview: true
+      },
+      {
+        spotId: 12,
+        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-664701546220958580/original/1b5892f9-1bc2-4ac5-a841-831ff9d1b8f6.jpeg?im_w=1440',
+        preview: false
+      },
+      {
+        spotId: 12,
+        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-664701546220958580/original/24be16cb-7ccd-4b60-9cd7-e07ad8fed830.jpeg?im_w=1440',
+        preview: false
+      },
+      {
+        spotId: 12,
+        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-664701546220958580/original/4efebbe5-3f95-4cbe-841f-2acbd7e9d1da.jpeg?im_w=1440',
+        preview: false
+      },
+      {
+        spotId: 12,
+        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-664701546220958580/original/8d5f48f2-a7a8-42ab-b34f-c983e89aa3d2.jpeg?im_w=1440',
+        preview: false
       }
     ]);
   },
@@ -226,7 +330,7 @@ module.exports = {
     options.tableName = 'SpotImages';
     const Op = Sequelize.Op;
     return await queryInterface.bulkDelete(options, {
-      spotId: { [Op.in]: [1, 2, 3] }
+      spotId: { [Op.in]: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] }
     })
   }
 };

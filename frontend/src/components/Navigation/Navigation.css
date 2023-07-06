@@ -5,6 +5,7 @@
 #logoContainer {
   display: flex;
   align-items: center;
+  margin-left: 2rem;
 }
 
 #logo {
