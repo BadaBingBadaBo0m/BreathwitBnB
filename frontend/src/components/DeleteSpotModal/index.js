@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useModal } from "../../context/Modal";
 import './DeleteSpotModal.css';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,7 +6,7 @@ import { deleteSpotById } from '../../store/user';
 
 const DeleteSpotModal = ({ spotId }) => {
   const { closeModal } = useModal();
-  const spotObj = useSelector((state) => state.user.spots)
+  // const spotObj = useSelector((state) => state.user.spots)
   const dispatch = useDispatch();
 
   const handleDelete = async () => {

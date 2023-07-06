@@ -13,19 +13,13 @@ const ManageSpots = () => {
   const history = useHistory();
   const spotObj = useSelector((state) => state.user.spots)
   // const user = useSelector((state) => state.session.user);
-  let spotList = Object.values(spotObj);
-  // const [spotList, setSpotList] = useState(Object.values(spotObj))
+  const spotList = Object.values(spotObj);
 
   // if (user === null) history.push('/');
 
   useEffect(() => {
     const getSpots = async () => {
       await dispatch(getUserSpots())
-        .catch((error) => {
-          if (error.status === 404) {
-            spotList = []
-          };
-        })
     }
 
     getSpots();
@@ -38,7 +32,7 @@ const ManageSpots = () => {
   return (
     <div id="manageSpotsContainer">
       <h2>Manage spots</h2>
-      <NavLink to='/spots/new'> <button id="createNewSpotButton">Create a New Spot</button> </NavLink>
+      {!spotList.length && <NavLink to='/spots/new'> <button id="createNewSpotButton">Create a New Spot</button> </NavLink>}
 
       <div id="userSpotListContainer">
         <ul id={spotList.length >= 4 ? 'manageSpotListGrid' : "manageSpotListFlex"}>
@@ -47,10 +41,6 @@ const ManageSpots = () => {
               <li
                 key={spot.id}
                 className='manageSpotsSpot'
-              // data-tooltip-id={spot.id}
-              // data-tip="Tooltip"
-              // data-tooltip-delay-show={300}
-              // data-tooltip-float={true}
               >
                 <div
                   data-tooltip-id={spot.id}

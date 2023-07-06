@@ -18,7 +18,7 @@ const deleteSpot = (spotId) => {
 }
 
 export const getUserSpots = () => async (dispatch) => {
-  const res = await csrfFetch('/api/spots/current');
+  const res = await csrfFetch('/api/spots/current')
 
   if (res.ok) {
     const data = await res.json();
@@ -40,8 +40,6 @@ export const deleteSpotById = (spotId) => async (dispatch) => {
     dispatch(deleteSpot(spotId));
     return data;
   }
-
-  return res;
 }
 
 const initialState = { spots: {} };
@@ -51,7 +49,8 @@ const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_USERS_SPOTS:
       newState = { ...state, spots: { ...state.spots } };
-      action.spots.forEach((spot) => newState.spots[spot.id] = spot);
+      if (action.spots.length) action.spots.forEach((spot) => newState.spots[spot.id] = spot);
+      else newState.spots = action.spots
       return newState;
     case DELETE_SPOT:
       newState = { ...state, spots: { ...state.spots } };

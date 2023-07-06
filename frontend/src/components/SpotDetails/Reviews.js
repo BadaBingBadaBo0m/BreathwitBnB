@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getReviewBySpotId } from "../../store/reviews";
+import validMonths from '../../data/validMonths.json';
 import OpenModalButton from "../OpenModalButton";
 import CreateReviewForm from "../CreateReviewForm";
 import './Reviews.css';
@@ -24,13 +25,16 @@ const Reviews = ({ spot, spotId }) => {
   const reviewList = Object.values(reviewObj)
 
   const getDate = (reviewId) => {
+    const monthList = validMonths.months;
     const reviewDate = reviewObj[reviewId].createdAt
     const splitDate = reviewDate.split('-')
     const month = splitDate[1]
     const year = splitDate[0]
+    console.log(monthList)
+    console.log(Number(month))
 
     return (
-      <h4 id="reviewDate">{month} {year}</h4>
+      <h4 id="reviewDate">{monthList[Number(month) - 1]} {year}</h4>
     )
   }
 
