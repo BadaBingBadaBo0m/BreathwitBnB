@@ -42,7 +42,10 @@ const Reviews = ({ spot, spotId }) => {
         {spot.numReviews > 0 && <p>{spot.numReviews} {spot.numReviews === 1 ? "review" : "reviews"}</p>}
       </div>
       <div id="createReviewButtonContainer">
-        {user !== null && user.id !== spot.ownerId && <OpenModalButton buttonText={'Post your review'} modalComponent={<CreateReviewForm spotId={spotId} />} />}
+        {user !== null &&
+          user.id !== spot.ownerId &&
+          !reviewList.find(review => review.userId === user.id) &&
+          <OpenModalButton buttonText={'Post your review'} modalComponent={<CreateReviewForm spotId={spotId} />} />}
       </div>
       <ul id="reviewListContainer">
         {reviewList.reverse().map(review => (

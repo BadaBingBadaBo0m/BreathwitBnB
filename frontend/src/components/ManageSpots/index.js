@@ -44,7 +44,7 @@ const ManageSpots = () => {
               <div id='spotInfoContainer'>
                 <div id='manageLocationRatingContainer'>
                   <h2 onClick={() => handleClick(spot.id)}>{spot.city}, {spot.state}</h2>
-                  <p><i className="fa-solid fa-star"></i>{spot.avgRating || "New"}</p>
+                  <p><i className="fa-solid fa-star"></i>{spot.avgRating === '0.0' ? "New" : spot.avgRating}</p>
                 </div>
                 <p id='manageSpotPrice'>${spot.price} night</p>
                 <div id="spotButtons">
