@@ -23,7 +23,13 @@ function SignupFormModal() {
       setIsDisabled(false)
     }
 
+    if (email.length <= 3) setIsDisabled(true);
+
     if (username.length <= 3) setIsDisabled(true);
+
+    if (firstName.length <= 1) setIsDisabled(true);
+
+    if (lastName.length <= 1) setIsDisabled(true);
 
     if (password.length <= 5) setIsDisabled(true);
 
