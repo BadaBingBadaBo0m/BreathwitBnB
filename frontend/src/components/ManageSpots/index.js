@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getUserSpots } from "../../store/user";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
@@ -11,14 +11,18 @@ const ManageSpots = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const spotObj = useSelector((state) => state.user.spots)
-  let spotList = Object.values(spotObj);
+  // const user = useSelector((state) => state.session.user);
+  // let spotList = Object.values(spotObj);
+  const [spotList, setSpotList] = useState(Object.values(spotObj))
+
+  // if (user === null) history.push('/');
 
   useEffect(() => {
     const getSpots = async () => {
       await dispatch(getUserSpots())
         .catch((error) => {
-          if (error.status == 404) {
-            spotList = []
+          if (error.status === 404) {
+            setSpotList([]);
           };
         })
     }
@@ -35,7 +39,7 @@ const ManageSpots = () => {
 
   const handleClick = (spotId) => {
     history.push(`/spots/${spotId}`);
-  }
+  };
 
   return (
     <div id="manageSpotsContainer">
@@ -52,6 +56,7 @@ const ManageSpots = () => {
               <img
                 className='spotImage'
                 src={spot.previewImage}
+                alt={spot.name}
                 onClick={() => handleClick(spot.id)}>
               </img>
               <div id='spotInfoContainer' onClick={() => handleClick(spot.id)}>
