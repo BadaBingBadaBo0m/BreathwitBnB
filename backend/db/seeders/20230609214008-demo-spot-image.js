@@ -13,7 +13,7 @@ module.exports = {
     return await queryInterface.bulkInsert(options, [
       {
         spotId: 1,
-        url: 'https://www.lenconnect.com/gcdn/authoring/2012/12/06/NDAT/ghows-MI-f3c8796b-c029-4e48-abed-1cb60d98d49d-461a4e27.jpeg?width=576&height=384&fit=crop&format=pjpg&auto=webp',
+        url: 'https://images1.loopnet.com/i2/7ju7Bf6QKVqwId5QSIHEL0oLr2YfsH1SbUZCjeXZnQo/117/office-property-for-lease-77-geary-st-san-francisco-ca-94108.jpg',
         preview: true
       },
       {
@@ -38,13 +38,53 @@ module.exports = {
       },
       {
         spotId: 2,
-        url: 'https://cdn.landsearch.com/listings/4szPz/large/king-nc-103305196.jpg',
+        url: 'https://a0.muscache.com/im/pictures/f03b7134-1d8f-43eb-9ef8-5097b07acd9b.jpg?im_w=1200',
         preview: true
+      },
+      {
+        spotId: 2,
+        url: 'https://a0.muscache.com/im/pictures/4314c021-d17e-47b8-9324-165d08ec4c8f.jpg?im_w=1440',
+        preview: false
+      },
+      {
+        spotId: 2,
+        url: 'https://a0.muscache.com/im/pictures/c6912b16-69ef-4a98-94e9-40a394ac6156.jpg?im_w=1440',
+        preview: false
+      },
+      {
+        spotId: 2,
+        url: 'https://a0.muscache.com/im/pictures/fd526f34-5674-41eb-aa03-92e0102d0163.jpg?im_w=720',
+        preview: false
+      },
+      {
+        spotId: 2,
+        url: 'https://a0.muscache.com/im/pictures/c04b745a-ecbd-4ffe-a6b9-6c59605326b7.jpg?im_w=720',
+        preview: false
       },
       {
         spotId: 3,
         url: 'https://cdn.landsearch.com/listings/4rQXW/large/sparta-nc-101260044.jpg',
         preview: true
+      },
+      {
+        spotId: 3,
+        url: 'https://cdn.landsearch.com/listings/4rQXW/large/sparta-nc-101260046.jpg',
+        preview: false
+      },
+      {
+        spotId: 3,
+        url: 'https://cdn.landsearch.com/listings/4rQXW/large/sparta-nc-101260048.jpg',
+        preview: false
+      },
+      {
+        spotId: 3,
+        url: 'https://cdn.landsearch.com/listings/4rQXW/large/sparta-nc-101260052.jpg',
+        preview: false
+      },
+      {
+        spotId: 3,
+        url: 'https://cdn.landsearch.com/listings/4rQXW/large/sparta-nc-101260058.jpg',
+        preview: false
       }
     ]);
   },
