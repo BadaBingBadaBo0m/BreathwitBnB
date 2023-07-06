@@ -11,6 +11,10 @@
   width: 2rem;
 }
 
+#logo:hover {
+  cursor: pointer;
+}
+
 #BBnB {
   color: red;
   font-size: 2.5rem;

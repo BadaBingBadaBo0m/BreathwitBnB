@@ -6,9 +6,11 @@ import ProfileButton from "./ProfileButton";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { useHistory } from "react-router-dom";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
 
   let sessionLinks;
@@ -37,6 +39,7 @@ function Navigation({ isLoaded }) {
     <nav>
       <div id="logoContainer">
         <img
+          onClick={() => history.push('/')}
           src={logo}
           id="logo"
         ></img>
