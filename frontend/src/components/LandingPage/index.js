@@ -31,15 +31,20 @@ const LandingPage = () => {
     <div id='spotsContainer'>
       <ul id='spotList'>
         {spotList.map(spot => (
-          <li title={spot.name} key={spot.id} className='spot'>
+          <li
+            title={spot.name}
+            key={spot.id}
+            className='spot'
+            onClick={() => handleClick(spot.id)}
+          >
             <img
               className='spotImage'
               src={spot.previewImage}
-              onClick={() => handleClick(spot.id)}>
+            >
             </img>
             <div id='spotInfoContainer'>
               <div id='locationRatingContainer'>
-                <h2 onClick={() => handleClick(spot.id)}>{spot.city}, {spot.state}</h2>
+                <h2>{spot.city}, {spot.state}</h2>
                 <p><i className="fa-solid fa-star"></i>{spot.avgRating || "New"}</p>
               </div>
               <p id='spotPrice'>${spot.price} night</p>
