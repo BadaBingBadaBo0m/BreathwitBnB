@@ -51,7 +51,7 @@ function LoginFormModal() {
         const data = await res.json();
         if (data && data.errors) {
           setErrors(data.errors);
-          throw new Error('Login failed')
+          throw new Error('Login failed');
         }
       })
       .then(() => history.push('/'))
