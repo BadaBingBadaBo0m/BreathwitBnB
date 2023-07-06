@@ -1,9 +1,9 @@
 #imageContainer {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   gap: 6px;
-  height: fit-content;
+  /* height: fit-content; */
   height: 25rem;
   background-color: rgb(241, 239, 239);
 }
