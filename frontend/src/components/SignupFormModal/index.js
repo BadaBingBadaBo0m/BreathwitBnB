@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useHistory } from "react-router-dom";
@@ -15,7 +15,21 @@ function SignupFormModal() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const [isDisabled, setIsDisabled] = useState(true)
   const { closeModal } = useModal();
+
+  useEffect(() => {
+    if (email.length && username.length && firstName.length && lastName.length && password.length && confirmPassword.length) {
+      setIsDisabled(false)
+    }
+
+    if (username.length <= 3) setIsDisabled(true);
+
+    if (password.length <= 5) setIsDisabled(true);
+
+    if (confirmPassword.length <= 5) setIsDisabled(true);
+
+  }, [email, username, firstName, lastName, password, confirmPassword])
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,7 +61,7 @@ function SignupFormModal() {
   return (
     <div id="signUpFormContainer">
       <form onSubmit={handleSubmit} id="signUpForm">
-        <h1>Sign Up</h1>
+        <h1 id="signUpHeader">Sign Up</h1>
         <div className="signUpInfoContainer">
           <label className="signUpLabel">
             Email
@@ -122,7 +136,7 @@ function SignupFormModal() {
             <p className="signUpErrors">{errors.confirmPassword}</p>
           )}
         </div>
-        <button id="submitSignUpBtn" type="submit">Sign Up</button>
+        <button disabled={isDisabled} className={isDisabled ? "submitSignUpBtnDisabled" : 'submitSignUpBtn'} type="submit">Sign Up</button>
       </form>
     </div>
   );

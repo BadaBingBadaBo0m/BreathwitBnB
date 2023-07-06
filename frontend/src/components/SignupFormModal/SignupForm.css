@@ -3,6 +3,12 @@
   border-radius: 20px;
 }
 
+#signUpHeader {
+  margin: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .signUpInfoContainer {
   display: flex;
   flex-direction: column;
@@ -38,7 +44,7 @@
   margin: .5rem;
 }
 
-#submitSignUpBtn {
+.submitSignUpBtn {
   width: 80%;
   height: 2rem;
   color: white;
@@ -49,6 +55,17 @@
   margin-top: .4rem;
 }
 
-#submitSignUpBtn:hover {
+.submitSignUpBtnDisabled {
+  width: 80%;
+  height: 2rem;
+  color: white;
+  background-color: gray;
+  border: 2px solid black;
+  box-shadow: 3px 4px 5px gray;
+  margin-bottom: 1.5rem;
+  margin-top: .4rem;
+}
+
+.submitSignUpBtn:hover {
   cursor: pointer;
 }
