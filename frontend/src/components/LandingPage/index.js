@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { getAllSpots } from "../../store/spots";
 import { useHistory } from 'react-router-dom';
+import { Tooltip } from "react-tooltip";
 import './LandingPage.css'
 
 
@@ -31,26 +32,34 @@ const LandingPage = () => {
     <div id='spotsContainer'>
       <ul id='spotList'>
         {spotList.map(spot => (
-          <li
-            title={spot.name}
-            key={spot.id}
-            className='spot'
-            onClick={() => handleClick(spot.id)}
-          >
-            <img
-              className='spotImage'
-              src={spot.previewImage}
-              alt={spot.name}
+          <>
+            <li
+              key={spot.id}
+              className='spot'
+              data-tooltip-id={spot.id}
+              data-tip="Tooltip"
+              data-tooltip-delay-show={300}
+              data-tooltip-float={true}
+              onClick={() => handleClick(spot.id)}
             >
-            </img>
-            <div id='spotInfoContainer'>
-              <div id='locationRatingContainer'>
-                <h2>{spot.city}, {spot.state}</h2>
-                <p onClick={() => console.log(spot.avgRating)}><i className="fa-solid fa-star"></i>{spot.avgRating === '0.0' ? "New" : spot.avgRating}</p>
+              <img
+                className='spotImage'
+                src={spot.previewImage}
+                alt={spot.name}
+              >
+              </img>
+              <div id='spotInfoContainer'>
+                <div id='locationRatingContainer'>
+                  <h2>{spot.city}, {spot.state}</h2>
+                  <p onClick={() => console.log(spot.avgRating)}><i className="fa-solid fa-star"></i>{spot.avgRating === '0.0' ? "New" : spot.avgRating}</p>
+                </div>
+                <p id='spotPrice'>${spot.price} night</p>
               </div>
-              <p id='spotPrice'>${spot.price} night</p>
-            </div>
-          </li>
+            </li>
+            <Tooltip id={spot.id}>
+              <span>{spot.name}</span>
+            </Tooltip>
+          </>
         ))}
       </ul>
     </div>

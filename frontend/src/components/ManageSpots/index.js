@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getUserSpots } from "../../store/user";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { Tooltip } from "react-tooltip";
 import OpenModalButton from '../OpenModalButton';
 import DeleteSpotModal from "../DeleteSpotModal/index";
 import './manageSpots.css';
@@ -12,8 +13,8 @@ const ManageSpots = () => {
   const history = useHistory();
   const spotObj = useSelector((state) => state.user.spots)
   // const user = useSelector((state) => state.session.user);
-  // let spotList = Object.values(spotObj);
-  const [spotList, setSpotList] = useState(Object.values(spotObj))
+  let spotList = Object.values(spotObj);
+  // const [spotList, setSpotList] = useState(Object.values(spotObj))
 
   // if (user === null) history.push('/');
 
@@ -22,20 +23,13 @@ const ManageSpots = () => {
       await dispatch(getUserSpots())
         .catch((error) => {
           if (error.status === 404) {
-            setSpotList([]);
+            spotList = []
           };
         })
     }
 
     getSpots();
   }, [dispatch]);
-
-  if (Object.keys(spotObj).length <= 0) return (
-    <div id="manageSpotsContainer">
-      <h2>Manage spots</h2>
-      <NavLink to='/spots/new'> <button id="createNewSpotButton">Create a New Spot</button> </NavLink>
-    </div>
-  );
 
   const handleClick = (spotId) => {
     history.push(`/spots/${spotId}`);
@@ -49,32 +43,40 @@ const ManageSpots = () => {
       <div id="userSpotListContainer">
         <ul id={spotList.length >= 4 ? 'manageSpotListGrid' : "manageSpotListFlex"}>
           {spotList.map(spot => (
-            <li
-              title={spot.name} key={spot.id}
-              className='manageSpotsSpot'
-            >
-              <img
-                className='spotImage'
-                src={spot.previewImage}
-                alt={spot.name}
-                onClick={() => handleClick(spot.id)}>
-              </img>
-              <div id='spotInfoContainer' onClick={() => handleClick(spot.id)}>
-                <div id='manageLocationRatingContainer' onClick={() => handleClick(spot.id)}>
-                  <h2>{spot.city}, {spot.state}</h2>
-                  <p><i className="fa-solid fa-star"></i>{spot.avgRating === '0.0' ? "New" : spot.avgRating}</p>
+            <>
+              <li
+                key={spot.id}
+                className='manageSpotsSpot'
+                data-tooltip-id={spot.id}
+                data-tip="Tooltip"
+                data-tooltip-delay-show={300}
+                data-tooltip-float={true}
+              >
+                <img
+                  className='spotImage'
+                  src={spot.previewImage}
+                  alt={spot.name}
+                  onClick={() => handleClick(spot.id)}>
+                </img>
+                <div id='spotInfoContainer' onClick={() => handleClick(spot.id)}>
+                  <div id='manageLocationRatingContainer' onClick={() => handleClick(spot.id)}>
+                    <h2>{spot.city}, {spot.state}</h2>
+                    <p><i className="fa-solid fa-star"></i>{spot.avgRating === '0.0' ? "New" : spot.avgRating}</p>
+                  </div>
+                  <p id='manageSpotPrice'>${spot.price} night</p>
                 </div>
-                <p id='manageSpotPrice'>${spot.price} night</p>
-              </div>
-              <div id="spotButtons">
-                <button onClick={() => history.push(`/editSpot/${spot.id}`)}>Update</button>
-                <OpenModalButton buttonText="Delete" modalComponent={<DeleteSpotModal spotId={spot.id} />} />
-              </div>
-            </li>
+                <div id="spotButtons">
+                  <button onClick={() => history.push(`/editSpot/${spot.id}`)}>Update</button>
+                  <OpenModalButton buttonText="Delete" modalComponent={<DeleteSpotModal spotId={spot.id} />} />
+                </div>
+              </li>
+              <Tooltip id={spot.id}>
+                <span>{spot.name}</span>
+              </Tooltip>
+            </>
           ))}
         </ul>
       </div>
-
     </div>
   );
 };
