@@ -55,7 +55,6 @@
 
 .reviewSubmit.disabled {
   background-color: gray;
-
 }
 
 .reviewError {
@@ -67,6 +66,18 @@
   margin-bottom: .5rem;
 }
 
+#spotButtons {
+  margin-left: .7rem;
+}
+
 .reviewSubmit:hover {
+  cursor: pointer;
+}
+
+#spotInfoContainer:hover {
+  cursor: pointer;
+}
+
+.spotImage:hover {
   cursor: pointer;
 }

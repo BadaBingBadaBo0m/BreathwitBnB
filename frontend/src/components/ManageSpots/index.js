@@ -35,22 +35,25 @@ const ManageSpots = () => {
       <div id="userSpotListContainer">
         <ul id={spotList.length >= 4 ? 'manageSpotListGrid' : "manageSpotListFlex"}>
           {spotList.map(spot => (
-            <li title={spot.name} key={spot.id} className='manageSpotsSpot'>
+            <li
+              title={spot.name} key={spot.id}
+              className='manageSpotsSpot'
+            >
               <img
                 className='spotImage'
                 src={spot.previewImage}
                 onClick={() => handleClick(spot.id)}>
               </img>
-              <div id='spotInfoContainer'>
-                <div id='manageLocationRatingContainer'>
-                  <h2 onClick={() => handleClick(spot.id)}>{spot.city}, {spot.state}</h2>
+              <div id='spotInfoContainer' onClick={() => handleClick(spot.id)}>
+                <div id='manageLocationRatingContainer' onClick={() => handleClick(spot.id)}>
+                  <h2>{spot.city}, {spot.state}</h2>
                   <p><i className="fa-solid fa-star"></i>{spot.avgRating === '0.0' ? "New" : spot.avgRating}</p>
                 </div>
                 <p id='manageSpotPrice'>${spot.price} night</p>
-                <div id="spotButtons">
-                  <button onClick={() => history.push(`/editSpot/${spot.id}`)}>Update</button>
-                  <OpenModalButton buttonText="Delete" modalComponent={<DeleteSpotModal spotId={spot.id} />} />
-                </div>
+              </div>
+              <div id="spotButtons">
+                <button onClick={() => history.push(`/editSpot/${spot.id}`)}>Update</button>
+                <OpenModalButton buttonText="Delete" modalComponent={<DeleteSpotModal spotId={spot.id} />} />
               </div>
             </li>
           ))}
