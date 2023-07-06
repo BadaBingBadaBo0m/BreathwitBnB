@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import logo from '../../images/BBnB-transparent.png'
 import ProfileButton from "./ProfileButton";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
@@ -34,7 +35,11 @@ function Navigation({ isLoaded }) {
 
   return (
     <nav>
-      <div>
+      <div id="logoContainer">
+        <img
+          src={logo}
+          id="logo"
+        ></img>
         <NavLink id='BBnB' exact to="/">BBnB</NavLink>
       </div>
       <div id="navBtnContainer">

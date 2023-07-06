@@ -2,10 +2,19 @@
   display: none;
 }
 
+#logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+#logo {
+  width: 2rem;
+}
+
 #BBnB {
   color: red;
   font-size: 2.5rem;
-  padding-left: 20px;
+  padding-left: 15px;
   text-decoration: none;
 }
 
