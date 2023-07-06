@@ -107,7 +107,7 @@ module.exports = {
         lng: -79.778255,
         name: 'Luxury Waterfront Home',
         description: "Welcome to Latitude Adjustment! This home's stunning architecture lends the feel of a mountain getaway with all the perks of the warm weather and sunshine Lake Norman has to offer. Meticulously designed, the luxury bath home provides panoramic views. The open floor plan and abundance of outdoor decking overlooking the lake are perfect for hosting family and friends for your next getaway.",
-        price: '1,477'
+        price: 980
       },
       {
         ownerId: 2,
