@@ -30,8 +30,6 @@ const Reviews = ({ spot, spotId }) => {
     const splitDate = reviewDate.split('-')
     const month = splitDate[1]
     const year = splitDate[0]
-    console.log(monthList)
-    console.log(Number(month))
 
     return (
       <h4 id="reviewDate">{monthList[Number(month) - 1]} {year}</h4>
@@ -62,6 +60,7 @@ const Reviews = ({ spot, spotId }) => {
               : <></>}
           </li>
         ))}
+        {!reviewList.length && <h3>Be the first to post a review!</h3>}
       </ul>
     </div>
   );
