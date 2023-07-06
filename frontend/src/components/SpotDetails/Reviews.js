@@ -37,7 +37,7 @@ const Reviews = ({ spot, spotId }) => {
   return (
     <div id="reviewsContainer">
       <div id="reviewsHeaderContainer">
-        <p><i className="fa-solid fa-star"></i> {spot.avgRating || "New"}</p>
+        <p><i className="fa-solid fa-star"></i> {spot.avgRating === '0.0' ? "New" : spot.avgRating}</p>
         {spot.numReviews > 0 && <p>&#x2022;</p>}
         {spot.numReviews > 0 && <p>{spot.numReviews} {spot.numReviews === 1 ? "review" : "reviews"}</p>}
       </div>

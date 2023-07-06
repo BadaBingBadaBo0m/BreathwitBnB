@@ -14,7 +14,7 @@ const PriceReserveReviews = ({ spot }) => {
           <p>night</p>
         </div>
         <div id="ratingReviews">
-          <p><i className="fa-solid fa-star"></i> {spot.avgRating || "New"}</p>
+          <p><i className="fa-solid fa-star"></i> {spot.avgRating === '0.0' ? "New" : spot.avgRating}</p>
           {spot.numReviews > 0 && <p>&#x2022;</p>}
           {spot.numReviews > 0 && <p>{spot.numReviews} {spot.numReviews === 1 ? "review" : "reviews"}</p>}
         </div>

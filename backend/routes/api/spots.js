@@ -23,13 +23,17 @@ const avgRatingAndPreviewImg = async (spots) => {
     }
     // spot.dataValues.avgRating = count / stars.length;
 
-    const averageRating = count / stars.length;
-    // spot.dataValues.avgRating = averageRating.toFixed(2);
+    // const averageRating = count / stars.length;
+    const averageRating = stars.length !== 0 ? count / stars.length : 0;
+
     if (averageRating % 1 === 0) {
       spot.dataValues.avgRating = averageRating.toFixed(1);
     } else {
       spot.dataValues.avgRating = averageRating.toFixed(2);
     }
+
+    // if (averageRating == NaN) spot.dataValues.avgRating = null
+    // console.log(spot.dataValues.avgRating)
 
     // const averageRating = count / stars.length;
     // spot.dataValues.avgRating = Math.floor(averageRating * 10) / 10; // Round down to 1 decimal place
@@ -373,8 +377,9 @@ router.get('/:spotId', async (req, res) => {
   // spot.dataValues.avgRating = count / stars.length;
   // const averageRating = count / stars.length;
   // spot.dataValues.avgRating = Math.floor(averageRating * 10) / 10;
-  const averageRating = count / stars.length;
-  // spot.dataValues.avgRating = averageRating.toFixed(2);
+  // const averageRating = count / stars.length;
+  const averageRating = stars.length !== 0 ? count / stars.length : 0;
+
   if (averageRating % 1 === 0) {
     spot.dataValues.avgRating = averageRating.toFixed(1);
   } else {

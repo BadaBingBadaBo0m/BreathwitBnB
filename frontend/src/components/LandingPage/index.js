@@ -40,12 +40,13 @@ const LandingPage = () => {
             <img
               className='spotImage'
               src={spot.previewImage}
+              alt={spot.name}
             >
             </img>
             <div id='spotInfoContainer'>
               <div id='locationRatingContainer'>
                 <h2>{spot.city}, {spot.state}</h2>
-                <p><i className="fa-solid fa-star"></i>{spot.avgRating || "New"}</p>
+                <p onClick={() => console.log(spot.avgRating)}><i className="fa-solid fa-star"></i>{spot.avgRating === '0.0' ? "New" : spot.avgRating}</p>
               </div>
               <p id='spotPrice'>${spot.price} night</p>
             </div>
