@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import { createReview } from '../../store/reviews';
@@ -15,11 +15,20 @@ const CreateReviewForm = ({ spotId }) => {
   const [rating, setRating] = useState(0);
   const [formErrors, setFormErrors] = useState([]);
   const [serverErrors, setServerErrors] = useState("");
+  const [isDisabled, setIsDisabled] = useState(true);
 
   const onChange = (val) => {
     setRating(val)
   }
 
+  useEffect(() => {
+    if (description.length >= 10 && rating > 0) setIsDisabled(false)
+
+    if (description.length <= 10) setIsDisabled(true);
+
+    if (rating < 0) setIsDisabled(true)
+
+  }, [description, rating]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -120,9 +129,9 @@ const CreateReviewForm = ({ spotId }) => {
         </div>
 
         <button
-          // disabled={isDisabled}
-          // className={isDisabled ? 'reviewSubmit disabled' : 'reviewSubmit'}
-          className='reviewSubmit'
+          disabled={isDisabled}
+          className={isDisabled ? 'reviewSubmit disabled' : 'reviewSubmit'}
+          // className='reviewSubmit'
           type='submit'
         >Submit your review</button>
 
