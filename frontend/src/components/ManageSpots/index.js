@@ -47,32 +47,39 @@ const ManageSpots = () => {
               <li
                 key={spot.id}
                 className='manageSpotsSpot'
-                data-tooltip-id={spot.id}
-                data-tip="Tooltip"
-                data-tooltip-delay-show={300}
-                data-tooltip-float={true}
+              // data-tooltip-id={spot.id}
+              // data-tip="Tooltip"
+              // data-tooltip-delay-show={300}
+              // data-tooltip-float={true}
               >
-                <img
-                  className='spotImage'
-                  src={spot.previewImage}
-                  alt={spot.name}
-                  onClick={() => handleClick(spot.id)}>
-                </img>
-                <div id='spotInfoContainer' onClick={() => handleClick(spot.id)}>
-                  <div id='manageLocationRatingContainer' onClick={() => handleClick(spot.id)}>
-                    <h2>{spot.city}, {spot.state}</h2>
-                    <p><i className="fa-solid fa-star"></i>{spot.avgRating === '0.0' ? "New" : spot.avgRating}</p>
+                <div
+                  data-tooltip-id={spot.id}
+                  data-tip="Tooltip"
+                  data-tooltip-delay-show={300}
+                  data-tooltip-float={true}
+                >
+                  <img
+                    className='spotImage'
+                    src={spot.previewImage}
+                    alt={spot.name}
+                    onClick={() => handleClick(spot.id)}>
+                  </img>
+                  <div id='spotInfoContainer' onClick={() => handleClick(spot.id)}>
+                    <div id='manageLocationRatingContainer' onClick={() => handleClick(spot.id)}>
+                      <h2>{spot.city}, {spot.state}</h2>
+                      <p><i className="fa-solid fa-star"></i>{spot.avgRating === '0.0' ? "New" : spot.avgRating}</p>
+                    </div>
+                    <p id='manageSpotPrice'>${spot.price} night</p>
                   </div>
-                  <p id='manageSpotPrice'>${spot.price} night</p>
+                  <Tooltip id={spot.id}>
+                    <span>{spot.name}</span>
+                  </Tooltip>
                 </div>
                 <div id="spotButtons">
                   <button onClick={() => history.push(`/editSpot/${spot.id}`)}>Update</button>
                   <OpenModalButton buttonText="Delete" modalComponent={<DeleteSpotModal spotId={spot.id} />} />
                 </div>
               </li>
-              <Tooltip id={spot.id}>
-                <span>{spot.name}</span>
-              </Tooltip>
             </>
           ))}
         </ul>

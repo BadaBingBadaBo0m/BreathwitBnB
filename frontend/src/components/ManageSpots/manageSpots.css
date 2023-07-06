@@ -66,10 +66,6 @@
   box-shadow: 3px 4px 5px gray;
 }
 
-#createNewSpotButton:hover {
-  cursor: pointer;
-}
-
 #spotButtons>button {
   height: 1.5rem;
   color: white;
@@ -79,6 +75,10 @@
   width: 4rem;
   margin-right: .5rem;
   margin-top: .5rem;
+}
+
+#createNewSpotButton:hover {
+  cursor: pointer;
 }
 
 #spotButtons>button:hover {
