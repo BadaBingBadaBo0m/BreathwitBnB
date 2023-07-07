@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 .hidden {
   display: none;
 }
@@ -18,9 +20,10 @@
 
 #BBnB {
   color: red;
-  font-size: 2.5rem;
+  font-size: 2rem;
   padding-left: 15px;
   text-decoration: none;
+  font-family: 'Pacifico', cursive;
 }
 
 nav {

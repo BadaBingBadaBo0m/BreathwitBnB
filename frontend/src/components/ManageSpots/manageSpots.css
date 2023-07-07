@@ -90,3 +90,15 @@
 #spotButtons>button:hover {
   cursor: pointer;
 }
+
+#ratingContainer {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+}
+
+#ratingNum {
+  margin-left: .1rem;
+  font-size: 18px;
+  height: 20px;
+}

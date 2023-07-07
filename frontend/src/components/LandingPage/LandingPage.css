@@ -32,11 +32,15 @@
   border: 2px solid rgb(196, 191, 191);
 }
 
+#spotHeader {
+  font-size: 1.2rem;
+}
+
 #locationRatingContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 3rem;
+  height: 2.8rem;
 }
 
 
