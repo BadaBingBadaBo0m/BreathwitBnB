@@ -80,6 +80,7 @@ nav {
 
 .profile-dropdown.userLoggedOut {
   right: 3.7rem;
+  height: 2.7rem;
 }
 
 .userLoggedOut>li:hover {

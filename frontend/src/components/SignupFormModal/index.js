@@ -15,7 +15,8 @@ function SignupFormModal() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
-  const [isDisabled, setIsDisabled] = useState(true)
+  const [isDisabled, setIsDisabled] = useState(true);
+  const [loginError, setLoginError] = useState({});
   const { closeModal } = useModal();
 
   useEffect(() => {
@@ -59,7 +60,7 @@ function SignupFormModal() {
           }
         })
         .then(() => history.push('/'))
-        .catch((error) => console.log(error));
+        .catch((error) => setLoginError(error));
     }
     return setErrors({
       confirmPassword: "Confirm Password field must be the same as the Password field"

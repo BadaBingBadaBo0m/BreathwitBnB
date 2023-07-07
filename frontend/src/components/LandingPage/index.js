@@ -55,10 +55,10 @@ const LandingPage = () => {
                 </div>
                 <p id='spotPrice'>${spot.price} night</p>
               </div>
+              <Tooltip id={spot.id}>
+                <span>{spot.name}</span>
+              </Tooltip>
             </li>
-            <Tooltip id={spot.id}>
-              <span>{spot.name}</span>
-            </Tooltip>
           </>
         ))}
       </ul>
