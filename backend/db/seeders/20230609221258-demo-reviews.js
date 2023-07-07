@@ -15,25 +15,33 @@ module.exports = {
         spotId: 1,
         userId: 2,
         review: 'This place was fantastic',
-        stars: 5
+        stars: 5,
+        createdAt: new Date('2023-04-10'),
+        createdAt: new Date('2023-04-10')
       },
       {
         spotId: 2,
         userId: 3,
         review: 'Wonderful cabin',
-        stars: 5
-      },
-      {
-        spotId: 3,
-        userId: 1,
-        review: 'This utterly massive cabin was a joy for my family',
-        stars: 5
+        stars: 5,
+        createdAt: new Date('2023-06-22'),
+        createdAt: new Date('2023-06-22')
       },
       {
         spotId: 2,
         userId: 2,
         review: 'A possum got in and ruined our night would not recommend until they have fixed that issue.',
-        stars: 2
+        stars: 2,
+        createdAt: new Date('2023-04-26'),
+        createdAt: new Date('2023-04-26')
+      },
+      {
+        spotId: 3,
+        userId: 1,
+        review: 'This utterly massive cabin was a joy for my family',
+        stars: 5,
+        createdAt: new Date('2023-05-03'),
+        createdAt: new Date('2023-05-03')
       }
     ]);
   },
