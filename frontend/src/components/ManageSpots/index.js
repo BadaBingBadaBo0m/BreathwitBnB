@@ -31,7 +31,7 @@ const ManageSpots = () => {
 
   return (
     <div id="manageSpotsContainer">
-      <h2>Manage spots</h2>
+      <h2 id="manageSpotsHeader">Manage spots</h2>
       {!spotList.length && <NavLink to='/spots/new'> <button id="createNewSpotButton">Create a New Spot</button> </NavLink>}
 
       <div id="userSpotListContainer">

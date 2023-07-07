@@ -30,6 +30,12 @@
   margin: auto;
 }
 
+#manageSpotsHeader {
+  max-width: 100rem;
+  margin: auto;
+  margin-top: 2rem;
+}
+
 .manageSpotsSpot {
   width: 24rem;
   padding-top: 1rem;
