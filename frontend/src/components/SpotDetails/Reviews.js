@@ -24,6 +24,8 @@ const Reviews = ({ spot, spotId }) => {
 
   const reviewList = Object.values(reviewObj)
 
+  reviewList.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
   const getDate = (reviewId) => {
     const monthList = validMonths.months;
     const reviewDate = reviewObj[reviewId].createdAt
@@ -50,7 +52,7 @@ const Reviews = ({ spot, spotId }) => {
           <OpenModalButton buttonText={'Post your review'} modalComponent={<CreateReviewForm spotId={spotId} />} />}
       </div>
       <ul id="reviewListContainer">
-        {reviewList.reverse().map(review => (
+        {reviewList.map(review => (
           <li key={review.id} id="review">
             <h2 id="reviewOwner">{review.User.firstName}</h2>
             <>{getDate(review.id)}</>

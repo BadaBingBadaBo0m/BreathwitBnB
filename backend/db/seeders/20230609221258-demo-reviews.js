@@ -36,6 +36,14 @@ module.exports = {
         createdAt: new Date('2023-06-22')
       },
       {
+        spotId: 2,
+        userId: 3,
+        review: 'Testing',
+        stars: 4,
+        createdAt: new Date('2023-05-22'),
+        createdAt: new Date('2023-05-22')
+      },
+      {
         spotId: 3,
         userId: 1,
         review: 'This utterly massive cabin was a joy for my family',

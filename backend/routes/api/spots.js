@@ -744,7 +744,6 @@ router.get('/:spotId/reviews', restoreUser, async (req, res) => {
   }
 
   const reviews = await Review.findAll({
-    order: [['createdAt', 'ASC']],
     where: {
       spotId: req.params.spotId
     },
