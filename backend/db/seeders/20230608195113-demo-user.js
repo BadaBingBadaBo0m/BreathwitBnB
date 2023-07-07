@@ -11,6 +11,7 @@ module.exports = {
   async up(queryInterface, Sequelize) {
     options.tableName = 'Users';
     return queryInterface.bulkInsert(options, [
+      // 1
       {
         firstName: 'Demo',
         lastName: 'User',
@@ -18,6 +19,7 @@ module.exports = {
         username: 'Demo-lition',
         hashedPassword: bcrypt.hashSync('password')
       },
+      // 2
       {
         firstName: 'fake',
         lastName: 'User',
@@ -25,6 +27,7 @@ module.exports = {
         username: 'FakeUser1',
         hashedPassword: bcrypt.hashSync('password1')
       },
+      // 3
       {
         firstName: 'John',
         lastName: 'Doe',
@@ -32,6 +35,7 @@ module.exports = {
         username: 'FakeUser2',
         hashedPassword: bcrypt.hashSync('password2')
       },
+      // 4
       {
         firstName: 'Jane',
         lastName: 'Doe',
@@ -39,6 +43,7 @@ module.exports = {
         username: 'FakeUser3',
         hashedPassword: bcrypt.hashSync('password3')
       },
+      // 5
       {
         firstName: 'Samantha',
         lastName: 'Gray',
@@ -46,6 +51,7 @@ module.exports = {
         username: 'FakeUser4',
         hashedPassword: bcrypt.hashSync('password4')
       },
+      // 6
       {
         firstName: 'Cayden',
         lastName: 'Brown',
@@ -53,6 +59,7 @@ module.exports = {
         username: 'FakeUser5',
         hashedPassword: bcrypt.hashSync('password5')
       },
+      // 7
       {
         firstName: 'Adam',
         lastName: 'Wright',
@@ -60,6 +67,7 @@ module.exports = {
         username: 'FakeUser6',
         hashedPassword: bcrypt.hashSync('password6')
       },
+      // 8
       {
         firstName: 'Alan',
         lastName: 'Peterson',
@@ -67,6 +75,7 @@ module.exports = {
         username: 'FakeUser7',
         hashedPassword: bcrypt.hashSync('password7')
       },
+      // 9
       {
         firstName: 'Amiyah',
         lastName: 'Hamilton',
@@ -74,6 +83,7 @@ module.exports = {
         username: 'FakeUser8',
         hashedPassword: bcrypt.hashSync('password8')
       },
+      // 10
       {
         firstName: 'Malia',
         lastName: 'Roberts',
@@ -81,6 +91,7 @@ module.exports = {
         username: 'FakeUser9',
         hashedPassword: bcrypt.hashSync('password9')
       },
+      // 11
       {
         firstName: 'Arabella',
         lastName: 'Holmes',
