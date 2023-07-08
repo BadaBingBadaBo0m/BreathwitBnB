@@ -74,6 +74,54 @@ module.exports = {
         stars: 5,
         createdAt: new Date('2023-07-05'),
         createdAt: new Date('2023-07-05')
+      },
+      {
+        spotId: 4,
+        userId: 7,
+        review: "I had the pleasure of staying at this modern tiny house Airbnb, and it was a delightful experience. The sleek design and clever use of space created a cozy yet contemporary atmosphere. The amenities were top-notch, and every corner of the house was thoughtfully curated for comfort and convenience. Despite its compact size, the house felt open and airy, with large windows inviting plenty of natural light inside. The host's attention to detail and responsiveness made my stay even more enjoyable. If you're seeking a stylish and efficient retreat, this modern tiny house is the perfect choice.",
+        stars: 5,
+        createdAt: new Date('2023-03-08'),
+        createdAt: new Date('2023-03-08')
+      },
+      {
+        spotId: 4,
+        userId: 10,
+        review: "I recently stayed at this modern tiny house Airbnb, and while it had its positive aspects, there were a few drawbacks that impacted my overall experience. The design of the house was sleek and contemporary, and the efficient use of space was commendable. However, I found the amenities to be somewhat lacking, and the size of the house felt restrictive for an extended stay. Additionally, there were some maintenance issues that needed attention. Although the host was responsive, these inconveniences did detract from the overall enjoyment of my stay. If you're looking for a minimalist experience and don't mind some limitations, this modern tiny house could still be an option, but it may not be the best fit for everyone.",
+        stars: 3,
+        createdAt: new Date('2023-06-25'),
+        createdAt: new Date('2023-06-25')
+      },
+      {
+        spotId: 4,
+        userId: 8,
+        review: "I recently had a pleasant stay at this modern tiny house Airbnb, and it left a positive impression overall. The sleek and contemporary design of the house was visually appealing, and the efficient use of space was impressive. The amenities provided were adequate for a comfortable stay, and the large windows allowed plenty of natural light to brighten the interior. Although there were a few minor issues during my visit, the host was responsive and resolved them promptly. If you're looking for a modern and cozy retreat, this tiny house offers a solid option for a pleasant stay.",
+        stars: 4,
+        createdAt: new Date('2023-04-12'),
+        createdAt: new Date('2023-04-12')
+      },
+      {
+        spotId: 4,
+        userId: 8,
+        review: "I recently stayed at this modern tiny house Airbnb, and while it had its positive aspects, there were a few drawbacks that affected my overall experience. The design of the house was sleek and contemporary, which I appreciated. However, the limited space felt a bit confining, especially for a longer stay. Additionally, I encountered some issues with cleanliness and maintenance that needed attention. Although the host was responsive to my concerns, these factors did impact my enjoyment of the stay. If you're looking for a minimalist experience and are comfortable with potential limitations, this modern tiny house might still be worth considering, but it may not be the best fit for everyone.",
+        stars: 3,
+        createdAt: new Date('2023-04-15'),
+        createdAt: new Date('2023-04-15')
+      },
+      {
+        spotId: 5,
+        userId: 3,
+        review: "I recently had an amazing stay at this modern A-frame cabin Airbnb and I can't recommend it enough. The unique design of the cabin, with its iconic A-frame structure, added a charming touch to the overall experience. The interior was tastefully decorated and had a cozy yet contemporary vibe. The cabin was well-equipped with all the necessary amenities and provided a comfortable and relaxing retreat. The surrounding natural beauty was breathtaking, and I loved waking up to the stunning views from the large windows. The host was incredibly accommodating and made sure I had everything I needed for a perfect stay. If you're seeking a peaceful getaway in a stylish and idyllic setting, this modern A-frame cabin is an absolute gem.",
+        stars: 5,
+        createdAt: new Date('2023-1-30'),
+        createdAt: new Date('2023-1-30')
+      },
+      {
+        spotId: 5,
+        userId: 6,
+        review: "I recently enjoyed my stay at this modern A-frame cabin Airbnb, and it was mostly a positive experience. The unique design of the cabin was visually appealing, and the interior had a cozy and contemporary feel. The amenities provided were generally satisfactory, although there were a few minor areas where improvements could be made. Additionally, while the cabin offered beautiful views and a tranquil atmosphere, there were some occasional noise disturbances from nearby activities. Despite these minor drawbacks, the host was responsive and helpful throughout my stay. If you're looking for a stylish and distinctive retreat, this modern A-frame cabin could be a great choice with a few minor caveats.",
+        stars: 4,
+        createdAt: new Date('2023-3-30'),
+        createdAt: new Date('2023-3-30')
       }
     ]);
   },

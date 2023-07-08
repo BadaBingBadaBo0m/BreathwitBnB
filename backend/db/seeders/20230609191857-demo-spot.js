@@ -76,8 +76,8 @@ module.exports = {
       {
         ownerId: 1,
         address: '5004 Imperial Dr',
-        city: 'Houma',
-        state: 'Louisiana',
+        city: 'Clyde',
+        state: 'North Carolina',
         country: 'United States of America',
         lat: 29.599956,
         lng: -90.757981,
