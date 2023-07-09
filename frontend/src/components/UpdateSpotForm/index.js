@@ -12,7 +12,7 @@ const UpdateSpotForm = () => {
   const countryList = validCountries.countries;
   const dispatch = useDispatch();
   const history = useHistory();
-  // const user = useSelector((state) => state.session.user);
+  const user = useSelector((state) => state.session.user);
   const [country, setCountry] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
@@ -29,6 +29,8 @@ const UpdateSpotForm = () => {
   const [errors, setErrors] = useState({});
   const spotId = useParams();
   const spot = useSelector((state) => state.spots.singleSpot);
+
+  if (user === null) history.push('/')
 
   useEffect(() => {
     const getSpot = async () => {
