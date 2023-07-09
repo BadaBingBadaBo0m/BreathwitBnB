@@ -31,6 +31,11 @@ const CreateSpotForm = () => {
 
   useEffect(() => {
     const images = [previewImage, spotImage2, spotImage3, spotImage4, spotImage5]
+    for (let i = images.length - 1; i >= 1; i--) {
+      if (images[i] === '') {
+        images.splice(i, 1, 'https://vinebrookhomes.com/img/default.png');
+      }
+    }
 
     setSpotImagesState(images)
   }, [previewImage, spotImage2, spotImage3, spotImage4, spotImage5])
@@ -112,28 +117,11 @@ const CreateSpotForm = () => {
       },
       spotImages
     };
-    // const validations = {};
 
     const updatedErrors = checkErrors();
 
     if (!Object.keys(updatedErrors).length) {
       const createdSpot = await dispatch(createSpot(newSpot));
-      // .catch(
-      //   async (res) => {
-      //     const data = await res.json();
-      //     if (data && data.errors) {
-      //       if (res.status === 403) {
-      //         return 'Invalid data';
-      //       }
-      //       if (data.errors.address) validations.address = data.errors.address;
-      //       if (data.errors.city) validations.city = data.errors.city;
-      //       if (data.errors.description) validations.description = data.errors.description;
-      //       if (data.errors.name) validations.title = data.errors.name;
-      //       if (data.errors.price) validations.price = data.errors.price
-      //       setErrors(validations);
-      //     }
-      //   }
-      // );
 
       if (createdSpot) history.push(`/spots/${createdSpot.spotData.id}`)
     }
