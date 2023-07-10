@@ -22,7 +22,7 @@ const CreateReviewForm = ({ spotId }) => {
   }
 
   useEffect(() => {
-    if (description.length > 10 && rating > 0) setIsDisabled(false)
+    if (description.length >= 10 && rating > 0) setIsDisabled(false)
 
     if (description.length <= 10) setIsDisabled(true);
 
