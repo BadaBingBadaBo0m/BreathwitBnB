@@ -126,6 +126,8 @@ const CreateReviewForm = ({ spotId }) => {
           >
             <i className="fa-solid fa-star"></i>
           </div>
+
+          <p id='starsLabel'>Stars</p>
         </div>
 
         <button

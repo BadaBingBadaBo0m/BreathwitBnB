@@ -33,10 +33,18 @@
   display: flex;
   width: fit-content;
   margin: 1rem 0;
+  height: fit-content;
 }
 
 #starsContainer>div:hover {
   cursor: pointer;
+}
+
+#starsLabel {
+  margin: 0;
+  font-size: 15px;
+  margin-left: 6px;
+  margin-top: 1px;
 }
 
 #reviewSubmitContainer {
