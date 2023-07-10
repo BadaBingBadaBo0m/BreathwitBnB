@@ -62,7 +62,7 @@ const Reviews = ({ spot, spotId }) => {
               : <></>}
           </li>
         ))}
-        {!reviewList.length && user !== null && <h3>Be the first to post a review!</h3>}
+        {!reviewList.length && user !== null && spot.ownerId !== user.id && <h3>Be the first to post a review!</h3>}
       </ul>
     </div>
   );
