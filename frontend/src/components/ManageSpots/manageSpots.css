@@ -36,6 +36,23 @@
   margin-top: 2rem;
 }
 
+#manageSpotCreateSpotContainer {
+  max-width: 100rem;
+  margin: 2rem auto;
+}
+
+#createNewSpotButton {
+  height: 1.6rem;
+  color: white;
+  background-color: red;
+  border: 2px solid black;
+  box-shadow: 3px 4px 5px gray;
+}
+
+#createNewSpotButton:hover {
+  cursor: pointer;
+}
+
 .manageSpotsSpot {
   width: 24rem;
   padding-top: 1rem;
@@ -60,19 +77,6 @@
 }
 
 #manageLocationRatingContainer>h2:hover {
-  cursor: pointer;
-}
-
-
-#createNewSpotButton {
-  height: 1.6rem;
-  color: white;
-  background-color: red;
-  border: 2px solid black;
-  box-shadow: 3px 4px 5px gray;
-}
-
-#createNewSpotButton:hover {
   cursor: pointer;
 }
 
