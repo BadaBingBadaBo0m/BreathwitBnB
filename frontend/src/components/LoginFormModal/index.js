@@ -67,24 +67,25 @@ function LoginFormModal() {
         )}
         <label className='loginLabel'>
           Username or Email
-          <input
-            type="text"
-            value={credential}
-            onChange={(e) => { setCredential(e.target.value) }}
-            required
-            className='loginInput'
-          />
         </label>
+        <input
+          type="text"
+          value={credential}
+          onChange={(e) => { setCredential(e.target.value) }}
+          required
+          className='loginInput'
+        />
+
         <label className='loginLabel'>
           Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className='loginInput'
-          />
         </label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+          className='loginInput'
+        />
         <button
           type="submit"
           disabled={isDisabled}

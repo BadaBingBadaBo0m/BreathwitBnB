@@ -19,13 +19,6 @@
   padding: 1rem 0;
 }
 
-.loginLabel {
-  display: flex;
-  flex-direction: column;
-  margin: 10px;
-  width: 80%;
-}
-
 .loginSubmit {
   width: 80%;
   height: 2rem;
@@ -45,10 +38,22 @@
   font-size: 1.2rem;
 }
 
+.loginLabel {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: .5rem;
+  width: 85%;
+}
+
 .loginInput {
-  width: 310px;
+  /* width: 310px;
   padding: 3px;
-  border: 1px solid black;
+  border: 1px solid black; */
+  border: 1px solid gray;
+  border-radius: 5px;
+  height: 1.5rem;
+  width: 80%;
+  padding: .5rem;
 }
 
 .disabled {
