@@ -36,7 +36,7 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <nav>
+    <nav id="navBarContainer">
       <div id="logoContainer">
         <img
           onClick={() => history.push('/')}
