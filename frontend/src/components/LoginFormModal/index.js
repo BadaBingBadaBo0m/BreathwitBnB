@@ -65,27 +65,33 @@ function LoginFormModal() {
         {errors.credential && (
           <p className='error'>{errors.credential}</p>
         )}
-        <label className='loginLabel'>
-          Username or Email
-        </label>
-        <input
-          type="text"
-          value={credential}
-          onChange={(e) => { setCredential(e.target.value) }}
-          required
-          className='loginInput'
-        />
 
-        <label className='loginLabel'>
-          Password
-        </label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          className='loginInput'
-        />
+        <div className="formInputContainer">
+          <label className='loginLabel'>
+            Username or Email
+          </label>
+          <input
+            type="text"
+            value={credential}
+            onChange={(e) => { setCredential(e.target.value) }}
+            required
+            className='loginInput'
+          />
+        </div>
+
+        <div className="formInputContainer">
+          <label className='loginLabel'>
+            Password
+          </label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            className='loginInput'
+          />
+        </div>
+
         <button
           type="submit"
           disabled={isDisabled}
