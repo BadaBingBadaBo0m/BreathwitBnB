@@ -3,7 +3,7 @@
 #navBarContainer {
   position: sticky;
   top: 0;
-  width: 100%;
+  /* width: 100%; */
   background-color: white;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
 }

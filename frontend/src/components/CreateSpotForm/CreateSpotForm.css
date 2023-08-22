@@ -1,6 +1,6 @@
 #formContainer {
-  width: 450px;
-  margin: auto;
+  background-color: rgb(232, 230, 230);
+  padding: 3rem 0;
 }
 
 #createSpotForm {
@@ -8,14 +8,40 @@
   flex-direction: column;
   justify-content: space-evenly;
   height: fit-content;
+  border: 1px solid gray;
+  width: 550px;
+  margin: auto;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px gray;
+  background-color: white;
+}
+
+#spotFormInfoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: fit-content;
   margin-bottom: 3rem;
+  width: 450px;
+  margin: auto;
+  /* border: 5px solid red; */
 }
 
-#formHeaderContainer>h2 {
-  margin-bottom: 0;
+#formHeaderContainer>h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
 }
 
-#formHeaderContainer>p {
+#locationContainer>h2 {
+  display: flex;
+  justify-content: center;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+#locationContainer>p {
   margin: .4rem 0;
 }
 
@@ -23,6 +49,24 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+}
+
+#country-streetAdd-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.streetAdd {
+  width: 48%;
+}
+
+.streetAddLabel {
+  margin: 0;
+}
+
+.country {
+  width: 48%;
+  height: 100%;
 }
 
 #cityStateContainer {
@@ -45,7 +89,7 @@
 .locationErrors {
   margin: 0;
   color: red;
-  padding-left: .5rem;
+  /* padding-left: .5rem; */
 }
 
 .infoErrors {
@@ -56,6 +100,14 @@
 .createSpotLabel>input,
 .createSpotLabel>select {
   margin: 3px 0;
+  border: 1px solid gray;
+  height: 2rem;
+  padding-left: .5rem;
+  border-radius: 5px;
+}
+
+.createSpotLabel>select {
+  height: 2.3rem;
 }
 
 .createSpotLabel.city {
@@ -68,7 +120,7 @@
 
 #cityStateComma {
   font-size: 1.5rem;
-  margin-top: 1.3rem;
+  margin-top: 2rem;
 }
 
 .bottomBorder {
@@ -77,6 +129,8 @@
 
 .createSpotFormH2 {
   margin-bottom: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .createSpotFormP {
@@ -86,7 +140,9 @@
 #descriptionInput {
   width: 100%;
   height: 8rem;
-  border: 1px solid black;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: .5rem;
   resize: none;
   box-sizing: border-box;
 }
@@ -103,6 +159,10 @@
   width: 100%;
   box-sizing: border-box;
   margin-bottom: .3rem;
+  border: 1px solid gray;
+  border-radius: 5px;
+  height: 2rem;
+  padding-left: .5rem;
 }
 
 #dollarSignInput {
@@ -112,6 +172,8 @@
 
 #dollarSignInput>i {
   padding-top: 3px;
+  display: flex;
+  align-items: center;
 }
 
 #createSpotPricing {
@@ -121,12 +183,20 @@
 #createSpotPriceInput {
   width: 96%;
   box-sizing: border-box;
-  margin-bottom: .3rem;
+  /* margin-bottom: .3rem; */
+  border: 1px solid gray;
+  border-radius: 5px;
+  height: 2rem;
+  padding-left: .5rem;
 }
 
 .createFormSpotImage {
   width: 100%;
   box-sizing: border-box;
+  border: 1px solid gray;
+  border-radius: 5px;
+  height: 2rem;
+  padding-left: .5rem;
 }
 
 .createSpotImageContainer {
