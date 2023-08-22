@@ -20,13 +20,15 @@
 }
 
 .loginSubmit {
-  width: 80%;
+  width: 60%;
   height: 2rem;
   color: white;
   background-color: red;
+  border-radius: 50px;
   border: 2px solid black;
-  box-shadow: 3px 4px 5px gray;
+  box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.75);
   margin: 1.5rem;
+  transition: all 0.2s ease-in-out;
 }
 
 .loginSubmit:hover {
