@@ -40,7 +40,7 @@ module.exports = {
       // SPOT 2
       {
         spotId: 2,
-        url: 'https://a0.muscache.com/im/pictures/f03b7134-1d8f-43eb-9ef8-5097b07acd9b.jpg?im_w=1200',
+        url: 'https://images.fineartamerica.com/images-medium-large-5/rustic-log-cabin-mary-almond.jpg',
         preview: true
       },
       {
@@ -50,7 +50,7 @@ module.exports = {
       },
       {
         spotId: 2,
-        url: 'https://a0.muscache.com/im/pictures/c6912b16-69ef-4a98-94e9-40a394ac6156.jpg?im_w=1440',
+        url: 'https://cdn.onekindesign.com/wp-content/uploads/2017/10/Rustic-Log-Home-Design-Faure-Halvorsen-Architects-09-1-Kindesign.jpg',
         preview: false
       },
       {
@@ -66,27 +66,27 @@ module.exports = {
       // SPOT 3
       {
         spotId: 3,
-        url: 'https://cdn.landsearch.com/listings/4rQXW/large/sparta-nc-101260044.jpg',
+        url: 'https://mosscreek.net/wp-content/uploads/2021/03/IMG_4425_ED-1024x683.jpg',
         preview: true
       },
       {
         spotId: 3,
-        url: 'https://cdn.landsearch.com/listings/4rQXW/large/sparta-nc-101260046.jpg',
+        url: 'https://www.decorilla.com/online-decorating/wp-content/uploads/2021/05/Classy-Rustic-home-interior-with-exposed-beams.jpeg',
         preview: false
       },
       {
         spotId: 3,
-        url: 'https://cdn.landsearch.com/listings/4rQXW/large/sparta-nc-101260048.jpg',
+        url: 'https://2.bp.blogspot.com/-TdFGlIhG0bc/VNSZ_dpplRI/AAAAAAAADjo/9DbkyJFmuHg/s1600/rustic%2Binterior%2B3.jpg',
         preview: false
       },
       {
         spotId: 3,
-        url: 'https://cdn.landsearch.com/listings/4rQXW/large/sparta-nc-101260052.jpg',
+        url: 'https://i.pinimg.com/474x/ca/ea/ac/caeaacb5d3e68472ed86b7a043bcf114.jpg',
         preview: false
       },
       {
         spotId: 3,
-        url: 'https://cdn.landsearch.com/listings/4rQXW/large/sparta-nc-101260058.jpg',
+        url: 'https://i.pinimg.com/originals/3b/33/a4/3b33a42f29147f1fcdb013f7cd6d46d2.jpg',
         preview: false
       },
       // SPOT 4 
@@ -196,27 +196,27 @@ module.exports = {
       // SPOT 8
       {
         spotId: 8,
-        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-54077857/original/6f2fd680-6926-4be4-b5a7-986dab3a6e4e.jpeg?im_w=1200',
+        url: 'https://cdn.lakehomes.com/images/2023058/v1/images/lakehomes/lifestyle.jpg',
         preview: true
       },
       {
         spotId: 8,
-        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-54077857/original/48d45825-28a7-4c2b-a2b8-944ccfe90a43.jpeg?im_w=1440',
+        url: 'https://dn9g5fz2o8iu4.cloudfront.net/nc_hcbor/res/5f3feb8e90961f5b9a8488b5c9472236-2.jpg?v=1685095833',
         preview: false
       },
       {
         spotId: 8,
-        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-54077857/original/3419851f-f186-4ba5-a622-baf79c589267.jpeg?im_w=1440',
+        url: 'https://jennifermaune.com/wp-content/uploads/2020/01/098616c6cf0f0013aaab6250.jpg',
         preview: false
       },
       {
         spotId: 8,
-        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-54077857/original/2fd5760a-0166-4291-b516-c192367f9669.jpeg?im_w=1440',
+        url: 'https://i.pinimg.com/736x/55/e7/ed/55e7edfa963005baf38fdd3725a4df1b.jpg',
         preview: false
       },
       {
         spotId: 8,
-        url: 'https://a0.muscache.com/im/pictures/prohost-api/Hosting-54077857/original/5a9e19ff-9405-4273-b379-880eb60be887.jpeg?im_w=1440',
+        url: 'https://www.thespruce.com/thmb/S4oNzczMdK-xQLrnDkUJf-tOgdA=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/monicaandnikki_118586167_745991122857156_1573472710896416476_n-2b279d0d3cf44c06a3aee9797839eb7b.jpg',
         preview: false
       },
       // SPOT 9
