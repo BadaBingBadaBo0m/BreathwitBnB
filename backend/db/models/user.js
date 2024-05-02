@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
-      },
+    },
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -66,6 +66,13 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [3, 256],
         isEmail: true
+      }
+    },
+    profile_pic: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        len: [3, 256]
       }
     },
     hashedPassword: {
