@@ -34,6 +34,15 @@ module.exports = (sequelize, DataTypes) => {
     ownerId: {
       type: DataTypes.INTEGER,
     },
+    name: {
+      type: DataTypes.STRING,
+    },
+    description: {
+      type: DataTypes.TEXT,
+    },
+    price: {
+      type: DataTypes.DECIMAL,
+    },
     address: {
       type: DataTypes.STRING,
     },
@@ -51,15 +60,6 @@ module.exports = (sequelize, DataTypes) => {
     },
     lng: {
       type: DataTypes.DECIMAL
-    },
-    name: {
-      type: DataTypes.STRING,
-    },
-    description: {
-      type: DataTypes.TEXT,
-    },
-    price: {
-      type: DataTypes.DECIMAL,
     }
   }, {
     sequelize,
