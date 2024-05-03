@@ -22,10 +22,6 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       autoIncrement: true
     },
-    spotId: {
-      type: DataTypes.INTEGER,
-      allowNull: false
-    },
     categoryName: {
       type: DataTypes.STRING,
       allowNull: false,
