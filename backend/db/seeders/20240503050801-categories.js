@@ -13,6 +13,9 @@ module.exports = {
     return await queryInterface.bulkInsert(options, [
       {
         categoryName: "Beachfront"
+      },
+      {
+        categoryName: "Cabins"
       }
     ])
   },
@@ -21,7 +24,12 @@ module.exports = {
     options.tableName = "Categories";
     const Op = Sequelize.Op;
     return await queryInterface.bulkDelete(options, {
-      categoryName: "Beachfront"
+      categoryName: {
+        [Op.in]: [
+          "Beachfront",
+          "Cabins"
+        ]
+      },
     })
   }
 };
