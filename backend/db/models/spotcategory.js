@@ -10,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      SpotCategory.belongsTo(models, {
+      SpotCategory.belongsTo(models.Spot, {
         foreignKey: 'spotId'
       });
 
-      SpotCategory.belongsTo(models, {
+      SpotCategory.belongsTo(models.Category, {
         foreignKey: 'categoryId'
       });
     }
