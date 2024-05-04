@@ -2,6 +2,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
+    console.log("CREATE TABLE")
     await queryInterface.createTable('SpotCategories', {
       id: {
         allowNull: false,
