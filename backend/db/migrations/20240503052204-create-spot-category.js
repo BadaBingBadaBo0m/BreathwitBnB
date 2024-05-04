@@ -9,19 +9,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      spotId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'Spots',
-          key: 'id'
-        },
-      },
       categoryId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'Categories',
+          key: 'id'
+        },
+      },
+      spotId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Spots',
           key: 'id'
         },
       },
