@@ -13,17 +13,17 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "Spots",
-          key: "id"
-        }
+          model: 'Spots',
+          key: 'id'
+        },
       },
       categoryId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "Categories",
-          key: "id"
-        }
+          model: 'Categories',
+          key: 'id'
+        },
       },
       createdAt: {
         allowNull: false,
