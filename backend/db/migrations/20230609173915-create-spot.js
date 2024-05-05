@@ -23,6 +23,13 @@ module.exports = {
         },
         onDelete: 'CASCADE'
       },
+      categoryId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Categories'
+        }
+      },
       address: {
         type: Sequelize.STRING,
         allowNull: false

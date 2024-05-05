@@ -27,7 +27,7 @@ module.exports = {
       categoryName: {
         [Op.in]: [
           "Beachfront",
-          "Cabins"
+          "Cabin"
         ]
       },
     })

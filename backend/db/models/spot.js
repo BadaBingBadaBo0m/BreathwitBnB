@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
         as: 'Owner'
       });
 
+      Spot.belongsTo(models.Category, {
+        foreignKey: 'categoryId'
+      });
+
       Spot.hasMany(models.SpotImage, {
         foreignKey: 'spotId',
         onDelete: 'CASCADE',
@@ -28,16 +32,14 @@ module.exports = (sequelize, DataTypes) => {
       Spot.hasMany(models.Booking, {
         foreignKey: 'spotId'
       });
-
-      Spot.hasMany(models.SpotCategory, {
-        foreignKey: 'spotId',
-        onDelete: "CASCADE"
-      });
     }
   }
   Spot.init({
     ownerId: {
       type: DataTypes.INTEGER,
+    },
+    categoryId: {
+      type: DataTypes.INTEGER
     },
     name: {
       type: DataTypes.STRING,
