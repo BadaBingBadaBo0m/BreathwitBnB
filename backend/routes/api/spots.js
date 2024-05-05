@@ -5,7 +5,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { restoreUser } = require('../../utils/auth');
 
-const { Spot, Review, SpotImage, ReviewImage, User, Booking } = require('../../db/models');
+const { Spot, Review, SpotImage, ReviewImage, User, Booking, SpotCategory, Category } = require('../../db/models');
 
 const avgRatingAndPreviewImg = async (spots) => {
   for (spot of spots) {
@@ -396,7 +396,14 @@ router.get('/', checkQuery, async (req, res) => {
   const error = {};
   const where = {};
 
-  const { minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
+  const { minLat, maxLat, minLng, maxLng, minPrice, maxPrice, category } = req.query;
+
+  if (category) {
+    const spotCategory = await Category.findOne({
+      category: { [Op.eq]: `${category}` }
+    })
+    return res.json({ "category": spotCategory })
+  }
 
   if (maxPrice) {
     where.price = { [Op.lte]: maxPrice };
@@ -447,7 +454,7 @@ router.get('/', checkQuery, async (req, res) => {
     where
   });
 
-  res.json({
+  return res.json({
     Spots: await avgRatingAndPreviewImg(spots),
     // page: pagination.page,
     // size: pagination.size
