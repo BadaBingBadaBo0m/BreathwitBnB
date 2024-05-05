@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
       SpotCategory.belongsTo(models.Category, {
         foreignKey: 'categoryId'
       });
-      console.log("WE PASSED CATEGORY")
+
       SpotCategory.belongsTo(models.Spot, {
         foreignKey: 'spotId'
       });
