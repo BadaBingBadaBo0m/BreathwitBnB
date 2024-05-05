@@ -11,13 +11,13 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       console.log("ASSOCIATE")
-      SpotCategory.belongsTo(models.Spot, {
-        foreignKey: 'spotId'
-      })
-
       SpotCategory.belongsTo(models.Category, {
         foreignKey: 'categoryId'
       });
+
+      SpotCategory.belongsTo(models.Spot, {
+        foreignKey: 'spotId'
+      })
     }
   }
   SpotCategory.init({
