@@ -15,9 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'categoryId'
       });
 
-      SpotCategory.belongsTo(models.Spot, {
-        foreignKey: 'spotId'
-      })
+      SpotCategory.belongsTo(models.Spot)
     }
   }
   SpotCategory.init({
