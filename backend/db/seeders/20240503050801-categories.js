@@ -16,7 +16,58 @@ module.exports = {
       },
       {
         categoryName: "Cabins"
-      }
+      },
+      {
+        categoryName: "OMG!"
+      },
+      {
+        categoryName: "Vineyards"
+      },
+      {
+        categoryName: "Surfing"
+      },
+      {
+        categoryName: "Amazing Views"
+      },
+      {
+        categoryName: "Amazing Pools"
+      },
+      {
+        categoryName: "Lakefront"
+      },
+      {
+        categoryName: "Mansions"
+      },
+      {
+        categoryName: "Play"
+      },
+      {
+        categoryName: "Countryside"
+      },
+      {
+        categoryName: "Camping"
+      },
+      {
+        categoryName: "Tiny Homes"
+      },
+      {
+        categoryName: "Castles"
+      },
+      {
+        categoryName: "Off-the-grid"
+      },
+      {
+        categoryName: "National Parks"
+      },
+      {
+        categoryName: "Boats"
+      },
+      {
+        categoryName: "Farms"
+      },
+      {
+        categoryName: "Design"
+      },
     ])
   },
 
