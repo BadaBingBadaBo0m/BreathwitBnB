@@ -28,6 +28,7 @@ module.exports = {
       },
       {
         ownerId: 2,
+        categoryId: 2,
         address: '1176 Briarcreek Rd',
         city: 'King',
         state: 'North Carolina',
@@ -40,6 +41,7 @@ module.exports = {
       },
       {
         ownerId: 3,
+        categoryId: 2,
         address: '336 Joes Way',
         city: 'Sparta',
         state: 'North Carolina',
@@ -52,6 +54,7 @@ module.exports = {
       },
       {
         ownerId: 1,
+        categoryId: 13,
         address: '606 W Screven St',
         city: 'Quitman',
         state: 'Georgia',
@@ -64,6 +67,7 @@ module.exports = {
       },
       {
         ownerId: 1,
+        categoryId: 8,
         address: '11613 Reisterstown Rd',
         city: 'Reisterstown',
         state: 'Maryland',
@@ -76,6 +80,7 @@ module.exports = {
       },
       {
         ownerId: 1,
+        categoryId: 6,
         address: '5004 Imperial Dr',
         city: 'Clyde',
         state: 'North Carolina',
@@ -88,6 +93,7 @@ module.exports = {
       },
       {
         ownerId: 1,
+        categoryId: 9,
         address: '1165 Ross Clark Cir',
         city: 'Dothan',
         state: 'North Carolina',
@@ -100,6 +106,7 @@ module.exports = {
       },
       {
         ownerId: 2,
+        categoryId: 9,
         address: '809 Summit Ave',
         city: 'Mooresville',
         state: 'North Carolina',
@@ -112,6 +119,7 @@ module.exports = {
       },
       {
         ownerId: 2,
+        categoryId: 2,
         address: '13330 Ranchero Rd',
         city: 'Asheville',
         state: 'North Carolina',
@@ -124,6 +132,7 @@ module.exports = {
       },
       {
         ownerId: 2,
+        categoryId: 2,
         address: '3606 Willow Pass Rd',
         city: 'Concord',
         state: 'California',
@@ -136,6 +145,7 @@ module.exports = {
       },
       {
         ownerId: 3,
+        categoryId: 8,
         address: '21506 Victory Blvd',
         city: 'Lexington',
         state: 'North Carolina',
@@ -148,6 +158,7 @@ module.exports = {
       },
       {
         ownerId: 3,
+        categoryId: 2,
         address: '4800 E Huron River Dr',
         city: 'Ann Arbor',
         state: 'Michigan',
