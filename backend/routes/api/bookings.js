@@ -6,11 +6,11 @@ const { restoreUser } = require('../../utils/auth');
 const Sequelize = require('sequelize');
 const { Op } = Sequelize;
 
-const { Spot, Review, SpotImage, ReviewImage, User, Booking } = require('../../db/models');
+const { Spot, Booking } = require('../../db/models');
 
 const validateUser = (req, res) => {
   const { user } = req;
-  
+
   if (!user) {
     const err = new Error();
     err.status = 401;
@@ -105,7 +105,7 @@ router.put('/:bookingId', restoreUser, async (req, res) => {
     res.status(403);
     return res.json(err);
   }
-  
+
   // END DATE SHOULD ALWAYS BE GREATER THAN START DATE 
   if (newStartDate >= newEndDate) {
     const err = new Error();
@@ -122,7 +122,7 @@ router.put('/:bookingId', restoreUser, async (req, res) => {
     res.status(403);
     return res.json(err);
   }
-  
+
   const allBookings = await Booking.findAll({
     where: {
       id: {
@@ -130,7 +130,7 @@ router.put('/:bookingId', restoreUser, async (req, res) => {
       }
     }
   })
-  
+
   for (let booking of allBookings) {
     let bookingStartDate = new Date(booking.startDate)
     let bookingEndDate = new Date(booking.endDate)
@@ -197,7 +197,7 @@ router.delete('/:bookingId', restoreUser, async (req, res) => {
   }
 
   const booking = await Booking.findByPk(req.params.bookingId)
-  
+
   if (!booking) {
     const err = new Error();
     err.message = "Booking couldn't be found";
@@ -215,7 +215,7 @@ router.delete('/:bookingId', restoreUser, async (req, res) => {
   const startDate = new Date(booking.startDate);
   const endDate = new Date(booking.endDate);
   const currentDate = new Date();
-  
+
   if ((currentDate <= endDate && currentDate >= startDate) && (currentDate >= startDate && currentDate <= endDate)) {
     const err = new Error();
     err.message = "Bookings that have been started can't be deleted";
