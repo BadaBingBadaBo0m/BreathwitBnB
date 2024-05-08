@@ -400,9 +400,15 @@ router.get('/', checkQuery, async (req, res) => {
 
   if (category) {
     const spotCategory = await Category.findOne({
-      category: { [Op.eq]: `${category}` }
-    })
-    return res.json({ "category": spotCategory })
+      where: {
+        categoryName: { [Op.eq]: category }
+      }
+    });
+
+    if (spotCategory) where.categoryId = spotCategory.id;
+    else {
+      error["Category"] = "Could not find category"
+    }
   }
 
   if (maxPrice) {
