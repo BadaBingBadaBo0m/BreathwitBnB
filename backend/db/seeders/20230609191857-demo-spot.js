@@ -15,6 +15,7 @@ module.exports = {
     return await queryInterface.bulkInsert(options, [
       {
         ownerId: 1,
+        categoryId: 1,
         address: '123 Disney Lane',
         city: 'San Francisco',
         state: 'California',

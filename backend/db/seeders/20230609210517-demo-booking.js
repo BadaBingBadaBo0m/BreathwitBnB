@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     options.tableName = 'Bookings';
     return await queryInterface.bulkInsert(options, [
       {
@@ -17,16 +17,16 @@ module.exports = {
         startDate: new Date('2021-11-19'),
         endDate: new Date('2021-11-20')
       },
-      {
-        spotId: 3,
-        userId: 1,
-        startDate: new Date('2023-8-10'),
-        endDate: new Date('2023-8-15')
-      }
+      // {
+      //   spotId: 3,
+      //   userId: 1,
+      //   startDate: new Date('2023-8-10'),
+      //   endDate: new Date('2023-8-15')
+      // }
     ]);
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     options.tableName = 'Bookings';
     const Op = Sequelize.Op;
     return await queryInterface.bulkDelete(options, {

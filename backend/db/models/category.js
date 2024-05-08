@@ -11,8 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associations(models) {
       Category.hasMany(models.Spot, {
-        foreignKey: 'categoryId',
-        onDelete: "CASCADE"
+        foreignKey: 'categoryId'
       });
     }
   }
