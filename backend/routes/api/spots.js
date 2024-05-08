@@ -457,7 +457,11 @@ router.get('/', checkQuery, async (req, res) => {
 
   const spots = await Spot.findAll({
     // ...pagination,
-    where
+    where,
+    include: {
+      model: Category,
+      attributes: { exclude: ['createdAt', 'updatedAt'] }
+    }
   });
 
   return res.json({
