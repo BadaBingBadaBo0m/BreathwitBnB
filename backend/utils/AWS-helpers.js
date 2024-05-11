@@ -1,3 +1,5 @@
+const { v4: uuidv4 } = require('uuid');
+
 const fileFilter = (req, file, cb) => {
   if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
     cb(null, true);
@@ -7,8 +9,9 @@ const fileFilter = (req, file, cb) => {
 };
 
 const create_unique_filename = (filename) => {
-  console.log("bruh")
-  return filename
+  const ext = filename.split(".").pop().toLowerCase();
+  const uniqueFilename = uuidv4().replace(/-/g, '');
+  return `${uniqueFilename}.${ext}`;
 }
 
 module.exports = { fileFilter, create_unique_filename }

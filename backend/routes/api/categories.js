@@ -21,8 +21,6 @@ const upload = multer({
 router.post('/upload', upload.single('file'), async (req, res) => {
   const file = req.file
 
-  create_unique_filename("ohmy")
-
   if (!file) {
     res.status(500)
     return res.json({ "error": "No file uploaded" })
@@ -30,7 +28,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
 
   const params = {
     Bucket: process.env.S3_BUCKET,
-    Key: file.originalname,
+    Key: create_unique_filename(file.originalname),
     Body: file.buffer,
     ContentType: file.mimetype
   };
