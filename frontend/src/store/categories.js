@@ -10,7 +10,7 @@ const getCategories = (categoryList) => {
 };
 
 export const thunkGetCategories = () => async (dispatch) => {
-  const res = await fetch('/api/categories');
+  const res = await csrfFetch('/api/categories');
 
   if (res.ok) {
     const data = await res.json();
@@ -21,14 +21,14 @@ export const thunkGetCategories = () => async (dispatch) => {
   return res;
 }
 
-const initialState = { categories: {} };
+const initialState = { categoryList: [] };
 
 const categoriesReducer = (state = initialState, action) => {
   let newState;
   switch (action.type) {
     case GET_ALL_CATEGORIES:
       newState = { ...state }
-      newState.categories = action.categoryList.categoryList
+      newState.categoryList = action.categoryList.categoryList
       return newState;
     default:
       return state;
