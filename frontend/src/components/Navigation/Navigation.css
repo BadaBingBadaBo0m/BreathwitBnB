@@ -208,20 +208,12 @@
 }
 
 .scrollButton.right {
-  right: 7.5rem;
+  right: 13rem;
   /* background: linear-gradient(to right, transparent 10%, white 70%); */
 }
 
 .scrollButton:hover {
   cursor: pointer;
-}
-
-.scrollButton.right::before {
-  /* Add your styles for the button icon */
-}
-
-.scrollButton.right::after {
-  /* Add your styles for the button label */
 }
 
 #filtersContainer {
@@ -234,4 +226,5 @@
   width: 7rem;
   height: 3rem;
   border-radius: 12px;
+  margin-right: 4rem;
 }
