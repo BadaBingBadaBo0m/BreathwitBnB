@@ -5,6 +5,7 @@ import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import LogoAndUserControls from "./LogoAndUserControls";
+import Categories from "./Categories";
 import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
@@ -35,6 +36,8 @@ function Navigation({ isLoaded }) {
   return (
     <nav id="navBarContainer">
       <LogoAndUserControls sessionUser={sessionUser} isLoaded={isLoaded} />
+
+      <Categories />
     </nav>
   );
 }
