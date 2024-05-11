@@ -47,7 +47,7 @@ router.post('/upload', upload.single('file'), async (req, res) => {
 router.get('/', async (req, res) => {
   const categories = await Category.findAll();
 
-  return res.json({ "Categories": categories })
+  return res.json({ "categoryList": categories })
 });
 
 module.exports = router;
