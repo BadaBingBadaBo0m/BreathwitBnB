@@ -21,7 +21,7 @@ const Categories = () => {
     const handleScroll = () => {
       if (categoryScrollRef.current) {
         setShowLeftButton(categoryScrollRef.current.scrollLeft > 0);
-        setShowRightButton(categoryScrollRef.current.scrollLeft < categoryScrollRef.current.scrollWidth - window.innerWidth);
+        setShowRightButton(categoryScrollRef.current.scrollLeft < categoryScrollRef.current.scrollWidth - (window.innerWidth * .94));
       }
     };
 
@@ -53,21 +53,26 @@ const Categories = () => {
   }
 
   return (
-    <ul id="categoryListContainer" ref={categoryScrollRef}>
-      {showRightButton && <button className="scrollButton right" onClick={scrollRight}>arrow</button>}
-      {categoryArr.map(category => (
-        <>
-          <li
-            key={`${category.id}${category.categoryName}`}
-            className={`category ${category.id}`}
-          >
-            <img className="categoryImg" src={category.categoryPicture} />
-            <div className="categoryName">{category.categoryName}</div>
-          </li>
-        </>
-      ))}
-      {showLeftButton && <button className="scrollButton left" onClick={scrollLeft}>arrow</button>}
-    </ul>
+    <div id="filtersContainer">
+      <ul id="categoryListContainer" ref={categoryScrollRef}>
+        {showRightButton && <button className="scrollButton right" onClick={scrollRight}>arrow</button>}
+        {categoryArr.map(category => (
+          <>
+            <li
+              key={`${category.id}${category.categoryName}`}
+              className={`category ${category.id}`}
+            >
+              <img className="categoryImg" src={category.categoryPicture} />
+              <div className="categoryName">{category.categoryName}</div>
+            </li>
+          </>
+        ))}
+        {showLeftButton && <button className="scrollButton left" onClick={scrollLeft}>arrow</button>}
+      </ul>
+      <div id="filtersModalWrapper">
+        <button>Filters</button>
+      </div>
+    </div>
   );
 };
 

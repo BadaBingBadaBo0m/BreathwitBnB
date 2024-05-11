@@ -156,21 +156,30 @@
   width: 93%;
   gap: 4rem;
   list-style: none;
-  border: 1px solid red;
   padding: 0;
   margin: 0;
   text-align: center;
   scroll-behavior: smooth;
+  margin-left: 4rem;
 
   display: flex;
   align-items: center;
-  overflow-x: hidden;
+  overflow-x: auto;
+
+  /* --mask-left: linear-gradient(to right, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 100%) 100% 50% / 100% 100% repeat-x;
+  --mask-right: linear-gradient(to left, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 100%) 100% 50% / 100% 100% repeat-x;
+
+  -webkit-mask: var(--mask-left), var(--mask-right);
+  mask: var(--mask-left), var(--mask-right); */
 }
 
 .category {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 3.5rem;
+  margin-top: .5rem;
+  transition: opacity 0.5s ease;
   /* width: 10rem; */
 }
 
@@ -185,18 +194,22 @@
 
 .scrollButton {
   position: absolute;
-  background-color: white;
+  background-color: transparent;
   z-index: 100;
-  top: 6rem;
+  top: 5rem;
+  height: 3.8rem;
+  width: 5rem;
+  border: none;
 }
 
 .scrollButton.left {
-  left: 5rem;
+  left: 3rem;
+  /* background: linear-gradient(to left, transparent 10%, white 70%); */
 }
 
 .scrollButton.right {
-  right: 5rem;
-  /* Add your styles for the button */
+  right: 7.5rem;
+  /* background: linear-gradient(to right, transparent 10%, white 70%); */
 }
 
 .scrollButton:hover {
@@ -209,4 +222,16 @@
 
 .scrollButton.right::after {
   /* Add your styles for the button label */
+}
+
+#filtersContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+#filtersModalWrapper>button {
+  width: 7rem;
+  height: 3rem;
+  border-radius: 12px;
 }
