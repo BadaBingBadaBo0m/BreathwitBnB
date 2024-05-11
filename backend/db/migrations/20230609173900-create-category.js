@@ -21,7 +21,7 @@ module.exports = {
       },
       categoryPicture: {
         type: Sequelize.STRING,
-        // allowNull: false
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

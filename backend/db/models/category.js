@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     categoryPicture: {
       type: DataTypes.STRING,
-      // allowNull: false
+      allowNull: false
     }
   }, {
     sequelize,

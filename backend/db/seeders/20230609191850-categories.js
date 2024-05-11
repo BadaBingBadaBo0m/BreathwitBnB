@@ -12,61 +12,80 @@ module.exports = {
     options.tableName = "Categories";
     return await queryInterface.bulkInsert(options, [
       {
-        categoryName: "Beachfront"
+        categoryName: "Beachfront",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbBeachfront.jpg"
       },
       {
-        categoryName: "Cabins"
+        categoryName: "Cabins",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbCabins.jpg"
       },
       {
-        categoryName: "OMG!"
+        categoryName: "OMG!",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbOMG.jpg"
       },
       {
-        categoryName: "Vineyards"
+        categoryName: "Vineyards",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbVineyards.jpg"
       },
       {
-        categoryName: "Surfing"
+        categoryName: "Surfing",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbSurfing.jpg"
       },
       {
-        categoryName: "Amazing Views"
+        categoryName: "Amazing Views",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbAmazingViews.jpg"
       },
       {
-        categoryName: "Amazing Pools"
+        categoryName: "Amazing Pools",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbAmazingPools.jpg"
       },
       {
-        categoryName: "Lakefront"
+        categoryName: "Lakefront",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbLakeFront.jpg"
       },
       {
-        categoryName: "Mansions"
+        categoryName: "Mansions",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbMansions.jpg"
       },
       {
-        categoryName: "Play"
+        categoryName: "Play",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbPlay.jpg"
       },
       {
-        categoryName: "Countryside"
+        categoryName: "Countryside",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbCountrySide.jpg"
       },
       {
-        categoryName: "Camping"
+        categoryName: "Camping",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbCamping.jpg"
       },
       {
-        categoryName: "Tiny Homes"
+        categoryName: "Tiny Homes",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbTinyHomes.jpg"
       },
       {
-        categoryName: "Castles"
+        categoryName: "Castles",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbCastles.jpg"
       },
       {
-        categoryName: "Off-the-grid"
+        categoryName: "Off-the-grid",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbOffTheGrid.jpg"
       },
       {
-        categoryName: "National Parks"
+        categoryName: "National Parks",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbNationalParks.jpg"
       },
       {
-        categoryName: "Boats"
+        categoryName: "Boats",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbBoats.jpg"
       },
       {
-        categoryName: "Farms"
+        categoryName: "Farms",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbFarms.jpg"
       },
       {
-        categoryName: "Design"
+        categoryName: "Design",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbDesign.jpg"
       },
     ])
   },
@@ -84,36 +103,3 @@ module.exports = {
     })
   }
 };
-
-// 'use strict';
-
-// /** @type {import('sequelize-cli').Migration} */
-
-// let options = {};
-// if (process.env.NODE_ENV === 'production') {
-//   options.schema = process.env.SCHEMA;
-// }
-
-// module.exports = {
-//   async up(queryInterface, Sequelize) {
-//     options.tableName = "SpotCategories";
-//     return await queryInterface.bulkInsert(options, [
-//       {
-//         spotId: 1,
-//         categoryId: 1
-//       }
-//     ])
-//   },
-
-//   async down(queryInterface, Sequelize) {
-//     options.tableName = "SpotCategories";
-//     const Op = Sequelize.Op;
-//     return await queryInterface.bulkDelete(options, {
-//       spotId: {
-//         [Op.in]: [
-//           1
-//         ]
-//       }
-//     })
-//   }
-// };
