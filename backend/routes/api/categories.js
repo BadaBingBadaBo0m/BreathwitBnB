@@ -5,7 +5,7 @@ const AWS = require('aws-sdk');
 const multer = require('multer');
 
 const { Category } = require('../../db/models');
-const { fileFilter } = require('../../utils/AWS-helpers');
+const { fileFilter, create_unique_filename } = require('../../utils/AWS-helpers');
 
 const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
@@ -20,6 +20,8 @@ const upload = multer({
 
 router.post('/upload', upload.single('file'), async (req, res) => {
   const file = req.file
+
+  create_unique_filename("ohmy")
 
   if (!file) {
     res.status(500)

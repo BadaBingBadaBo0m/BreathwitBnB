@@ -6,4 +6,9 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-module.exports = fileFilter
+const create_unique_filename = (filename) => {
+  console.log("bruh")
+  return filename
+}
+
+module.exports = { fileFilter, create_unique_filename }
