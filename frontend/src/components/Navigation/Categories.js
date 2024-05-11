@@ -54,6 +54,7 @@ const Categories = () => {
 
   return (
     <ul id="categoryListContainer" ref={categoryScrollRef}>
+      {showRightButton && <button className="scrollButton right" onClick={scrollRight}>arrow</button>}
       {categoryArr.map(category => (
         <>
           <li
@@ -61,11 +62,10 @@ const Categories = () => {
             className={`category ${category.id}`}
           >
             <img className="categoryImg" src={category.categoryPicture} />
-            <div>{category.categoryName}</div>
+            <div className="categoryName">{category.categoryName}</div>
           </li>
         </>
       ))}
-      {showRightButton && <button className="scrollButton right" onClick={scrollRight}>arrow</button>}
       {showLeftButton && <button className="scrollButton left" onClick={scrollLeft}>arrow</button>}
     </ul>
   );
