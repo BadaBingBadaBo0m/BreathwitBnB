@@ -34,7 +34,7 @@
   font-family: 'Pacifico', cursive;
 }
 
-nav {
+#logo-and-user-controls {
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid rgb(196, 191, 191);
