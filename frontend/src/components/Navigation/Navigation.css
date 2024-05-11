@@ -84,6 +84,7 @@
   text-align: center;
   width: fit-content;
   right: 2rem;
+  z-index: 9999;
 }
 
 .profile-dropdown.userLoggedOut {
@@ -149,7 +150,8 @@
   gap: 4rem;
   list-style: none;
 
-  overflow-x: scroll;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .category {
@@ -161,4 +163,31 @@
 .categoryImg {
   width: 1.8rem;
   height: 1.8rem;
+}
+
+.scrollButton {
+  position: fixed;
+  z-index: 100;
+  top: 7.2rem;
+}
+
+.scrollButton.left {
+  left: 5rem;
+}
+
+.scrollButton.right {
+  right: 5rem;
+  /* Add your styles for the button */
+}
+
+.scrollButton.right:hover {
+  /* Add your styles for the button on hover */
+}
+
+.scrollButton.right::before {
+  /* Add your styles for the button icon */
+}
+
+.scrollButton.right::after {
+  /* Add your styles for the button label */
 }
