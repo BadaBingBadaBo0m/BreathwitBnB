@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { getAllSpots } from "../../store/spots";
 import { useHistory } from 'react-router-dom';
 import { Tooltip } from "react-tooltip";
+import { SpotFilterContext } from "../../context/SpotFilter";
 import './LandingPage.css'
 
 
@@ -10,7 +11,7 @@ const LandingPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const spotObj = useSelector((state) => state.spots.allSpots);
-
+  const [params, setParams] = useContext(SpotFilterContext);
 
   useEffect(() => {
     const getSpots = async () => {

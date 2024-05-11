@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { restoreCSRF, csrfFetch } from './store/csrf';
 import { ModalProvider, Modal } from './context/Modal';
+import { SpotFilterProvider } from './context/SpotFilter';
 import App from './App';
 
 import configureStore from './store';
@@ -30,14 +31,16 @@ if (process.env.NODE_ENV !== 'production') {
 
 function Root() {
   return (
-    <ModalProvider>
-      <Provider store={store}>
-        <BrowserRouter>
-          <App />
-          <Modal />
-        </BrowserRouter>
-      </Provider>
-    </ModalProvider>
+    <SpotFilterProvider>
+      <ModalProvider>
+        <Provider store={store}>
+          <BrowserRouter>
+            <App />
+            <Modal />
+          </BrowserRouter>
+        </Provider>
+      </ModalProvider>
+    </SpotFilterProvider>
   );
 }
 
