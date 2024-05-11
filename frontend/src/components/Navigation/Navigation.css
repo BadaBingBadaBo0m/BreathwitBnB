@@ -143,3 +143,22 @@
   color: red;
   font-size: 1.2rem;
 }
+
+#categoryListContainer {
+  display: flex;
+  gap: 4rem;
+  list-style: none;
+
+  overflow-x: scroll;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.categoryImg {
+  width: 1.8rem;
+  height: 1.8rem;
+}

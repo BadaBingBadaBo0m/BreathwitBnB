@@ -37,7 +37,7 @@ function Navigation({ isLoaded }) {
     <nav id="navBarContainer">
       <LogoAndUserControls sessionUser={sessionUser} isLoaded={isLoaded} />
 
-      {/* <Categories /> */}
+      <Categories />
     </nav>
   );
 }

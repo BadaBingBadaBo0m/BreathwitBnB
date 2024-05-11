@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { getAllSpots } from "../../store/spots";
 import { useHistory } from 'react-router-dom';
@@ -31,14 +31,14 @@ const LandingPage = () => {
 
   return (
     <div id='spotsContainer'>
-      {/* <button onClick={(e) => console.log(params)}>log params</button>
+      <button onClick={(e) => console.log(params)}>log params</button>
       <button onClick={(e) => setParams({ ...params, category: "Cabins" })}>set category</button>
-      <button onClick={(e) => ClearAllFilters()}>Clear filters</button> */}
+      <button onClick={(e) => ClearAllFilters()}>Clear filters</button>
       <ul id='spotList'>
         {spotList.map(spot => (
           <>
             <li
-              key={spot.id}
+              key={`${spot.id}${spot.name}${spot.ownerId}`}
               className='spot'
               data-tooltip-id={spot.id}
               data-tip="Tooltip"
