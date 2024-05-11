@@ -28,6 +28,10 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: [2, 20]
       }
+    },
+    categoryPicture: {
+      type: DataTypes.STRING,
+      // allowNull: false
     }
   }, {
     sequelize,
