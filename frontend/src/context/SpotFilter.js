@@ -8,7 +8,7 @@ export const SpotFilterProvider = props => {
     price: null
   });
 
-  const ClearFilters = () => {
+  const ClearAllFilters = () => {
     setParams({
       ...params,
       category: null
@@ -20,7 +20,7 @@ export const SpotFilterProvider = props => {
   const contextValue = [
     params,
     setParams,
-    ClearFilters
+    ClearAllFilters
   ];
 
   return (

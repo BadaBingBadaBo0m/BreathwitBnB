@@ -11,7 +11,7 @@ const LandingPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const spotObj = useSelector((state) => state.spots.allSpots);
-  const [params, setParams, ClearFilters] = useContext(SpotFilterContext);
+  const [params, setParams, ClearAllFilters] = useContext(SpotFilterContext);
 
   useEffect(() => {
     const getSpots = async () => {
@@ -33,7 +33,7 @@ const LandingPage = () => {
     <div id='spotsContainer'>
       <button onClick={(e) => console.log(params)}>log params</button>
       <button onClick={(e) => setParams({ ...params, category: "Cabins" })}>set category</button>
-      <button onClick={(e) => ClearFilters()}>Clear filters</button>
+      <button onClick={(e) => ClearAllFilters()}>Clear filters</button>
       <ul id='spotList'>
         {spotList.map(spot => (
           <>
