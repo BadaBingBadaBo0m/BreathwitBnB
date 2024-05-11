@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 export const SpotFilterContext = React.createContext();
 
@@ -8,9 +8,19 @@ export const SpotFilterProvider = props => {
     price: null
   });
 
+  const ClearFilters = () => {
+    setParams({
+      ...params,
+      category: null
+    });
+
+    return null;
+  }
+
   const contextValue = [
     params,
-    setParams
+    setParams,
+    ClearFilters
   ];
 
   return (
