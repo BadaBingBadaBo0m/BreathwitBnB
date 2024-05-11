@@ -180,8 +180,8 @@
   /* Add your styles for the button */
 }
 
-.scrollButton.right:hover {
-  /* Add your styles for the button on hover */
+.scrollButton:hover {
+  cursor: pointer;
 }
 
 .scrollButton.right::before {
