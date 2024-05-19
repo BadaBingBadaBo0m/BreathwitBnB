@@ -153,7 +153,7 @@
 }
 
 #categoryListContainer {
-  width: 93%;
+  width: 90%;
   gap: 4rem;
   list-style: none;
   padding: 0;
@@ -164,13 +164,8 @@
 
   display: flex;
   align-items: center;
-  overflow-x: auto;
-
-  /* --mask-left: linear-gradient(to right, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 100%) 100% 50% / 100% 100% repeat-x;
-  --mask-right: linear-gradient(to left, rgba(0, 0, 0, 1) 90%, rgba(0, 0, 0, 0) 100%) 100% 50% / 100% 100% repeat-x;
-
-  -webkit-mask: var(--mask-left), var(--mask-right);
-  mask: var(--mask-left), var(--mask-right); */
+  overflow-x: hidden;
+  /* position: relative; */
 }
 
 .category {
@@ -196,20 +191,21 @@
   position: absolute;
   background-color: transparent;
   z-index: 100;
-  top: 5rem;
+  top: 77%;
+  transform: translateY(-50%);
   height: 3.8rem;
-  width: 5rem;
-  border: none;
+  width: 6rem;
+  /* border: none; */
 }
 
 .scrollButton.left {
-  left: 3rem;
-  /* background: linear-gradient(to left, transparent 10%, white 70%); */
+  left: 2rem;
+  /* background: linear-gradient(to left, transparent 1%, white 25%); */
 }
 
 .scrollButton.right {
-  right: 13rem;
-  /* background: linear-gradient(to right, transparent 10%, white 70%); */
+  right: 2rem;
+  /* background: linear-gradient(to right, transparent 1%, white 25%); */
 }
 
 .scrollButton:hover {
@@ -218,6 +214,7 @@
 
 #filtersContainer {
   width: 100%;
+  /* position: relative; */
   display: flex;
   align-items: center;
 }
@@ -226,5 +223,5 @@
   width: 7rem;
   height: 3rem;
   border-radius: 12px;
-  margin-right: 4rem;
+  margin: 0rem 2rem;
 }

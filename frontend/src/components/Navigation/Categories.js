@@ -25,15 +25,16 @@ const Categories = () => {
       }
     };
 
-    const updateScrollButtons = () => {
-      handleScroll();
-    };
+    // const updateScrollButtons = () => {
+    //   handleScroll();
+    // };
 
     if (categoryScrollRef.current) {
       categoryScrollRef.current.addEventListener('scroll', handleScroll);
     }
 
-    updateScrollButtons();
+    // updateScrollButtons();
+    handleScroll();
 
     return () => {
       if (categoryScrollRef.current) {
@@ -41,6 +42,43 @@ const Categories = () => {
       }
     };
   }, [categoryArr]);
+
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (categoryScrollRef.current) {
+  //       setShowLeftButton(categoryScrollRef.current.scrollLeft > 0);
+  //       setShowRightButton(categoryScrollRef.current.scrollLeft < categoryScrollRef.current.scrollWidth - categoryScrollRef.current.clientWidth);
+  //     }
+  //   };
+
+  //   const updateScrollButtons = () => {
+  //     handleScroll();
+  //     // Update the position of the scroll buttons based on the scrollLeft of the container
+  //     if (categoryScrollRef.current) {
+  //       const scrollContainer = categoryScrollRef.current;
+  //       const leftButton = document.querySelector('.scrollButton.left');
+  //       const rightButton = document.querySelector('.scrollButton.right');
+
+  //       if (leftButton && rightButton) {
+  //         leftButton.style.left = `${scrollContainer.scrollLeft}px`;
+  //         rightButton.style.left = `${scrollContainer.scrollLeft}px`;
+  //         console.log(scrollContainer.scrollLeft)
+  //       }
+  //     }
+  //   };
+
+  //   if (categoryScrollRef.current) {
+  //     categoryScrollRef.current.addEventListener('scroll', updateScrollButtons);
+  //   }
+
+  //   updateScrollButtons();
+
+  //   return () => {
+  //     if (categoryScrollRef.current) {
+  //       categoryScrollRef.current.removeEventListener('scroll', updateScrollButtons);
+  //     }
+  //   };
+  // }, [categoryArr]);
 
   if (!categoryArr || categoryArr.length === 0) return (<h2>Loading</h2>);
 
@@ -69,9 +107,6 @@ const Categories = () => {
         ))}
         {showLeftButton && <button className="scrollButton left" onClick={scrollLeft}>arrow</button>}
       </ul>
-      <div id="filtersModalWrapper">
-        <button>Filters</button>
-      </div>
     </div>
   );
 };
