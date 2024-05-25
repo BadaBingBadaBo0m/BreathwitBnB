@@ -36,15 +36,10 @@ const Categories = () => {
       }
     };
 
-    // const updateScrollButtons = () => {
-    //   handleScroll();
-    // };
-
     if (categoryScrollRef.current) {
       categoryScrollRef.current.addEventListener('scroll', handleScroll);
     }
 
-    // updateScrollButtons();
     handleScroll();
 
     return () => {
@@ -80,9 +75,6 @@ const Categories = () => {
           </>
         ))}
         {showLeftButton && <button className="scrollButton left" onClick={scrollLeft}>arrow</button>}
-        {/* <li>
-          bruh
-        </li> */}
       </ul>
     </div>
   );
