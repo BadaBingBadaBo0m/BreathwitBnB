@@ -1,17 +1,17 @@
 #categoryListContainer {
   width: 90%;
+  height: 4rem;
   gap: 4rem;
   list-style: none;
   padding: 0;
   margin: 0;
+  margin-top: .5rem;
   text-align: center;
   scroll-behavior: smooth;
-  /* margin-left: 4rem; */
 
   display: flex;
   align-items: center;
   overflow-x: hidden;
-  /* position: relative; */
 }
 
 .category {
@@ -22,6 +22,11 @@
   margin-top: .5rem;
   transition: opacity 0.5s ease;
   /* width: 10rem; */
+}
+
+.category:hover {
+  cursor: pointer;
+  border-bottom: 4px solid rgb(214, 214, 214);
 }
 
 .categoryImg {

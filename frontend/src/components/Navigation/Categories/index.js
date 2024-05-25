@@ -68,8 +68,10 @@ const Categories = () => {
         {categoryArr.map(category => (
           <>
             <li
+              style={params === category.categoryName ? { borderBottom: '4px solid black' } : null}
               key={`${category.id}${category.categoryName}`}
               className={`category ${category.id}`}
+              onClick={() => setParams(category.categoryName)}
             >
               <img className="categoryImg" src={category.categoryPicture} />
               <div className="categoryName">{category.categoryName}</div>
