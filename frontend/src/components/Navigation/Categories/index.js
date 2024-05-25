@@ -1,6 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetCategories } from "../../../store/categories";
+import { SpotFilterContext } from "../../../context/SpotFilter";
 import './categories.css'
 
 const Categories = () => {
@@ -9,6 +10,7 @@ const Categories = () => {
   const categoryScrollRef = useRef(null);
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(false);
+  const [params, setParams, ClearAllFilters] = useContext(SpotFilterContext);
 
   useEffect(() => {
     const getCategories = async () => {
@@ -62,7 +64,7 @@ const Categories = () => {
   return (
     <div id="filtersContainer">
       <ul id="categoryListContainer" ref={categoryScrollRef}>
-        {showRightButton && <button className="scrollButton right" onClick={scrollRight}>arrow</button>}
+        {showLeftButton && <button className="scrollButton left" onClick={scrollLeft}><i class="fa-solid fa-arrow-left"></i></button>}
         {categoryArr.map(category => (
           <>
             <li
@@ -74,7 +76,7 @@ const Categories = () => {
             </li>
           </>
         ))}
-        {showLeftButton && <button className="scrollButton left" onClick={scrollLeft}>arrow</button>}
+        {showRightButton && <button className="scrollButton right" onClick={scrollRight}><i class="fa-solid fa-arrow-right"></i></button>}
       </ul>
     </div>
   );

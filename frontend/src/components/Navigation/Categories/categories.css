@@ -40,18 +40,38 @@
   top: 77%;
   transform: translateY(-50%);
   height: 3.8rem;
-  width: 6rem;
-  /* border: none; */
+  width: 3rem;
+  border: none;
+}
+
+.scrollButton>i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid gray;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.scrollButton>i:hover {
+  cursor: pointer;
 }
 
 .scrollButton.left {
-  left: 2rem;
-  /* background: linear-gradient(to left, transparent 1%, white 25%); */
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  left: 5rem;
+  background: linear-gradient(to left, transparent 1%, white 25%);
 }
 
 .scrollButton.right {
-  right: 2rem;
-  /* background: linear-gradient(to right, transparent 1%, white 25%); */
+  right: 5rem;
+  background: linear-gradient(to right, transparent 1%, white 25%);
 }
 
 .scrollButton:hover {
