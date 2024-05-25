@@ -90,7 +90,7 @@ const Categories = () => {
               className={`category ${category.id}`}
               onClick={() => setCategory(category)}
             >
-              <img className="categoryImg" src={category.categoryPicture} />
+              <img className="categoryImg" onClick={() => console.log(category.categoryPicture, "bruh")} src={category.categoryPicture} />
               <div className="categoryName">{category.categoryName}</div>
             </li>
           </>
