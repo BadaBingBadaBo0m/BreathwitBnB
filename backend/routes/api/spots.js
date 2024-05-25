@@ -398,7 +398,7 @@ router.get('/', checkQuery, async (req, res) => {
 
   const { minLat, maxLat, minLng, maxLng, minPrice, maxPrice, category } = req.query;
 
-  if (category) {
+  if (category && category !== 'null') {
     const spotCategory = await Category.findOne({
       where: {
         categoryName: { [Op.eq]: category }

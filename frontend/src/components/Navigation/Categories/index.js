@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState, useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { thunkGetCategories } from "../../../store/categories";
 import { SpotFilterContext } from "../../../context/SpotFilter";
+import { getSpotByCategory, getAllSpots } from '../../../store/spots';
 import './categories.css'
 
 const Categories = () => {
@@ -31,10 +32,8 @@ const Categories = () => {
           setShowRightButton(false);
         }
 
-        console.log(categoryScrollRef.current.offsetWidth, "bruh")
         setShowLeftButton(categoryScrollRef.current.scrollLeft > 0);
         setShowRightButton(categoryScrollRef.current.scrollLeft < categoryScrollRef.current.scrollWidth - (window.innerWidth * .94));
-        console.log(categoryScrollRef.current.offsetWidth, window.innerWidth)
       }
     };
 
@@ -61,6 +60,17 @@ const Categories = () => {
     categoryScrollRef.current.scrollLeft -= 200;
   }
 
+  const setCategory = async (category) => {
+    if (params == category.categoryName) {
+      ClearAllFilters();
+      await dispatch(getAllSpots());
+    } else {
+      setParams(category.categoryName);
+      const data = await dispatch(getSpotByCategory(category.categoryName))
+      console.log(data)
+    }
+  }
+
   return (
     <div id="filtersContainer">
       <ul id="categoryListContainer" ref={categoryScrollRef}>
@@ -71,7 +81,7 @@ const Categories = () => {
               style={params === category.categoryName ? { borderBottom: '4px solid black' } : null}
               key={`${category.id}${category.categoryName}`}
               className={`category ${category.id}`}
-              onClick={() => params == category.categoryName ? ClearAllFilters() : setParams(category.categoryName)}
+              onClick={() => setCategory(category)}
             >
               <img className="categoryImg" src={category.categoryPicture} />
               <div className="categoryName">{category.categoryName}</div>

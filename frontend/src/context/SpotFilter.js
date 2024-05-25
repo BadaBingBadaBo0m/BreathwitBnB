@@ -8,7 +8,7 @@ export const SpotFilterProvider = props => {
     price: null
   });
 
-  const ClearAllFilters = () => {
+  const ClearAllFilters = async () => {
     setParams({
       ...params,
       category: null

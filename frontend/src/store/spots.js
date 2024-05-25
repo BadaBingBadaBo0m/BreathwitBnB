@@ -44,6 +44,19 @@ export const getAllSpots = () => async (dispatch) => {
   }
 
   console.log('GetAllSpots failed')
+  return res
+}
+
+export const getSpotByCategory = (category) => async (dispatch) => {
+  const res = await fetch(`/api/spots?category=${category}`);
+
+  if (res.ok) {
+    const data = await res.json();
+    if (data.Spots.length) dispatch(loadSpots(data))
+    return data.Spots
+  }
+
+  return res;
 }
 
 export const getSpotById = ({ spotId }) => async (dispatch) => {
