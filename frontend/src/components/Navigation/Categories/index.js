@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { thunkGetCategories } from "../../store/categories";
+import { thunkGetCategories } from "../../../store/categories";
+import './categories.css'
 
 const Categories = () => {
   const dispatch = useDispatch()
@@ -20,8 +21,18 @@ const Categories = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (categoryScrollRef.current) {
+        if (window.innerWidth > categoryScrollRef.current.offsetWidth) {
+          setShowRightButton(true);
+        }
+
+        if (window.innerWidth < categoryScrollRef.current.offsetWidth) {
+          setShowRightButton(false);
+        }
+
+        console.log(categoryScrollRef.current.offsetWidth, "bruh")
         setShowLeftButton(categoryScrollRef.current.scrollLeft > 0);
         setShowRightButton(categoryScrollRef.current.scrollLeft < categoryScrollRef.current.scrollWidth - (window.innerWidth * .94));
+        console.log(categoryScrollRef.current.offsetWidth, window.innerWidth)
       }
     };
 
@@ -42,43 +53,6 @@ const Categories = () => {
       }
     };
   }, [categoryArr]);
-
-  // useEffect(() => {
-  //   const handleScroll = () => {
-  //     if (categoryScrollRef.current) {
-  //       setShowLeftButton(categoryScrollRef.current.scrollLeft > 0);
-  //       setShowRightButton(categoryScrollRef.current.scrollLeft < categoryScrollRef.current.scrollWidth - categoryScrollRef.current.clientWidth);
-  //     }
-  //   };
-
-  //   const updateScrollButtons = () => {
-  //     handleScroll();
-  //     // Update the position of the scroll buttons based on the scrollLeft of the container
-  //     if (categoryScrollRef.current) {
-  //       const scrollContainer = categoryScrollRef.current;
-  //       const leftButton = document.querySelector('.scrollButton.left');
-  //       const rightButton = document.querySelector('.scrollButton.right');
-
-  //       if (leftButton && rightButton) {
-  //         leftButton.style.left = `${scrollContainer.scrollLeft}px`;
-  //         rightButton.style.left = `${scrollContainer.scrollLeft}px`;
-  //         console.log(scrollContainer.scrollLeft)
-  //       }
-  //     }
-  //   };
-
-  //   if (categoryScrollRef.current) {
-  //     categoryScrollRef.current.addEventListener('scroll', updateScrollButtons);
-  //   }
-
-  //   updateScrollButtons();
-
-  //   return () => {
-  //     if (categoryScrollRef.current) {
-  //       categoryScrollRef.current.removeEventListener('scroll', updateScrollButtons);
-  //     }
-  //   };
-  // }, [categoryArr]);
 
   if (!categoryArr || categoryArr.length === 0) return (<h2>Loading</h2>);
 
@@ -106,6 +80,9 @@ const Categories = () => {
           </>
         ))}
         {showLeftButton && <button className="scrollButton left" onClick={scrollLeft}>arrow</button>}
+        {/* <li>
+          bruh
+        </li> */}
       </ul>
     </div>
   );

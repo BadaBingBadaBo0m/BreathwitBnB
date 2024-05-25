@@ -1,0 +1,59 @@
+#categoryListContainer {
+  width: 90%;
+  gap: 4rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  scroll-behavior: smooth;
+  /* margin-left: 4rem; */
+
+  display: flex;
+  align-items: center;
+  overflow-x: hidden;
+  /* position: relative; */
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 3.5rem;
+  margin-top: .5rem;
+  transition: opacity 0.5s ease;
+  /* width: 10rem; */
+}
+
+.categoryImg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+.categoryName {
+  white-space: nowrap;
+}
+
+.scrollButton {
+  position: absolute;
+  background-color: transparent;
+  z-index: 100;
+  top: 77%;
+  transform: translateY(-50%);
+  height: 3.8rem;
+  width: 6rem;
+  /* border: none; */
+}
+
+.scrollButton.left {
+  left: 2rem;
+  /* background: linear-gradient(to left, transparent 1%, white 25%); */
+}
+
+.scrollButton.right {
+  right: 2rem;
+  /* background: linear-gradient(to right, transparent 1%, white 25%); */
+}
+
+.scrollButton:hover {
+  cursor: pointer;
+}
