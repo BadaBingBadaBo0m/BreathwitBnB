@@ -31,9 +31,9 @@ const LandingPage = () => {
 
   return (
     <div id='spotsContainer'>
-      <button onClick={(e) => console.log(params)}>log params</button>
+      {/* <button onClick={(e) => console.log(params)}>log params</button>
       <button onClick={(e) => setParams({ ...params, category: "Cabins" })}>set category</button>
-      <button onClick={(e) => ClearAllFilters()}>Clear filters</button>
+      <button onClick={(e) => ClearAllFilters()}>Clear filters</button> */}
       <ul id='spotList'>
         {spotList.map(spot => (
           <>
