@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
@@ -10,6 +11,7 @@ import "./Navigation.css";
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
+  const location = useLocation();
 
   let sessionLinks;
   if (sessionUser) {
@@ -37,7 +39,7 @@ function Navigation({ isLoaded }) {
     <nav id="navBarContainer">
       <LogoAndUserControls sessionUser={sessionUser} isLoaded={isLoaded} />
 
-      <Categories />
+      {location.pathname === '/' && <Categories />}
     </nav>
   );
 }
