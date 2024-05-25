@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { thunkGetCategories } from "../../../store/categories";
 import { SpotFilterContext } from "../../../context/SpotFilter";
 import { getSpotByCategory, getAllSpots } from '../../../store/spots';
+import WIPModal from './WorkInProgressPopup/WIPModal';
+import WIPWarning from './WorkInProgressPopup/WIPWarning';
 import './categories.css'
 
 const Categories = () => {
@@ -12,6 +14,7 @@ const Categories = () => {
   const [showLeftButton, setShowLeftButton] = useState(false);
   const [showRightButton, setShowRightButton] = useState(false);
   const [params, setParams, ClearAllFilters] = useContext(SpotFilterContext);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   useEffect(() => {
     const getCategories = async () => {
@@ -61,13 +64,17 @@ const Categories = () => {
   }
 
   const setCategory = async (category) => {
+    setIsModalVisible(false);
     if (params == category.categoryName) {
       ClearAllFilters();
       await dispatch(getAllSpots());
     } else {
       setParams(category.categoryName);
       const data = await dispatch(getSpotByCategory(category.categoryName))
-      console.log(data)
+      if (data.length == 0) {
+        setIsModalVisible(true);
+        ClearAllFilters();
+      }
     }
   }
 
@@ -90,6 +97,7 @@ const Categories = () => {
         ))}
         {showRightButton && <button className="scrollButton right" onClick={scrollRight}><i class="fa-solid fa-arrow-right"></i></button>}
       </ul>
+      {isModalVisible && <WIPModal modalComponent={<WIPWarning />} />}
     </div>
   );
 };
