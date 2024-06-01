@@ -66,6 +66,7 @@ const Categories = () => {
     categoryScrollRef.current.scrollLeft -= 200;
   }
 
+  // Filters the spots by category or returns a WIP modal if there are no spots in the category
   const setCategory = async (category) => {
     setIsModalVisible(false);
     if (params == category.categoryName) {
