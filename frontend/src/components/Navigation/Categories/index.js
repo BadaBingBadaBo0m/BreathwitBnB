@@ -97,7 +97,7 @@ const Categories = () => {
         ))}
         {showRightButton && <button className="scrollButton right" onClick={scrollRight}><i class="fa-solid fa-arrow-right"></i></button>}
       </ul>
-      {/* isModalVisible && <WIPModal modalComponent={<WIPWarning />} /> */}
+      {isModalVisible && <WIPModal modalComponent={<WIPWarning />} />}
     </div>
   );
 };

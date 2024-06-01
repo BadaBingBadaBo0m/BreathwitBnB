@@ -75,18 +75,18 @@ module.exports = {
         categoryName: "National Parks",
         categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbNationalParks.jpg"
       },
-      // {
-      //   categoryName: "Boats",
-      //   categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbBoats.jpg"
-      // },
-      // {
-      //   categoryName: "Farms",
-      //   categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbFarms.jpg"
-      // },
-      // {
-      //   categoryName: "Design",
-      //   categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbDesign.jpg"
-      // },
+      {
+        categoryName: "Boats",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbBoats.jpg"
+      },
+      {
+        categoryName: "Farms",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbFarms.jpg"
+      },
+      {
+        categoryName: "Design",
+        categoryPicture: "https://breathwit-bnb.s3.amazonaws.com/bnbDesign.jpg"
+      },
     ])
   },
 
