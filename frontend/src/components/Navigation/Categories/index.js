@@ -53,12 +53,15 @@ const Categories = () => {
     };
   }, [categoryArr]);
 
+  // Return loading page if the categories haven't returned yet.
   if (!categoryArr || categoryArr.length === 0) return (<h2>Loading</h2>);
 
+  // Scrolls category div to the right
   const scrollRight = () => {
     categoryScrollRef.current.scrollLeft += 200;
   }
 
+  // Scrolls category div to the left
   const scrollLeft = () => {
     categoryScrollRef.current.scrollLeft -= 200;
   }
