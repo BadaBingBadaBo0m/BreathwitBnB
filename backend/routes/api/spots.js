@@ -71,7 +71,6 @@ const createPagination = (req, res, next) => {
   if (page < 1) page = 1;
   if (size < 1) size = 1;
 
-
   let pagination = {};
 
   if (page >= 1 && size >= 1) {
