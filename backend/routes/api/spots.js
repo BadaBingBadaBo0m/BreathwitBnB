@@ -83,7 +83,6 @@ const createPagination = (req, res, next) => {
   return pagination
 }
 
-
 const validateSpots = [
   check('address')
     .exists({ checkFalsy: true })
