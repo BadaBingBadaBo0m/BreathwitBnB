@@ -32,12 +32,6 @@ const avgRatingAndPreviewImg = async (spots) => {
       spot.dataValues.avgRating = averageRating.toFixed(2);
     }
 
-    // if (averageRating == NaN) spot.dataValues.avgRating = null
-    // console.log(spot.dataValues.avgRating)
-
-    // const averageRating = count / stars.length;
-    // spot.dataValues.avgRating = Math.floor(averageRating * 10) / 10; // Round down to 1 decimal place
-
     const spotImages = await SpotImage.findAll({
       where: {
         spotId: spot.id,
