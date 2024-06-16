@@ -361,10 +361,6 @@ router.get('/:spotId', async (req, res) => {
     stars.push(review.stars);
   }
 
-  // spot.dataValues.avgRating = count / stars.length;
-  // const averageRating = count / stars.length;
-  // spot.dataValues.avgRating = Math.floor(averageRating * 10) / 10;
-  // const averageRating = count / stars.length;
   const averageRating = stars.length !== 0 ? count / stars.length : 0;
 
   if (averageRating % 1 === 0) {
