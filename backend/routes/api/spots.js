@@ -320,11 +320,6 @@ router.get('/current', restoreUser, async (req, res, next) => {
     }
   });
 
-  // if (!spots.length) {
-  //   res.status(404);
-  //   return res.json({ message: "Spot couldn't be found" });
-  // }
-
   res.json({ Spots: await avgRatingAndPreviewImg(spots) });
 });
 
