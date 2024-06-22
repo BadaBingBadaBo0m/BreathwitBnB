@@ -722,15 +722,6 @@ router.post('/:spotId/images', restoreUser, async (req, res) => {
   const spotImages = await SpotImage.bulkCreate(images);
 
   res.json(spotImages);
-
-  // const spotImage = await SpotImage.create({
-  //   spotId: req.params.spotId,
-  //   url,
-  //   preview
-  // })
-
-  // res.json()
-  // res.json(await SpotImage.findByPk(spotImage.id));
 });
 
 router.get('/:spotId/reviews', restoreUser, async (req, res) => {
